@@ -1,16 +1,15 @@
-DROP DATABASE IF EXISTS hospital;
-CREATE DATABASE hospital;
-USE hospital;
+DROP DATABASE IF EXISTS hms;
+CREATE DATABASE hms;
+USE hms;
 
 CREATE TABLE appointment (
     appointment_id      INT NOT NULL AUTO_INCREMENT,
     estimated_duration  INT NOT NULL,
     appointment_time    DATETIME NOT NULL,
-    last_update         DATETIME NOT NULL
-   
+    last_update         DATETIME NOT NULL,
+    PRIMARY KEY (appointment_id)
 );
 
-ALTER TABLE appointment ADD CONSTRAINT appointment_pk PRIMARY KEY ( appointment_id );
 
 CREATE TABLE hospital (
     hospital_id       INT NOT NULL AUTO_INCREMENT,
@@ -20,60 +19,60 @@ CREATE TABLE hospital (
     zipcode           VARCHAR(5) NOT NULL,
     phone             VARCHAR(14) NOT NULL,
     maximun_patients  INT NOT NULL,
-    last_update       DATETIME NOT NULL
+    last_update       DATETIME NOT NULL,
+    PRIMARY KEY (hospital_id)
 );
 
 
-ALTER TABLE hospital ADD CONSTRAINT hospital_pk PRIMARY KEY ( hospital_id );
 
 CREATE TABLE icd (
     icd_id        VARCHAR(30) NOT NULL AUTO_INCREMENT,
     disease_name  VARCHAR(30) NOT NULL,
-    last_update   DATETIME NOT NULL
+    last_update   DATETIME NOT NULL,
+    PRIMARY KEY (icd_id)
 );
 
-ALTER TABLE icd ADD CONSTRAINT icd_pk PRIMARY KEY ( icd_id );
 
 CREATE TABLE in_patient (
-    patient_id INT NOT NULL
+    patient_id INT NOT NULL,
+    PRIMARY KEY (patient_id)
 );
 
 
 
-ALTER TABLE in_patient ADD CONSTRAINT in_patient_pk PRIMARY KEY ( patient_id );
 
 CREATE TABLE insurance_company (
     provider_id   INT NOT NULL,
     company_name  VARCHAR(30) NOT NULL,
-    last_update   DATETIME NOT NULL
+    last_update   DATETIME NOT NULL,
+    PRIMARY KEY (provider_id)
 );
 
-ALTER TABLE insurance_company ADD CONSTRAINT insurance_company_pk PRIMARY KEY ( provider_id );
 
 CREATE TABLE invoice (
     invoiceid                   INT NOT NULL AUTO_INCREMENT,
     price                       DECIMAL(8, 2) NOT NULL,
     due_date                    DATETIME NOT NULL,
     last_update                 DATETIME NOT NULL,
-    invoice_id                  DOUBLE NOT NULL
+    invoice_id                  DOUBLE NOT NULL,
+    PRIMARY KEY (invoice_id)
 );
 
-ALTER TABLE invoice ADD CONSTRAINT invoice_pk PRIMARY KEY ( invoice_id );
 
 CREATE TABLE lab (
     lab_id                      INT NOT NULL AUTO_INCREMENT,
     lab_name                    VARCHAR(30) NOT NULL,
-    last_update                 DATETIME NOT NULL
+    last_update                 DATETIME NOT NULL,
+    PRIMARY KEY (lab_id)
 );
 
-ALTER TABLE lab ADD CONSTRAINT lab_pk PRIMARY KEY ( lab_id );
 
 CREATE TABLE out_patient (
-    patient_id INT NOT NULL
+    patient_id INT NOT NULL,
+    PRIMARY KEY (patient_id)
 );
 
 
-ALTER TABLE out_patient ADD CONSTRAINT out_patient_pk PRIMARY KEY ( patient_id );
 
 CREATE TABLE patient (
     patient_id                     INT NOT NULL AUTO_INCREMENT,
@@ -88,11 +87,11 @@ CREATE TABLE patient (
     birthdate                      DATETIME NOT NULL,
     gender                         VARCHAR(1) NOT NULL,
     patient_class                  CHAR(1) NOT NULL,
-    last_update                    DATETIME NOT NULL
+    last_update                    DATETIME NOT NULL,
+    PRIMARY KEY (patient_id)
 );
 
 
-ALTER TABLE patient ADD CONSTRAINT patient_pk PRIMARY KEY ( patient_id );
 
 CREATE TABLE patient_icd (
     last_update                 DATETIME NOT NULL
@@ -139,12 +138,12 @@ CREATE TABLE staff (
     birthdate             DATETIME NOT NULL,
     gender                VARCHAR(1) NOT NULL,
     staff_class           TINYINT NOT NULL,
-    last_update           DATETIME NOT NULL
+    last_update           DATETIME NOT NULL,
+    PRIMARY KEY (staff_id)
 );
 
 
 
-ALTER TABLE staff ADD CONSTRAINT staff_pk PRIMARY KEY ( staff_id );
 
 CREATE TABLE treatment (
     treatment_id   DECIMAL(58) NOT NULL AUTO_INCREMENT,
@@ -152,18 +151,17 @@ CREATE TABLE treatment (
     medicine_name  VARCHAR(30) NOT NULL,
     dose           VARCHAR(30) NOT NULL,
     price          DECIMAL(7, 2) NOT NULL,
-    last_update    DATETIME NOT NULL
+    last_update    DATETIME NOT NULL,
+    PRIMARY KEY (treatment_id)
 );
 
-ALTER TABLE treatment ADD CONSTRAINT treatment_pk PRIMARY KEY ( treatment_id );
 
 CREATE TABLE ward (
     ward_id                INT NOT NULL AUTO_INCREMENT,
     status                 TINYINT NOT NULL,
-    last_update            DATETIME NOT NULL
+    last_update            DATETIME NOT NULL,
+    PRIMARY KEY (ward_id)
 );
-
-ALTER TABLE ward ADD CONSTRAINT ward_pk PRIMARY KEY ( ward_id );
 
  delimiter //
 CREATE OR REPLACE TRIGGER appointment_up_dt_trg AFTER
