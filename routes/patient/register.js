@@ -1,12 +1,12 @@
 const express = require('express');
-const userController = require('../../controller/userController')
+const patientController = require('../../controller/patientController')
 
 const register = express.Router();
 
 register.get('/',(req, res) =>{
-    res.render('user/register');
+    res.render('patient/register');
 });
 
-register.post('/', userController.createUser);
+register.post('/', patientController.createUser);
 
 module.exports = register;

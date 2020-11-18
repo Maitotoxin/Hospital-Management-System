@@ -1,8 +1,8 @@
 const express = require('express');
-const userController = require('../../controller/userController')
+const patientController = require('../../controller/patientController')
 
 const logout = express.Router();
 
-logout.get('/',userController.logoutUser);
+logout.get('/',patientController.logoutUser);
 
 module.exports = logout;
