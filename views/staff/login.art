@@ -46,7 +46,7 @@
                                         <div class="input">
                                             <div class="form-group">
                                             </div>
-                                            <input name="userid" class="form-control" id="userid"
+                                            <input name="staff_id" class="form-control" id="staff_id"
                                                 placeholder="Enter Username..." type="text" required class="validate"
                                                 autocomplete="off">
                                         </div>
