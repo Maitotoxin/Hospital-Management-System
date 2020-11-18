@@ -28,3 +28,15 @@ app.engine('art', require('express-art-template'));
 
 //open static directory
 app.use(express.static(path.join(__dirname, 'static')));
+const error = require('./routes/error');
+
+const patientLogin = require('./routes/patient/login');
+const patientLogout = require('./routes/patient/logout');
+const patientRegister = require('./routes/patient/register');
+app.use('/login', patientLogin);
+app.use('/logout', patientLogout);
+app.use('/register', patientRegister);
+
+//listen port 3000
+app.listen(3000);
+console.log('Server started');
