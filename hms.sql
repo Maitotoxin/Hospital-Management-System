@@ -26,7 +26,7 @@ CREATE TABLE hospital (
 
 
 CREATE TABLE icd (
-    icd_id        VARCHAR(30) NOT NULL AUTO_INCREMENT,
+    icd_id        INT NOT NULL AUTO_INCREMENT,
     disease_name  VARCHAR(30) NOT NULL,
     last_update   DATETIME NOT NULL,
     PRIMARY KEY (icd_id)
@@ -50,11 +50,10 @@ CREATE TABLE insurance_company (
 
 
 CREATE TABLE invoice (
-    invoiceid                   INT NOT NULL AUTO_INCREMENT,
+    invoice_id                  INT NOT NULL AUTO_INCREMENT,
     price                       DECIMAL(8, 2) NOT NULL,
     due_date                    DATETIME NOT NULL,
     last_update                 DATETIME NOT NULL,
-    invoice_id                  DOUBLE NOT NULL,
     PRIMARY KEY (invoice_id)
 );
 
@@ -92,38 +91,13 @@ CREATE TABLE patient (
 );
 
 
-
-CREATE TABLE patient_icd (
-    last_update                 DATETIME NOT NULL
-);
-
-CREATE UNIQUE INDEX patient_icd__idx ON
-    patient_icd (
-        appointment_appointment_id
-    ASC );
-
-CREATE TABLE patient_icd_treatment (
-    times                   INT NOT NULL,
-    last_update             DATETIME NOT NULL
-);
-
-CREATE TABLE patient_lab (
-    result_id    INT NOT NULL AUTO_INCREMENT,
-    lab_result   VARCHAR(30) NOT NULL,
-    price        DECIMAL(8, 2) NOT NULL,
-    last_update  DATETIME NOT NULL
-);
-
-ALTER TABLE patient_lab ADD CONSTRAINT patient_lab_pk PRIMARY KEY ( result_id );
-
 CREATE TABLE receipt (
     receipt_id          INT NOT NULL AUTO_INCREMENT,
     amount              DECIMAL(7, 2) NOT NULL,
     payment_method      VARCHAR(30) NOT NULL,
-    last_update         DATETIME NOT NULL
+    last_update         DATETIME NOT NULL,
+    PRIMARY KEY (receipt_id)
 );
-
-ALTER TABLE receipt ADD CONSTRAINT receipt_pk PRIMARY KEY ( receipt_id );
 
 CREATE TABLE staff (
     staff_id              INT NOT NULL AUTO_INCREMENT,
@@ -146,7 +120,7 @@ CREATE TABLE staff (
 
 
 CREATE TABLE treatment (
-    treatment_id   DECIMAL(58) NOT NULL AUTO_INCREMENT,
+    treatment_id   INT NOT NULL AUTO_INCREMENT,
     type           VARCHAR(30) NOT NULL,
     medicine_name  VARCHAR(30) NOT NULL,
     dose           VARCHAR(30) NOT NULL,
