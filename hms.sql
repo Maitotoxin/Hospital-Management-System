@@ -78,8 +78,8 @@ ALTER TABLE out_patient ADD CONSTRAINT out_patient_pk PRIMARY KEY ( patient_id )
 CREATE TABLE patient (
     patient_id                     INT NOT NULL AUTO_INCREMENT,
     first_name                     VARCHAR(30) NOT NULL,
-    password                       VARCHAR(200) NOT NULL,
     last_name                      VARCHAR(30) NOT NULL,
+    password                       VARCHAR(200) NOT NULL,
     st_address                     VARCHAR(30) NOT NULL,
     city                           VARCHAR(30) NOT NULL,
     state                          VARCHAR(2) NOT NULL,
@@ -87,7 +87,7 @@ CREATE TABLE patient (
     phone                          VARCHAR(14) NOT NULL,
     birthdate                      DATETIME NOT NULL,
     gender                         VARCHAR(1) NOT NULL,
-    patient_class                  TINYINT NOT NULL,
+    patient_class                  CHAR(1) NOT NULL,
     last_update                    DATETIME NOT NULL
 );
 
