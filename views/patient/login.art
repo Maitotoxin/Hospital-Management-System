@@ -2,7 +2,6 @@
 <html>
 
 <head>
-    {{include '../common/header.art'}}
 
     <title>Patient-Login</title>
 

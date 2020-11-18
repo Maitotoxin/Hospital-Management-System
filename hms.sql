@@ -113,7 +113,7 @@ CREATE TABLE staff (
     gender                VARCHAR(1) NOT NULL,
     staff_class           TINYINT NOT NULL,
     last_update           DATETIME NOT NULL,
-    PRIMARY KEY (staff__id)
+    PRIMARY KEY (staff_id)
 );
 
 

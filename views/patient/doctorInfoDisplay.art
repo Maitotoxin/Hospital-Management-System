@@ -3,7 +3,6 @@
 
 <head>
 
-  {{include '../../common/header.art'}}
   <title>HMS {{userid}}Doctor Info Display</title>
 
   <!-- Custom scripts for all pages-->

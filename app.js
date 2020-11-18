@@ -8,15 +8,14 @@ const app = express();
 //use body-parser handle all get/post rquest
 app.use(bodyparser.urlencoded({extended: false}));
 
-/*
 app.use(session({
     secret: 'Dymatize Accelerate Wallet',
+    resave: false,
     saveUninitialized: false,
     cookie: {
         maxAge: 0.25 * 60 * 60 * 1000
     }
 }));
-*/
 
 //art directory
 app.set('views', path.join(__dirname, 'views'));

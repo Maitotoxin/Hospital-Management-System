@@ -4,10 +4,13 @@ const saltRound = 10;
 const xss = require('xss');
 
 exports.createPatient = createPatient;
+exports.logoutPatient = logoutPatient;
+exports.loginPatient = loginPatient;
 
 function createPatient(req, res, next) {
     console.log('enter function createPatient');
     console.log(req.body);
+    const patient_id = xss(req.body.patient_id);
     const plainTextPassword = xss(req.body.password1);
     const plainTextPasswordAgain = xss(req.body.password2);
     const first_name = xss(req.body.first_name);
@@ -28,25 +31,89 @@ function createPatient(req, res, next) {
     }
     database.setUpDatabase(function (connection) {
         connection.connect();
-
-        var password = bcrypt.hashSync(plainTextPassword, saltRound);
-        var addSqlParams = [password, first_name, last_name, state, city, st_address, zipcode, gender, birthdate, phone, "0"];
-        //console.log(addSqlParams);
-        var addSql = 'insert into patient (password, first_name, last_name, state, city, st_address, zipcode, gender, birthdate, phone, patient_class) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-        //var addSql = 'insert into user (userid, password) values (?, ?)';
-        //var addSqlParams = [id, password];
-        connection.query(addSql, addSqlParams, function (err, result) {
+        var sql = 'select * from patient where patient_id = ?';
+        connection.query(sql, [patient_id], function (err, result) {
             if (err) {
-                console.log('[INSERT ERROR] - ', err.message)
-                res.send("SQL insert error");
+                console.log('[SELECT ERROR] - ', err.message);
+                res.send("SQL query error");
                 return;
             }
-            console.log('--------------------------INSERT----------------------------')
-            console.log('INSERT ID:', result)
-            console.log('------------------------------------------------------------')
-            //issue 01: 注册成功alert
-            connection.end();
-            res.redirect(301, '/login');
+            if (result.length > 0) {
+                console.log('Already exists patient id', id);
+                res.send("Patient already exists");
+                return;
+            }
+            var password = bcrypt.hashSync(plainTextPassword, saltRound);
+            var addSqlParams = [patient_id, password, first_name, last_name, state, city, st_address, zipcode, gender, birthdate, phone, "0"];
+            //console.log(addSqlParams);
+            var addSql = 'insert into patient (patient_id, password, first_name, last_name, state, city, st_address, zipcode, gender, birthdate, phone, patient_class) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+            //var addSql = 'insert into user (userid, password) values (?, ?)';
+            //var addSqlParams = [id, password];
+            connection.query(addSql, addSqlParams, function (err, result) {
+                if (err) {
+                    console.log('[INSERT ERROR] - ', err.message)
+                    res.send("SQL insert error");
+                    return;
+                }
+                console.log('--------------------------INSERT----------------------------')
+                console.log('INSERT ID:', result)
+                console.log('------------------------------------------------------------')
+                connection.end();
+                res.redirect(301, '/login');
+            })
+        })
+    })
+}
+
+function logoutPatient(req, res, next) {
+    req.session.destroy(function () {
+        res.clearCookie('connect.sid');
+        res.redirect('/login');
+    });
+}
+
+function loginPatient(req, res, next) {
+    const id = xss(req.body.patient_id);
+    const plainTextPassword = xss(req.body.password);
+    //verify
+    if (id.trim().length == 0) {
+        return res.status(400).send('<h4>patient id error</h4>');
+    }
+    if (plainTextPassword.trim().length == 0) {
+        return res.status(400).send('<h4>password error</h4>');
+    }
+    database.setUpDatabase(function (connection) {
+        connection.connect();
+        var sql = 'select password from patient where patient_id = ?';
+        connection.query(sql, [id], function (err, result) {
+            if (err) {
+                console.log('[SELECT ERROR] - ', err.message);
+                res.send("SQL query error");
+                return;
+            }
+            if (result.length == 0) {
+                console.log('no such patient, please register');
+                res.send("no such patient");
+                return;
+            }
+            const patient = result[0]
+            bcrypt.compare(plainTextPassword, patient.password, function (err, success) {
+                if (err) {
+                    console.log('BCRYPT COMPARE ERROR');
+                    res.send('BCRYPT COMPARE ERROR');
+                    return;
+                }
+                if (!success) {
+                    console.log('password error');
+                    res.send('password error');
+                    return;
+                }
+                connection.end();
+                req.session.patient_id = id;
+                req.app.locals.patient_id = id;
+                res.redirect(301, '/dashboard');
+            });
+
         })
     })
 }

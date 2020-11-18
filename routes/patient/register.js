@@ -7,6 +7,6 @@ register.get('/',(req, res) =>{
     res.render('patient/register');
 });
 
-register.post('/', patientController.createUser);
+register.post('/', patientController.createPatient);
 
 module.exports = register;
