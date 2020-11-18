@@ -10,6 +10,8 @@ CREATE TABLE appointment (
     PRIMARY KEY (appointment_id)
 );
 
+ALTER TABLE appointment
+ALTER last_update SET DEFAULT sysdate;
 
 CREATE TABLE hospital (
     hospital_id       INT NOT NULL AUTO_INCREMENT,
@@ -23,7 +25,8 @@ CREATE TABLE hospital (
     PRIMARY KEY (hospital_id)
 );
 
-
+ALTER TABLE hospital
+ALTER last_update SET DEFAULT sysdate;
 
 CREATE TABLE icd (
     icd_id        INT NOT NULL AUTO_INCREMENT,
@@ -32,6 +35,8 @@ CREATE TABLE icd (
     PRIMARY KEY (icd_id)
 );
 
+ALTER TABLE icd
+ALTER last_update SET DEFAULT sysdate;
 
 CREATE TABLE in_patient (
     patient_id INT NOT NULL,
@@ -47,7 +52,8 @@ CREATE TABLE insurance_company (
     last_update   DATETIME NOT NULL,
     PRIMARY KEY (provider_id)
 );
-
+ALTER TABLE insurance_company
+ALTER last_update SET DEFAULT sysdate;
 
 CREATE TABLE invoice (
     invoice_id                  INT NOT NULL AUTO_INCREMENT,
@@ -57,14 +63,16 @@ CREATE TABLE invoice (
     PRIMARY KEY (invoice_id)
 );
 
-
+ALTER TABLE invoice
+ALTER last_update SET DEFAULT sysdate;
 CREATE TABLE lab (
     lab_id                      INT NOT NULL AUTO_INCREMENT,
     lab_name                    VARCHAR(30) NOT NULL,
     last_update                 DATETIME NOT NULL,
     PRIMARY KEY (lab_id)
 );
-
+ALTER TABLE lab
+ALTER last_update SET DEFAULT sysdate;
 
 CREATE TABLE out_patient (
     patient_id INT NOT NULL,
@@ -80,7 +88,7 @@ CREATE TABLE patient (
     password                       VARCHAR(200) NOT NULL,
     st_address                     VARCHAR(30) NOT NULL,
     city                           VARCHAR(30) NOT NULL,
-    state                          VARCHAR(2) NOT NULL,
+    state                          VARCHAR(20) NOT NULL,
     zipcode                        VARCHAR(5) NOT NULL,
     phone                          VARCHAR(14) NOT NULL,
     birthdate                      DATETIME NOT NULL,
@@ -89,7 +97,8 @@ CREATE TABLE patient (
     last_update                    DATETIME NOT NULL,
     PRIMARY KEY (patient_id)
 );
-
+ALTER TABLE patient
+ALTER last_update SET DEFAULT sysdate;
 
 CREATE TABLE receipt (
     receipt_id          INT NOT NULL AUTO_INCREMENT,
@@ -98,6 +107,8 @@ CREATE TABLE receipt (
     last_update         DATETIME NOT NULL,
     PRIMARY KEY (receipt_id)
 );
+ALTER TABLE receipt
+ALTER last_update SET DEFAULT sysdate;
 
 CREATE TABLE staff (
     staff_id             VARCHAR(30) NOT NULL,
@@ -116,7 +127,8 @@ CREATE TABLE staff (
     PRIMARY KEY (staff_id)
 );
 
-
+ALTER TABLE staff
+ALTER last_update SET DEFAULT sysdate;
 
 
 CREATE TABLE treatment (
@@ -129,6 +141,8 @@ CREATE TABLE treatment (
     PRIMARY KEY (treatment_id)
 );
 
+ALTER TABLE treatment
+ALTER last_update SET DEFAULT sysdate;
 
 CREATE TABLE ward (
     ward_id                INT NOT NULL AUTO_INCREMENT,
@@ -136,6 +150,8 @@ CREATE TABLE ward (
     last_update            DATETIME NOT NULL,
     PRIMARY KEY (ward_id)
 );
+ALTER TABLE ward
+ALTER last_update SET DEFAULT sysdate;
 
  delimiter //
 CREATE TRIGGER appointment_up_dt_trg BEFORE
