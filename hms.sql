@@ -11,7 +11,7 @@ CREATE TABLE appointment (
 );
 
 ALTER TABLE appointment
-ALTER last_update SET DEFAULT sysdate;
+ALTER last_update SET DEFAULT now();
 
 CREATE TABLE hospital (
     hospital_id       INT NOT NULL AUTO_INCREMENT,
@@ -26,7 +26,7 @@ CREATE TABLE hospital (
 );
 
 ALTER TABLE hospital
-ALTER last_update SET DEFAULT sysdate;
+ALTER last_update SET DEFAULT now();
 
 CREATE TABLE icd (
     icd_id        INT NOT NULL AUTO_INCREMENT,
@@ -36,7 +36,7 @@ CREATE TABLE icd (
 );
 
 ALTER TABLE icd
-ALTER last_update SET DEFAULT sysdate;
+ALTER last_update SET DEFAULT now();
 
 CREATE TABLE in_patient (
     patient_id INT NOT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE insurance_company (
     PRIMARY KEY (provider_id)
 );
 ALTER TABLE insurance_company
-ALTER last_update SET DEFAULT sysdate;
+ALTER last_update SET DEFAULT now();
 
 CREATE TABLE invoice (
     invoice_id                  INT NOT NULL AUTO_INCREMENT,
@@ -64,7 +64,7 @@ CREATE TABLE invoice (
 );
 
 ALTER TABLE invoice
-ALTER last_update SET DEFAULT sysdate;
+ALTER last_update SET DEFAULT now();
 CREATE TABLE lab (
     lab_id                      INT NOT NULL AUTO_INCREMENT,
     lab_name                    VARCHAR(30) NOT NULL,
@@ -72,7 +72,7 @@ CREATE TABLE lab (
     PRIMARY KEY (lab_id)
 );
 ALTER TABLE lab
-ALTER last_update SET DEFAULT sysdate;
+ALTER last_update SET DEFAULT now();
 
 CREATE TABLE out_patient (
     patient_id INT NOT NULL,
@@ -98,7 +98,7 @@ CREATE TABLE patient (
     PRIMARY KEY (patient_id)
 );
 ALTER TABLE patient
-ALTER last_update SET DEFAULT sysdate;
+ALTER last_update SET DEFAULT now();
 
 CREATE TABLE receipt (
     receipt_id          INT NOT NULL AUTO_INCREMENT,
@@ -108,7 +108,7 @@ CREATE TABLE receipt (
     PRIMARY KEY (receipt_id)
 );
 ALTER TABLE receipt
-ALTER last_update SET DEFAULT sysdate;
+ALTER last_update SET DEFAULT now();
 
 CREATE TABLE staff (
     staff_id             VARCHAR(30) NOT NULL,
@@ -128,7 +128,7 @@ CREATE TABLE staff (
 );
 
 ALTER TABLE staff
-ALTER last_update SET DEFAULT sysdate;
+ALTER last_update SET DEFAULT now();
 
 
 CREATE TABLE treatment (
@@ -142,7 +142,7 @@ CREATE TABLE treatment (
 );
 
 ALTER TABLE treatment
-ALTER last_update SET DEFAULT sysdate;
+ALTER last_update SET DEFAULT now();
 
 CREATE TABLE ward (
     ward_id                INT NOT NULL AUTO_INCREMENT,
@@ -151,14 +151,14 @@ CREATE TABLE ward (
     PRIMARY KEY (ward_id)
 );
 ALTER TABLE ward
-ALTER last_update SET DEFAULT sysdate;
+ALTER last_update SET DEFAULT now();
 
  delimiter //
 CREATE TRIGGER appointment_up_dt_trg BEFORE
     UPDATE ON appointment
     FOR EACH ROW
 BEGIN
-   SET: new.last_update = sysdate();
+   SET: new.last_update = now();
 END;
 /
  delimiter ;
@@ -168,7 +168,7 @@ CREATE TRIGGER hospital_up_dt_trg BEFORE
     UPDATE ON hospital
     FOR EACH ROW
 BEGIN
-    Set :new.last_update = sysdate();
+    Set :new.last_update = now();
 END;
 /
  delimiter ;
@@ -178,7 +178,7 @@ CREATE TRIGGER icd_up_dt_trg BEFORE
     UPDATE ON icd
     FOR EACH ROW
 BEGIN
-    Set :new.last_update = sysdate();
+    Set :new.last_update = now();
 END;
 /
  delimiter ;
@@ -188,7 +188,7 @@ CREATE TRIGGER insurance_company_up_dt_trg BEFORE
     UPDATE ON insurance_company
     FOR EACH ROW
 BEGIN
-    Set :new.last_update = sysdate();
+    Set :new.last_update = now();
 END;
 /
  delimiter ;
@@ -198,7 +198,7 @@ CREATE  TRIGGER lab_up_dt_trg BEFORE
     UPDATE ON lab
     FOR EACH ROW
 BEGIN
-    Set :new.last_update = sysdate();
+    Set :new.last_update = now();
 END;
 /
  delimiter ;
@@ -208,7 +208,7 @@ CREATE TRIGGER patient_lab_up_dt_trg BEFORE
     UPDATE ON patient_lab
     FOR EACH ROW
 BEGIN
-    Set :new.last_update = sysdate();
+    Set :new.last_update = now();
 END;
 /
  delimiter ;
@@ -218,7 +218,7 @@ CREATE TRIGGER staff_up_dt_trg BEFORE
     UPDATE ON staff
     FOR EACH ROW
 BEGIN
-    Set :new.last_update = sysdate();
+    Set :new.last_update = now();
 END;
 /
  delimiter ;
@@ -228,7 +228,7 @@ CREATE TRIGGER treatment_dt_trg BEFORE
     UPDATE ON treatment
     FOR EACH ROW
 BEGIN
-    Set :new.last_update = sysdate();
+    Set :new.last_update = now();
 END;
 /
  delimiter ;
@@ -238,7 +238,7 @@ CREATE TRIGGER ward_dt_trg BEFORE
     UPDATE ON ward
     FOR EACH ROW
 BEGIN
-    Set :new.last_update = sysdate();
+    Set :new.last_update = now();
 END;
 /
  delimiter ;
