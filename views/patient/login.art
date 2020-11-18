@@ -4,7 +4,7 @@
 <head>
     {{include '../common/header.art'}}
 
-    <title>WDS-Login</title>
+    <title>Patient-Login</title>
 
     <script>
         function loginUser() {
