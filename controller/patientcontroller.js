@@ -3,15 +3,11 @@ const bcrypt = require('bcrypt');
 const saltRound = 10;
 const xss = require('xss');
 
-exports.createUser = createUser;
-exports.loginUser = loginUser;
-exports.updateUserProfile = updateUserProfile;
-exports.logoutUser = logoutUser;
+exports.createPatient = createPatient;
 
-function createUser(req, res, next) {
-    console.log('enter function createUser');
+function createPatient(req, res, next) {
+    console.log('enter function createPatient');
     console.log(req.body);
-    const id = xss(req.body.userid);
     const plainTextPassword = xss(req.body.password1);
     const plainTextPasswordAgain = xss(req.body.password2);
     const fname = xss(req.body.fname);
