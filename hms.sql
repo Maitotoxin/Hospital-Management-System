@@ -74,7 +74,7 @@ CREATE TABLE out_patient (
 
 
 CREATE TABLE patient (
-    patient_id                     INT NOT NULL AUTO_INCREMENT,
+    patient_id                     VARCHAR(30) NOT NULL,
     first_name                     VARCHAR(30) NOT NULL,
     last_name                      VARCHAR(30) NOT NULL,
     password                       VARCHAR(200) NOT NULL,
@@ -100,7 +100,7 @@ CREATE TABLE receipt (
 );
 
 CREATE TABLE staff (
-    staff_id              INT NOT NULL AUTO_INCREMENT,
+    staff_id             VARCHAR(30) NOT NULL,
     first_name            VARCHAR(30) NOT NULL,
     password              VARCHAR(200) NOT NULL,
     last_name             VARCHAR(30) NOT NULL,
@@ -113,7 +113,7 @@ CREATE TABLE staff (
     gender                VARCHAR(1) NOT NULL,
     staff_class           TINYINT NOT NULL,
     last_update           DATETIME NOT NULL,
-    PRIMARY KEY (staff_id)
+    PRIMARY KEY (staff__id)
 );
 
 

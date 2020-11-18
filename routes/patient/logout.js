@@ -3,6 +3,6 @@ const patientController = require('../../controller/patientController')
 
 const logout = express.Router();
 
-logout.get('/',patientController.logoutUser);
+logout.get('/',patientController.logoutPatient);
 
 module.exports = logout;
