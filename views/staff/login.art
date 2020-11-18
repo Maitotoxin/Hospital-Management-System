@@ -4,7 +4,7 @@
 <head>
     {{include '../common/header.art'}}
 
-    <title>Patient-Login</title>
+    <title>Staff-Login</title>
 
     <script>
         function loginUser() {
