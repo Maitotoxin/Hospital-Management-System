@@ -113,7 +113,7 @@ CREATE TABLE staff (
     gender                VARCHAR(1) NOT NULL,
     staff_class           TINYINT NOT NULL,
     last_update           DATETIME NOT NULL,
-    PRIMARY KEY (staff__id)
+    PRIMARY KEY (staff_id)
 );
 
 
@@ -138,7 +138,7 @@ CREATE TABLE ward (
 );
 
  delimiter //
-CREATE OR REPLACE TRIGGER appointment_up_dt_trg AFTER
+CREATE TRIGGER appointment_up_dt_trg BEFORE
     UPDATE ON appointment
     FOR EACH ROW
 BEGIN
@@ -148,7 +148,7 @@ END;
  delimiter ;
   delimiter //
 
-CREATE OR REPLACE TRIGGER hospital_up_dt_trg AFTER
+CREATE TRIGGER hospital_up_dt_trg BEFORE
     UPDATE ON hospital
     FOR EACH ROW
 BEGIN
@@ -158,7 +158,7 @@ END;
  delimiter ;
  delimiter //
 
-CREATE OR REPLACE TRIGGER icd_up_dt_trg AFTER
+CREATE TRIGGER icd_up_dt_trg BEFORE
     UPDATE ON icd
     FOR EACH ROW
 BEGIN
@@ -168,7 +168,7 @@ END;
  delimiter ;
  delimiter //
 
-CREATE OR REPLACE TRIGGER insurance_company_up_dt_trg AFTER
+CREATE TRIGGER insurance_company_up_dt_trg BEFORE
     UPDATE ON insurance_company
     FOR EACH ROW
 BEGIN
@@ -178,7 +178,7 @@ END;
  delimiter ;
  delimiter //
 
-CREATE OR REPLACE TRIGGER lab_up_dt_trg AFTER
+CREATE  TRIGGER lab_up_dt_trg BEFORE
     UPDATE ON lab
     FOR EACH ROW
 BEGIN
@@ -188,7 +188,7 @@ END;
  delimiter ;
  
  delimiter //
-CREATE OR REPLACE TRIGGER patient_lab_up_dt_trg AFTER
+CREATE TRIGGER patient_lab_up_dt_trg BEFORE
     UPDATE ON patient_lab
     FOR EACH ROW
 BEGIN
@@ -198,7 +198,7 @@ END;
  delimiter ;
  
  delimiter //
-CREATE OR REPLACE TRIGGER staff_up_dt_trg AFTER
+CREATE TRIGGER staff_up_dt_trg BEFORE
     UPDATE ON staff
     FOR EACH ROW
 BEGIN
@@ -208,7 +208,7 @@ END;
  delimiter ;
  
  delimiter //
-CREATE OR REPLACE TRIGGER treatment_dt_trg AFTER
+CREATE TRIGGER treatment_dt_trg BEFORE
     UPDATE ON treatment
     FOR EACH ROW
 BEGIN
@@ -218,7 +218,7 @@ END;
  delimiter ;
  
  delimiter //
-CREATE OR REPLACE TRIGGER ward_dt_trg AFTER
+CREATE TRIGGER ward_dt_trg BEFORE
     UPDATE ON ward
     FOR EACH ROW
 BEGIN

@@ -7,6 +7,6 @@ login.get('/',(req, res) =>{
     res.render('patient/login');
 });
 
-login.post('/', patientController.loginUser);
+login.post('/', patientController.loginPatient);
 
 module.exports = login;
