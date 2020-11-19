@@ -29,5 +29,5 @@ function getPatientInfo(req, res, next) {
 				patientInfo: patientInfo
 			});
 		});
-	});
+	}); 
 }

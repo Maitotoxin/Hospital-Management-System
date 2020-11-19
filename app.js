@@ -15,7 +15,7 @@ app.use(session({
     cookie: {
         maxAge: 0.25 * 60 * 60 * 1000
     }
-}));
+})); 
 
 //art directory
 app.set('views', path.join(__dirname, 'views'));
@@ -33,14 +33,14 @@ const patientLogin = require('./routes/patient/login');
 const patientLogout = require('./routes/patient/logout');
 const patientRegister = require('./routes/patient/register');
 const patientDashboard = require('./routes/patient/dashboard');
-const patientProfileUpdate = require('./routes/patient/patientProfileUpdate');
-const patientDoctorDisplay = require('./routes/patient/patientDoctorDisplay');
-app.use('/login', patientLogin);
-app.use('/logout', patientLogout);
-app.use('/register', patientRegister);
-app.use('/dashboard', patientDashboard);
-app.use('/profileUpdate', patientProfileUpdate);
-app.use('/patientDoctorDisplay', patientDoctorDisplay);
+const patientProfileUpdate = require('./routes/patient/profileUpdate');
+const patientDoctorInfoDisplay = require('./routes/patient/doctorInfoDisplay');
+app.use('/patient/login', patientLogin);
+app.use('/patient/logout', patientLogout);
+app.use('/patient/register', patientRegister);
+app.use('/patient/dashboard', patientDashboard);
+app.use('/patient/profileUpdate', patientProfileUpdate);
+app.use('/patient/doctorInfoDisplay', patientDoctorInfoDisplay);
 //listen port 3000
 app.listen(3000);
 console.log('Server started');

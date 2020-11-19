@@ -60,7 +60,7 @@ function createPatient(req, res, next) {
                 console.log('INSERT ID:', result)
                 console.log('------------------------------------------------------------')
                 connection.end();
-                res.redirect(301, '/login');
+                res.redirect(301, '/patient/login');
             })
         })
     })
@@ -69,7 +69,7 @@ function createPatient(req, res, next) {
 function logoutPatient(req, res, next) {
     req.session.destroy(function () {
         res.clearCookie('connect.sid');
-        res.redirect('/login');
+        res.redirect('/patient/login');
     });
 }
 
@@ -112,7 +112,7 @@ function loginPatient(req, res, next) {
                 connection.end();
                 req.session.patient_id = id;
                 req.app.locals.patient_id = id;
-                res.redirect(301, '/dashboard');
+                res.redirect(301, '/patient/dashboard');
             });
 
         })
@@ -154,7 +154,7 @@ function updatePatientProfile(req, res, next) {
             console.log('------------------------------------------------------------')
             //issue 01: 注册成功alert
             connection.end();
-            res.redirect(301, '/dashBoard');
+            res.redirect(301, '/patient/dashBoard');
         })
     })
 }

@@ -17,29 +17,29 @@ function getPatientHospitalInfo(req, res, next) {
 				res.send('SQL query error');
 				return;
 			}
-			patientHospitalInfo = result[0];
+			patientHospitalInfo = result;
 			//console.log(userInfo);
-			res.render('patient/hospitalDisplay', {
+			res.render('patient/hospitalInfoDisplay', {
 				patientHospitalInfo: patientHospitalInfo
 			});
-		});
+		}); 
 	});
-}
+} 
 
 function getPatientDoctorInfo(req, res, next) {
 	const patient_id = xss(req.session.patient_id);
 	database.setUpDatabase(function (connection) {
 		connection.connect();
-		var sql = 'select staff_no, first_name, last_name, gender, phone, description from staff where staff_class = ?';
-		connection.query(sql, ['D'], function (err, result) {
+		var sql = 'select staff_no, first_name, last_name, gender, phone, description from staff where staff_class = "D"';
+		connection.query(sql, [patient_id], function (err, result) {
 			if (err) {
 				console.log('[SELECT ERROR] - ', err.message);
 				res.send('SQL query error');
 				return;
 			}
-			patientDoctorInfo = result[0];
-			//console.log(userInfo);
-			res.render('patient/doctorDisplay', {
+			patientDoctorInfo = result;
+			console.log(patientDoctorInfo);
+			res.render('patient/doctorInfoDisplay', {
 				patientDoctorInfo: patientDoctorInfo
 			});
 		});
@@ -57,9 +57,9 @@ function getPatientLabInfo(req, res, next) {
 				res.send('SQL query error');
 				return;
 			}
-			patientLabInfo = result[0];
+			patientLabInfo = result;
 			//console.log(userInfo);
-			res.render('patient/labDisplay', {
+			res.render('patient/labInfoDisplay', {
 				patientLabInfo: patientLabInfo
 			});
 		});

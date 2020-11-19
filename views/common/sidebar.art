@@ -20,27 +20,35 @@
       <hr class="sidebar-divider">
 
       <!-- Heading -->
-      <div class="sidebar-heading">
+      <div class="sidebar-heading">  
         Information Checking
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseHomes" aria-expanded="true"
-          aria-controls="collapseHomes">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseHospitals" aria-expanded="true"
+          aria-controls="collapseHospitals">
           <i class="fas fa-fw fa-home"></i>
           <span>Hospital Information</span>
         </a>
-        
+        <div id="collapseHospitals" class="collapse" aria-labelledby="headingHospitals" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Option:</h6>
+            <a class="collapse-item" href="hospitalInfoDisplay">See Hospitals </a>
+        </div>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAutos" aria-expanded="true"
-          aria-controls="collapseAutos">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDoctors" aria-expanded="true"
+          aria-controls="collapseDoctors">
           <i class="fas fa-fw fa-car"></i>
           <span>Doctor Information</span>
         </a>
-        
+        <div id="collapseDoctors" class="collapse" aria-labelledby="headingDoctors" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Option:</h6>
+            <a class="collapse-item" href="doctorInfoDisplay">See Doctors </a>
+        </div>
       </li>
 
       <li class="nav-item">

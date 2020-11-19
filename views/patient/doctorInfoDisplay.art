@@ -4,7 +4,7 @@
 <head>
 
   {{include '../common/header.art'}}
-  <title>HMS {{patient_id}} Policy Display</title>
+  <title>HMS {{patient_id}} Doctor Info Display</title>
 
   <!-- Custom scripts for all pages-->
   <script src="/js/sb-admin-2.min.js"></script>
@@ -87,9 +87,9 @@
               <td>{{$value.staff_no}}</td>
               <td>{{$value.first_name}}</td>
               <td>{{$value.last_name}}</td>
-              <td>${{$value.gender}}</td>
+              <td>{{$value.gender}}</td>
               <td>{{$value.phone}}</td>
-              <td>${{$value.description}}</td>
+              <td>{{$value.description}}</td>
             </tr>
             {{/each}}
           </tbody>
