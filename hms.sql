@@ -90,7 +90,7 @@ CREATE TABLE patient (
     gender                         VARCHAR(1) NOT NULL,
     patient_class                  CHAR(1) NOT NULL default '0',
     last_update                    DATETIME NOT NULL default current_timestamp,
-    PRIMARY KEY (patient_id)
+    PRIMARY KEY (patient_no)
 );
 
 
@@ -113,14 +113,14 @@ CREATE TABLE staff (
     last_name             VARCHAR(30) NOT NULL,
     st_address            VARCHAR(30) NOT NULL,
     city                  VARCHAR(30) NOT NULL,
-    state                 VARCHAR(2) NOT NULL,
+    state                 VARCHAR(30) NOT NULL,
     zipcode               VARCHAR(5) NOT NULL,
     phone                 VARCHAR(14) NOT NULL,
     birthdate             DATETIME NOT NULL default current_timestamp,
     gender                VARCHAR(1) NOT NULL,
-    staff_class           TINYINT NOT NULL,
+    staff_class           CHAR(1) NOT NULL,
     last_update           DATETIME NOT NULL default current_timestamp,
-    PRIMARY KEY (staff_id)
+    PRIMARY KEY (staff_no)
 );
 
 
