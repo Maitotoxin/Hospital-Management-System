@@ -8,7 +8,7 @@ function getPatientInfo(req, res, next) {
 	const patient_id = xss(req.session.patient_id);
 	database.setUpDatabase(function (connection) {
 		connection.connect();
-		var sql = 'select patient_id, first_name, last_name, st_address, city, state, zipcode, phone, birthdate, gender, patient_class from patient where userid = ?';
+		var sql = 'select patient_id, first_name, last_name, st_address, city, state, zipcode, phone, birthdate, gender, patient_class from patient where patient_id = ?';
 		connection.query(sql, [patient_id], function (err, result) {
 			if (err) {
 				console.log('[SELECT ERROR] - ', err.message);
@@ -23,7 +23,7 @@ function getPatientInfo(req, res, next) {
 				return;
 			}
 			patientInfo = result[0];
-			common.correctPatientInfo(userInfo);
+			common.correctPatientInfo(patientInfo);
 			//console.log(userInfo);
 			res.render('patient/dashboard', {
 				patientInfo: patientInfo
