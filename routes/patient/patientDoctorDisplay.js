@@ -1,5 +1,5 @@
 const express = require('express');
-const patientDoctorInfo = require('../../controller/policyController');
+const patientDoctorInfo = require('../../controller/patientInfoController');
 
 const policy = express.Router();
 
