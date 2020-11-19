@@ -104,7 +104,6 @@
                                             <option value="" selected disabled> -Please Select- </option>
                                             <option value="M">Male</option>
                                             <option value="F">Female</option>
-                                            <option value=NULL>I am unwilling to answer</option>
                                         </select>
                                     </div>
                                 </div>
@@ -114,7 +113,7 @@
                                         <label class=""> <b>Birth Date</b> </label>
                                     </div>
                                     <div class="col-sm-7">
-                                        <input name=birthdate" class="form-control" id="birthdate" type="date">
+                                        <input name="birthdate" class="form-control" id="birthdate" type="date">
                                     </div>
                                 </div>
 
