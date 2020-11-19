@@ -7,12 +7,14 @@ CREATE TABLE appointment (
     estimated_duration  INT NOT NULL,
     appointment_time    DATETIME NOT NULL default current_timestamp,
     last_update         DATETIME NOT NULL default current_timestamp,
+    valid               CHAR(1) NOT NULL,                                     
     PRIMARY KEY (appointment_id)
 );
 
 
 CREATE TABLE hospital (
     hospital_id       INT NOT NULL AUTO_INCREMENT,
+    hospital_name     VARCHAR(30) NOT NULL,
     st_address        VARCHAR(30) NOT NULL,
     city              VARCHAR(30) NOT NULL,
     state             VARCHAR(2) NOT NULL,
@@ -44,6 +46,7 @@ CREATE TABLE in_patient (
 CREATE TABLE insurance_company (
     provider_id   INT NOT NULL,
     company_name  VARCHAR(30) NOT NULL,
+    discount      INT NOT NULL,
     last_update   DATETIME NOT NULL default current_timestamp,
     PRIMARY KEY (provider_id)
 );
@@ -60,6 +63,7 @@ CREATE TABLE invoice (
 CREATE TABLE lab (
     lab_id                      INT NOT NULL AUTO_INCREMENT,
     lab_name                    VARCHAR(30) NOT NULL,
+    description                 VARCHAR(200),
     last_update                 DATETIME NOT NULL default current_timestamp,
     PRIMARY KEY (lab_id)
 );
@@ -73,6 +77,7 @@ CREATE TABLE out_patient (
 
 CREATE TABLE patient (
     patient_id                     VARCHAR(30) NOT NULL,
+    patient_no                     INT NOT NULL AUTO_INCREMENT,
     first_name                     VARCHAR(30) NOT NULL,
     last_name                      VARCHAR(30) NOT NULL,
     password                       VARCHAR(200) NOT NULL,
@@ -99,9 +104,12 @@ CREATE TABLE receipt (
 
 
 CREATE TABLE staff (
-    staff_id             VARCHAR(30) NOT NULL,
+    staff_id              VARCHAR(30) NOT NULL,
+    staff_no              INT NOT NULL AUTO_INCREMENT,
+    hospital_id           INT,
     first_name            VARCHAR(30) NOT NULL,
     password              VARCHAR(200) NOT NULL,
+    description           VARCHAR(200),
     last_name             VARCHAR(30) NOT NULL,
     st_address            VARCHAR(30) NOT NULL,
     city                  VARCHAR(30) NOT NULL,
@@ -121,6 +129,7 @@ CREATE TABLE staff (
 CREATE TABLE treatment (
     treatment_id   INT NOT NULL AUTO_INCREMENT,
     type           VARCHAR(30) NOT NULL,
+    description    VARCHAR(200),
     medicine_name  VARCHAR(30) NOT NULL,
     dose           VARCHAR(30) NOT NULL,
     price          DECIMAL(7, 2) NOT NULL,
