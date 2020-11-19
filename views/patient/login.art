@@ -2,11 +2,13 @@
 <html>
 
 <head>
+   
+    {{include '../common/header.art'}}
 
     <title>Patient-Login</title>
 
     <script>
-        function loginUser() {
+        function loginPatient() {
             var res = formContentToJson($("#loginForm"));
             //if user did not enter userid or password
             return validateUserInput(res);
@@ -37,7 +39,7 @@
                                 <div class="p-5">
                                     <div class="text-center">
                                         <b>
-                                            <h1 class="h2 text-gray-900 mb-4">We Do Secure</h1>
+                                            <h1 class="h2 text-gray-900 mb-4">Health Information Management System</h1>
                                         </b>
                                     </div>
 
@@ -45,7 +47,7 @@
                                         <div class="input">
                                             <div class="form-group">
                                             </div>
-                                            <input name="userid" class="form-control" id="userid"
+                                            <input name="patient_id" class="form-control" id="patient_id"
                                                 placeholder="Enter Username..." type="text" required class="validate"
                                                 autocomplete="off">
                                         </div>
