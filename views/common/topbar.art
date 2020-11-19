@@ -19,12 +19,12 @@
                 <img class="img-profile rounded-circle" src="https://image.flaticon.com/icons/svg/126/126486.svg">
               </a>
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="/profileUpdate">
+                <a class="dropdown-item" href="profileUpdate">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Update Profile
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/logout" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" href="logout" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
@@ -49,7 +49,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="/logout">Logout</a>
+          <a class="btn btn-primary" href="logout">Logout</a>
         </div>
       </div>
     </div>
