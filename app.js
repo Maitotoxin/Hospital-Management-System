@@ -32,10 +32,13 @@ const error = require('./routes/error');
 const patientLogin = require('./routes/patient/login');
 const patientLogout = require('./routes/patient/logout');
 const patientRegister = require('./routes/patient/register');
+const patientDashboard = require('./routes/patient/dashboard');
+const patientProfileUpdate = require('./routes/patient/patientProfileUpdate');
 app.use('/login', patientLogin);
 app.use('/logout', patientLogout);
 app.use('/register', patientRegister);
-
+app.use('/dashboard', patientDashboard);
+app.use('/profileUpdate', patientProfileUpdate);
 //listen port 3000
 app.listen(3000);
 console.log('Server started');
