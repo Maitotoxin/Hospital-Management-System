@@ -1,10 +1,10 @@
 const express = require('express');
-const userDashboard = require('../../controller/dashboardController')
+const patientDashboard = require('../../controller/dashboardController')
 
 const dashboard = express.Router();
 
 
-dashboard.get('/',userDashboard.getUserInfo);
+dashboard.get('/',patientDashboard.getPatientInfo);
 
 
 module.exports = dashboard;

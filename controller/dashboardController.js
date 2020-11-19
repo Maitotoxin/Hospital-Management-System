@@ -2,9 +2,9 @@ const database = require('../config/databaseConfig');
 const common = require('./util/common');
 const xss = require('xss');
 
-exports.getPatinetInfo = getPatinetInfo;
+exports.getPatientInfo = getPatientInfo;
 
-function getPatinetInfo(req, res, next) {
+function getPatientInfo(req, res, next) {
 	const patient_id = xss(req.session.patient_id);
 	database.setUpDatabase(function (connection) {
 		connection.connect();
