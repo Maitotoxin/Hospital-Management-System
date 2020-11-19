@@ -83,7 +83,7 @@ CREATE TABLE patient (
     phone                          VARCHAR(14) NOT NULL,
     birthdate                      DATETIME NOT NULL default current_timestamp,
     gender                         VARCHAR(1) NOT NULL,
-    patient_class                  CHAR(1) NOT NULL,
+    patient_class                  CHAR(1) NOT NULL default '0',
     last_update                    DATETIME NOT NULL default current_timestamp,
     PRIMARY KEY (patient_id)
 );
