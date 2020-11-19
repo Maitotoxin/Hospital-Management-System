@@ -23,7 +23,7 @@ function getPatinetInfo(req, res, next) {
 				return;
 			}
 			patientInfo = result[0];
-			common.correctUserInfo(userInfo);
+			common.correctPatientInfo(userInfo);
 			//console.log(userInfo);
 			res.render('patient/dashboard', {
 				patientInfo: patientInfo
