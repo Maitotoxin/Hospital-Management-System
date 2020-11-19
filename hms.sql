@@ -152,7 +152,7 @@ CREATE TRIGGER hospital_up_dt_trg BEFORE
     UPDATE ON hospital
     FOR EACH ROW
 BEGIN
-    Set :new.last_update = current_timestamp;
+     Set new.last_update = current_timestamp;
 END;
 /
  delimiter ;
@@ -162,7 +162,7 @@ CREATE TRIGGER icd_up_dt_trg BEFORE
     UPDATE ON icd
     FOR EACH ROW
 BEGIN
-    Set :new.last_update = current_timestamp;
+     Set new.last_update = current_timestamp;
 END;
 /
  delimiter ;
@@ -172,7 +172,7 @@ CREATE TRIGGER insurance_company_up_dt_trg BEFORE
     UPDATE ON insurance_company
     FOR EACH ROW
 BEGIN
-    Set :new.last_update = current_timestamp;
+     Set new.last_update = current_timestamp;
 END;
 /
  delimiter ;
@@ -182,7 +182,7 @@ CREATE  TRIGGER lab_up_dt_trg BEFORE
     UPDATE ON lab
     FOR EACH ROW
 BEGIN
-    Set :new.last_update = current_timestamp;
+     Set new.last_update = current_timestamp;
 END;
 /
  delimiter ;
@@ -192,7 +192,7 @@ CREATE TRIGGER patient_lab_up_dt_trg BEFORE
     UPDATE ON patient_lab
     FOR EACH ROW
 BEGIN
-    Set :new.last_update = current_timestamp;
+     Set new.last_update = current_timestamp;
 END;
 /
  delimiter ;
@@ -202,7 +202,7 @@ CREATE TRIGGER staff_up_dt_trg BEFORE
     UPDATE ON staff
     FOR EACH ROW
 BEGIN
-    Set :new.last_update = current_timestamp;
+     Set new.last_update = current_timestamp;
 END;
 /
  delimiter ;
@@ -212,7 +212,7 @@ CREATE TRIGGER patient_up_dt_trg BEFORE
     UPDATE ON patient
     FOR EACH ROW
 BEGIN
-    Set :new.last_update = current_timestamp;
+     Set new.last_update = current_timestamp;
 END;
 /
  delimiter ;
@@ -222,7 +222,7 @@ CREATE TRIGGER treatment_dt_trg BEFORE
     UPDATE ON treatment
     FOR EACH ROW
 BEGIN
-    Set :new.last_update = current_timestamp;
+     Set new.last_update = current_timestamp;
 END;
 /
  delimiter ;
@@ -232,7 +232,7 @@ CREATE TRIGGER ward_dt_trg BEFORE
     UPDATE ON ward
     FOR EACH ROW
 BEGIN
-    Set :new.last_update = current_timestamp;
+     Set new.last_update = current_timestamp;
 END;
 /
  delimiter ;

@@ -21,7 +21,7 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        My Property
+        Information Checking
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
@@ -29,61 +29,42 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseHomes" aria-expanded="true"
           aria-controls="collapseHomes">
           <i class="fas fa-fw fa-home"></i>
-          <span>My Home</span>
+          <span>Hospital Information</span>
         </a>
-        <div id="collapseHomes" class="collapse" aria-labelledby="headingHomes" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="homeRegister">Register new home </a>
-            <a class="collapse-item" href="homeUpdate">Update home information</a>
-            <a class="collapse-item" href="homeDisplay">List current homes</a>
-          </div>
-        </div>
+        
       </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAutos" aria-expanded="true"
           aria-controls="collapseAutos">
           <i class="fas fa-fw fa-car"></i>
-          <span>My Auto</span>
+          <span>Doctor Information</span>
         </a>
-        <div id="collapseAutos" class="collapse" aria-labelledby="headingAutos" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="autoRegister">Register new auto </a>
-            <a class="collapse-item" href="autoUpdate">Update auto information</a>
-            <a class="collapse-item" href="autoDisplay">List current autos</a>
-            <!--
-            <a class="collapse-item" href="driverRegister">Register new driver </a>
-            <a class="collapse-item" href="driverDisplay">List current drivers</a>
-            <a class="collapse-item" href="driverUpdate">Update driver information</a>
-            -->
-          </div>
-        </div>
+        
       </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDrivers" aria-expanded="true"
           aria-controls="collapseDrivers">
           <i class="fas fa-fw fa-user"></i>
-          <span>My Driver</span>
+          <span>Lab Information</span>
         </a>
-        <div id="collapseDrivers" class="collapse" aria-labelledby="headingDrivers" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="driverRegister">Register new driver </a>
-            <a class="collapse-item" href="driverUpdate">Update driver information</a>
-            <a class="collapse-item" href="driverDisplay">List current drivers</a>
-          </div>
-        </div>
+        
       </li>
-
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDrivers" aria-expanded="true"
+          aria-controls="collapseDrivers">
+          <i class="fas fa-fw fa-user"></i>
+          <span>Insurance Company Information</span>
+        </a>
+        
+      </li>
       <!-- Divider -->
       <hr class="sidebar-divider">
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Insurance Purchase
+        Appointment Manangement
       </div>
 
 
@@ -92,12 +73,14 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePolicy" aria-expanded="true"
           aria-controls="collapsePolicy">
           <i class="fas fa-fw fa-file-invoice-dollar"></i>
-          <span>WDS Insurance Policy</span>
+          <span>Doctor Appointment</span>
         </a>
         <div id="collapsePolicy" class="collapse" aria-labelledby="headingPolicy" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="policyDisplay">List policy</a>
+            <a class="collapse-item" href="policyDisplay">Make Appointment</a>
+            <a class="collapse-item" href="policyDisplay">Rearrange Appointment</a>
+            <a class="collapse-item" href="policyDisplay">Cancel Appointment</a>
           </div>
         </div>
       </li>
@@ -108,37 +91,25 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInsurance" aria-expanded="true"
           aria-controls="collapseInsurance">
           <i class="fas fa-fw fa-file-invoice-dollar"></i>
-          <span>Insurance Selection</span>
+          <span>Lab Appointment</span>
         </a>
         <div id="collapseInsurance" class="collapse" aria-labelledby="headingInsurance" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="homeInsuranceSelect">Home Insurance Selection</a>
-            <a class="collapse-item" href="autoInsuranceSelect">Auto Insurance Selection</a>
+            <a class="collapse-item" href="policyDisplay">Make Appointment</a>
+            <a class="collapse-item" href="policyDisplay">Rearrange Appointment</a>
+            <a class="collapse-item" href="policyDisplay">Cancel Appointment</a>
           </div>
         </div>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePayment" aria-expanded="true"
-          aria-controls="collapsePayment">
-          <i class="fas fa-fw fa-wallet"></i>
-          <span>Insurance Payment</span>
-        </a>
-        <div id="collapsePayment" class="collapse" aria-labelledby="headingPayment" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="homeInsurancePay">Home Insurance Payment</a>
-            <a class="collapse-item" href="autoInsurancePay">Auto Insurance Payment</a>
-          </div>
-        </div>
-      </li>
+      
 
       <hr class="sidebar-divider">
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        My WDS Service
+        My Service
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
@@ -151,8 +122,8 @@
         <div id="collapseMyInvoice" class="collapse" aria-labelledby="headingMyInvoice" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="homeInvoiceDisplay">Home Insurance Invoice</a>
-            <a class="collapse-item" href="autoInvoiceDisplay">Auto Insurance Invoice</a>
+            <a class="collapse-item" href="homeInvoiceDisplay">Insurance Invoice</a>
+            <a class="collapse-item" href="autoInvoiceDisplay">Medical Invoice</a>
           </div>
         </div>
       </li>
@@ -161,13 +132,14 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMyPayment" aria-expanded="true"
           aria-controls="collapseMyPayment">
           <i class="fas fa-fw fa-wallet"></i>
-          <span>My Payment History</span>
+          <span>My History</span>
         </a>
         <div id="collapseMyPayment" class="collapse" aria-labelledby="headingMyPayment" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="homePayDisplay">Home Payment History</a>
-            <a class="collapse-item" href="autoPayDisplay">Auto Payment History</a>
+            <a class="collapse-item" href="homePayDisplay">Payment History</a>
+            <a class="collapse-item" href="autoPayDisplay">Treatment History</a>
+            <a class="collapse-item" href="autoPayDisplay">Appointment History</a>
           </div>
         </div>
       </li>
