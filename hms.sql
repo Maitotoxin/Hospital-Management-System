@@ -206,6 +206,16 @@ BEGIN
 END;
 /
  delimiter ;
+
+  delimiter //
+CREATE TRIGGER patient_up_dt_trg BEFORE
+    UPDATE ON patient
+    FOR EACH ROW
+BEGIN
+    Set :new.last_update = current_timestamp;
+END;
+/
+ delimiter ;
  
  delimiter //
 CREATE TRIGGER treatment_dt_trg BEFORE
