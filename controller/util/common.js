@@ -17,9 +17,6 @@ function correctPatientInfo(patientInfo) {
             break;
         case '0':
             patientInfo.patient_class = 'Out-patient';
-            break;
-        default:
-            break;
+
     }
 }
-
