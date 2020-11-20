@@ -92,7 +92,7 @@
             <tr>
               <td>{{$value.hospital_id}}</td>
               <td>{{$value.hospital_name}}</td>
-              <td>${{$value.st_address}}</td>
+              <td>{{$value.st_address}}</td>
               <td>{{$value.city}}</td>
               <td>{{$value.state}}</td>
               <td>{{$value.zipcode}}</td>

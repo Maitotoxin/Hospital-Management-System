@@ -5,6 +5,7 @@ const xss = require('xss');
 exports.getPatientHospitalInfo = getPatientHospitalInfo;
 exports.getPatientDoctorInfo = getPatientDoctorInfo;
 exports.getPatientLabInfo = getPatientLabInfo;
+exports.getPatientInsuranceCompanyInfo = getPatientInsuranceCompanyInfo;
 
 function getPatientHospitalInfo(req, res, next) {
 	const patient_id = xss(req.session.patient_id);
@@ -61,6 +62,26 @@ function getPatientLabInfo(req, res, next) {
 			//console.log(userInfo);
 			res.render('patient/labInfoDisplay', {
 				patientLabInfo: patientLabInfo
+			});
+		});
+	});
+}
+
+function getPatientInsuranceCompanyInfo(req, res, next) {
+	const patient_id = xss(req.session.patient_id);
+	database.setUpDatabase(function (connection) {
+		connection.connect();
+		var sql = 'select provider_id, company_name, discount from insurance_company';
+		connection.query(sql, [patient_id], function (err, result) {
+			if (err) {
+				console.log('[SELECT ERROR] - ', err.message);
+				res.send('SQL query error');
+				return;
+			}
+			patientInsuranceCompanyInfo = result;
+			//console.log(userInfo);
+			res.render('patient/insuranceCompanyInfoDisplay', {
+				patientInsuranceCompanyInfo: patientInsuranceCompanyInfo
 			});
 		});
 	});

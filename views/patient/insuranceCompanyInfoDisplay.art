@@ -82,7 +82,7 @@
             <tr>
               <td>{{$value.provider_id}}</td>
               <td>{{$value.company_name}}</td>
-              <td>${{$value.discount}}</td>
+              <td>{{$value.discount}}% off</td>
               
               <td>
                   <i class="fas fa-edit"></i>
