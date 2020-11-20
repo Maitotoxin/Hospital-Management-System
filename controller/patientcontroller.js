@@ -154,7 +154,7 @@ function updatePatientProfile(req, res, next) {
             console.log('------------------------------------------------------------')
             //issue 01: 注册成功alert
             connection.end();
-            res.redirect(301, '/patient/dashBoard');
+            res.redirect(301, '/patient/dashboard');
         })
     })
 }

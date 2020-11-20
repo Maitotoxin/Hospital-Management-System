@@ -3,7 +3,7 @@
 
 <head>
   {{include '../common/header.art'}}
-  <title>HMS {{patient_id}}Lab Info Display</title>
+  <title>HMS {{patient_id}}Insurance Company Info Display</title>
 
   <!-- Custom scripts for all pages-->
   <script src="/js/sb-admin-2.min.js"></script>
@@ -52,7 +52,7 @@
         <div class="container-fluid">
         <table class="table table-striped table-bordered table-hover custom-table">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-2 text-gray-800">Lab Information Display</h1>
+            <h1 class="h3 mb-2 text-gray-800">Insurance Company Information Display</h1>
           </div>
           <!-- DataTales Example -->
 
@@ -64,27 +64,26 @@
 
           <thead>
             <tr>
-              <th>Lab ID</th>
-              <th>Lab Name</th>
-              <th>Description</th>
-              
+              <th>Insurance Company ID</th>
+              <th>Insurance Company Name</th>
+              <th>Discount</th>
             </tr>
           </thead>
           <tfoot>
             <tr>
-              <th>Lab ID</th>
-              <th>Lab Name</th>
-              <th>Description</th>
-              
+              <th>Insurance Company ID</th>
+              <th>Insurance Company Name</th>
+              <th>Discount</th>
             </tr>
           </tfoot>
           <tbody>
-            {{each patientLabInfo}}
+            {{each patientInsuranceCompanyInfo}}
 
             <tr>
-              <td>{{$value.lab_id}}</td>
-              <td>{{$value.lab_name}}</td>
-              <td>${{$value.description}}</td>
+              <td>{{$value.provider_id}}</td>
+              <td>{{$value.company_name}}</td>
+              <td>${{$value.discount}}</td>
+              
               <td>
                   <i class="fas fa-edit"></i>
                   <i class="fas fa-trash"></i>
