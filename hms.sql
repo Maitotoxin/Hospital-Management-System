@@ -2,15 +2,27 @@ DROP DATABASE IF EXISTS hms;
 CREATE DATABASE hms;
 USE hms;
 
-CREATE TABLE appointment (
+CREATE TABLE lab_appointment (
     appointment_id      INT NOT NULL AUTO_INCREMENT,
     estimated_duration  INT NOT NULL,
+    patient_no          INT NOT NULL,
+    lab_id              INT NOT NULL,
     appointment_time    DATETIME NOT NULL default CURRENT_TIMESTAMP,
     last_update         DATETIME NOT NULL default CURRENT_TIMESTAMP,
     valid               CHAR(1) NOT NULL,                                     
     PRIMARY KEY (appointment_id)
 );
 
+CREATE TABLE doctor_appointment (
+    appointment_id      INT NOT NULL AUTO_INCREMENT,
+    estimated_duration  INT NOT NULL,
+    patient_no          INT NOT NULL,
+    staff_no              INT NOT NULL,
+    appointment_time    DATETIME NOT NULL default CURRENT_TIMESTAMP,
+    last_update         DATETIME NOT NULL default CURRENT_TIMESTAMP,
+    valid               CHAR(1) NOT NULL,                                     
+    PRIMARY KEY (appointment_id)
+);
 
 CREATE TABLE hospital (
     hospital_id       INT NOT NULL AUTO_INCREMENT,
@@ -147,14 +159,25 @@ CREATE TABLE ward (
 
 
  delimiter $$
-CREATE TRIGGER appointment_up_dt_trg BEFORE
-    UPDATE ON appointment
+CREATE TRIGGER lab_appointment_up_dt_trg BEFORE
+    UPDATE ON lab_appointment
     FOR EACH ROW
 BEGIN
    SET NEW.last_update = CURRENT_TIMESTAMP;
 END$$
 
  delimiter ;
+
+  delimiter $$
+CREATE TRIGGER doctor_appointment_up_dt_trg BEFORE
+    UPDATE ON doctor_appointment
+    FOR EACH ROW
+BEGIN
+   SET NEW.last_update = CURRENT_TIMESTAMP;
+END$$
+
+ delimiter ;
+ 
   delimiter $$
 
 CREATE TRIGGER hospital_up_dt_trg BEFORE
