@@ -1,0 +1,33 @@
+<html>
+
+<head>
+   
+    {{include '../common/header.art'}}
+
+    <!-- Custom scripts for all pages-->
+    <script src="/js/sb-admin-2.min.js"></script>
+
+    <title>Patient-Register</title>
+    <meta name="author" content="">
+    <script>
+        function getCookie(cname) {
+           var name = cname + "=";
+           ca=document.cookie;
+           return ca.substring(name.length);
+  
+           }
+        function getcookie() {
+            console.log(getCookie("staff"));
+            console.log(getCookie("patient"));
+            //if user did not enter userid or password
+            
+        }
+    </script>
+    <style>
+        body {
+            background-color: #303641;
+        }
+    </style>
+</head>
+
+</html>

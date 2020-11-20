@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    //{{include '../common/header.art'}}
+    {{include '../common/header.art'}}
 
     <title>Staff-Login</title>
 
