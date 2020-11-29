@@ -27,7 +27,7 @@
             //getCookie("patient");
             var res = formContentToJson($("#registerForm"));
             //if user did not enter userid or password
-            return validateUserRegisterInput(res);
+            return validateAppointmentRegisterInput(res);
         }
     </script>
     <style>
