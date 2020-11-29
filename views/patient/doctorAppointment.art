@@ -22,6 +22,11 @@
             //if user did not enter userid or password
             
         }
+        function registerUser() {
+            var res = formContentToJson($("#registerForm"));
+            //if user did not enter userid or password
+            return validateUserRegisterInput(res);
+        }
     </script>
     <style>
         body {
@@ -29,5 +34,43 @@
         }
     </style>
 </head>
+<body class="bg-gradient-primary">
 
+    <div class="container">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <div class="row">
+                    <div class="col-lg-6 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Make</h1>
+                            </div>
+
+                            <form action="/patient/register" method="post" id="registerForm">
+                                <div class="mbsc-col-sm-12 mbsc-col-lg-6">
+                                   <label>
+                                     Appointment Time
+                                <input mbsc-input data-input-style="box" data-label-style="stacked" name="appointment_time" class="form-control" id="appointment_time" />
+                                   </label>
+                                </div>
+
+                               <!--input mbsc-input data-input-style="box" data-label-style="stacked" name="appointment_time" class="form-control" id="appointment_time" /-->                               
+
+                                <input type="submit" href="error" class="btn btn-primary btn-user btn-block"
+                                    value="Register" onclick="return registerUser()">
+                                <hr>
+                            </form>
+                            <hr>
+                            <div class="text-center">
+                                <a class="small" href="/login">Already has account? Login</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 </html>
