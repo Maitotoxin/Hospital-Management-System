@@ -36,6 +36,12 @@ function validateUserRegisterInput(input) {
     return true;
 }
 
+function validateAppointmentRegisterInput(input) {
+    
+
+    return true;
+}
+
 function validateAdminRegisterInput(input) {
     if(input.userid.trim().length == 0 || input.password1.trim().length == 0 
     || input.password2.trim().length == 0) {
