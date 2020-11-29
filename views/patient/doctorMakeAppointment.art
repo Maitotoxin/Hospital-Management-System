@@ -93,7 +93,7 @@
               <td>
                 <form method="post">
                   <input id="staff_no" type="hidden" name="staff_no" value={{$value.staff_no}}>
-                  <input id="patient_no" type="hidden" name="patient_no" value={{patient_no}}>
+                  <input id="patient_id" type="hidden" name="patient_id" value={{patient_id}}>
                   <!--input type="submit" value="appoint"-->
                   <button onclick="appointment()"> Appointment </button>
                   <script>
@@ -101,7 +101,7 @@
 
                   function appointment(){
                     var s_no=document.getElementByid("staff_no");
-                    var p_no=document.getElementByid("patient_no");
+                    var p_no=document.getElementByid("patient_id");
                     document.cookie = "staff=" + s_no;
                     document.cookie = "patient=" + p_no;
                     location.href = 'doctorAppointment.art';
