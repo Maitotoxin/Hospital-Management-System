@@ -16,13 +16,15 @@
            return ca.substring(name.length);
   
            }
-        function getcookie() {
+        /*function getcookie() {
             console.log(getCookie("staff"));
             console.log(getCookie("patient"));
             //if user did not enter userid or password
             
-        }
-        function registerUser() {
+        }*/
+        function registerAppointment() {
+           // getCookie("staff");
+            //getCookie("patient");
             var res = formContentToJson($("#registerForm"));
             //if user did not enter userid or password
             return validateUserRegisterInput(res);
@@ -51,20 +53,19 @@
                                 <div class="mbsc-col-sm-12 mbsc-col-lg-6">
                                    <label>
                                      Appointment Time
-                                <input mbsc-input data-input-style="box" data-label-style="stacked" name="appointment_time" class="form-control" id="appointment_time" />
+                                <input mbsc-input data-input-style="box" data-label-style="stacked" name="appointment_time" class="form-control" id="appointment_time" >
                                    </label>
                                 </div>
 
-                               <!--input mbsc-input data-input-style="box" data-label-style="stacked" name="appointment_time" class="form-control" id="appointment_time" /-->                               
-
+                               <!--input mbsc-input data-input-style="box" data-label-style="stacked" name="appointment_time" class="form-control" id="appointment_time" -->                               
+                                <input type="hidden" name="staff_no" value={{getCookie("staff")}}>
+                                <input type="hidden" name="patient_id" value={{getCookie("patient")}}>
                                 <input type="submit" href="error" class="btn btn-primary btn-user btn-block"
-                                    value="Register" onclick="return registerUser()">
+                                    value="Register" onclick="return registerAppointment()">
                                 <hr>
                             </form>
                             <hr>
-                            <div class="text-center">
-                                <a class="small" href="/login">Already has account? Login</a>
-                            </div>
+                           
 
                         </div>
                     </div>
