@@ -69,6 +69,7 @@
               <th>Gender</th>
               <th>Phone Number</th>
               <th>Doctor Description</th>
+              <th> </th>
             </tr>
           </thead>
           <tfoot>
@@ -79,6 +80,7 @@
               <th>Gender</th>
               <th>Phone Number</th>
               <th>Doctor Description</th>
+              <th> </th>
             </tr>
           </tfoot>
           <tbody>
@@ -91,22 +93,21 @@
               <td>{{$value.phone}}</td>
               <td>{{$value.description}}</td>
               <td>
-                <form method="post">
+                <form> 
                   <input id="staff_no" type="hidden" name="staff_no" value={{$value.staff_no}}>
                   <input id="patient_id" type="hidden" name="patient_id" value={{patient_id}}>
                   <!--input type="submit" value="appoint"-->
-                  <button onclick="appointment()"> Appointment </button>
-                  <script>
-                  
+                  <button onclick="appointment()", href='doctorAppointmentTime'> Appointment </button>
 
+                  <script>
                   function appointment(){
                     var s_no=document.getElementByid("staff_no");
                     var p_no=document.getElementByid("patient_id");
                     document.cookie = "staff=" + s_no;
                     document.cookie = "patient=" + p_no;
-                    location.href = 'doctorAppointment.art';
+                    //location.href = 'doctorAppointmentTime';
                   }
-                 </script>
+                  </script>
 
                 </form>
               </td>

@@ -6,6 +6,7 @@ exports.getPatientHospitalInfo = getPatientHospitalInfo;
 exports.getPatientDoctorInfo = getPatientDoctorInfo;
 exports.getPatientLabInfo = getPatientLabInfo;
 exports.getPatientInsuranceCompanyInfo = getPatientInsuranceCompanyInfo;
+exports.getPatientDoctorInfoMakeAppointment = getPatientDoctorInfoMakeAppointment;
 
 function getPatientHospitalInfo(req, res, next) {
 	const patient_id = xss(req.session.patient_id);
@@ -86,3 +87,23 @@ function getPatientInsuranceCompanyInfo(req, res, next) {
 		});
 	});
 }
+
+function getPatientDoctorInfoMakeAppointment(req, res, next) {
+	const patient_id = xss(req.session.patient_id);
+	database.setUpDatabase(function (connection) {
+		connection.connect();
+		var sql = 'select staff_no, first_name, last_name, gender, phone, description from staff where staff_class = "D"';
+		connection.query(sql, [patient_id], function (err, result) {
+			if (err) {
+				console.log('[SELECT ERROR] - ', err.message);
+				res.send('SQL query error');
+				return;
+			}
+			patientDoctorInfo = result;
+			console.log(patientDoctorInfo);
+			res.render('patient/doctorMakeAppointment', {
+				patientDoctorInfo: patientDoctorInfo
+			}); 
+		});
+	});
+}  
