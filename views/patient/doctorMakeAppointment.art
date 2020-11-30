@@ -97,19 +97,29 @@
                   <input id="staff_no" type="hidden" name="staff_no" value={{$value.staff_no}}>
                   <input id="patient_id" type="hidden" name="patient_id" value={{patient_id}}>
                   <!--input type="submit" value="appoint"-->
-                  <button onclick="appointment()", href='doctorAppointmentTime'> Appointment </button>
+                  <button onclick="appointment()"> Appointment </button>
 
                   <script>
+                  function setCookie(name,value,days) {
+                    var expires = "";
+                    if (days) {
+                      var date = new Date();
+                      date.setTime(date.getTime() + (days*24*60*60*1000));
+                      expires = "; expires=" + date.toUTCString();
+                    }
+                    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+                  }
+
                   function appointment(){
                     var s_no=document.getElementByid("staff_no");
                     var p_no=document.getElementByid("patient_id");
-                    document.cookie = "staff=" + s_no;
-                    document.cookie = "patient=" + p_no;
-                    //location.href = 'doctorAppointmentTime';
+                    setCookie("staff_no", s_no, 30);
+                    setCookie("patient_id", s_no, 30);
+                    location.href = 'doctorAppointmentTime' + $hashtag;
                   }
                   </script>
 
-                </form>
+                </form> 
               </td>
             </tr>
             {{/each}}

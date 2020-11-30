@@ -86,7 +86,7 @@ function getPatientInsuranceCompanyInfo(req, res, next) {
 			});
 		});
 	});
-}
+} 
 
 function getPatientDoctorInfoMakeAppointment(req, res, next) {
 	const patient_id = xss(req.session.patient_id);
