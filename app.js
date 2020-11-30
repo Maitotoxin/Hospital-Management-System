@@ -13,7 +13,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     cookie: {
-        maxAge: 1 * 60 * 60 * 1000
+        maxAge: 24 * 60 * 60 * 1000
     }
 })); 
 
@@ -53,6 +53,6 @@ app.use('/patient/insuranceCompanyInfoDisplay', patientInsuranceCompanyInfoDispl
 app.use('/patient/doctorMakeAppointment', patientDoctorMakeAppointment);
 app.use('/patient/doctorAppointmentTime', patientDoctorAppointmentTime);
 
-//listen port 3000
+//listen port 3000 
 app.listen(3000);
 console.log('Server started');
