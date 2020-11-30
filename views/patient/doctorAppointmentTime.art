@@ -52,11 +52,11 @@
                                 <h1 class="h4 text-gray-900 mb-4">Make</h1>
                             </div>
 
-                            <form action="/patient/register" method="post" id="registerForm">
+                            <form action="/patient/dashboard" method="post" id="registerForm">
                                 <div class="mbsc-col-sm-12 mbsc-col-lg-6">
                                    <label>
                                      Appointment Time
-                                <input mbsc-input data-input-style="box" data-label-style="stacked" name="appointment_time" class="form-control" id="appointment_time" >
+                                <input mbsc-input data-input-style="box" type="datetime-local" data-label-style="stacked" name="appointment_time" class="form-control" id="appointment_time" >
                                    </label>
                                 </div>
 
