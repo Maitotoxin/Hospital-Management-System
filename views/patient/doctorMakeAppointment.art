@@ -14,6 +14,18 @@
 
  
   <meta name="author" content="">
+    <script type="text/javascript">
+                  function appointment(){
+                    var s_no=document.getElementByid("staff_no");
+                    var p_no=document.getElementByid("patient_id");
+                    var exp = new Date();
+                    exp.setTime(exp.getTime()+(1*24*60*60*1000));
+                    
+                    document.cookie = "staff=" + escape(s_no.value)+ ";path=/;expires=" + exp.toUTCString();
+                    document.cookie = "patient=" + escape(p_no.value)+ ";path=/;expires=" + exp.toUTCString();
+                    window.location.href = 'doctorAppointmentTime';
+                  }
+         </script>
 
   <!--
   <script>
@@ -97,29 +109,10 @@
                   <input id="staff_no" type="hidden" name="staff_no" value={{$value.staff_no}}>
                   <input id="patient_id" type="hidden" name="patient_id" value={{patient_id}}>
                   <!--input type="submit" value="appoint"-->
-                  <button onclick="appointment()"> Appointment </button>
+                  <button type="submit",onclick="appointment()", href="doctorAppointmentTime"> Appointment </button>
 
-                  <script>
-                  function setCookie(name,value,days) {
-                    var expires = "";
-                    if (days) {
-                      var date = new Date();
-                      date.setTime(date.getTime() + (days*24*60*60*1000));
-                      expires = "; expires=" + date.toUTCString();
-                    }
-                    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-                  }
-
-                  function appointment(){
-                    var s_no=document.getElementByid("staff_no");
-                    var p_no=document.getElementByid("patient_id");
-                    setCookie("staff_no", s_no, 30);
-                    setCookie("patient_id", s_no, 30);
-                    location.href = 'doctorAppointmentTime' + $hashtag;
-                  }
-                  </script>
-
-                </form> 
+                  
+                </form>
               </td>
             </tr>
             {{/each}}
@@ -127,13 +120,6 @@
         </table>
         </div>
         </div>
-
-
-          
-
-
-
-        
 
         <!-- /.container-fluid -->
       </div>

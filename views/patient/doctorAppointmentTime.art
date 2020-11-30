@@ -9,18 +9,16 @@
 
     <title>Patient-Register</title>
     <meta name="author" content="">
-    <script>
-        function getCookie(name) {
-            var nameEQ = name + "=";
-            var ca = document.cookie.split(';');
-            for(var i=0;i < ca.length;i++) {
-                var c = ca[i];
-                while (c.charAt(0)==' ') c = c.substring(1,c.length);
-                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    <script type="text/javascript">
+       function getCookie(name) {
+           var arr;
+           var reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+           if (arr = document.cookie.match(reg)){
+               return arr[2];
             }
+            else
             return null;
-        }
-
+           }
         /*function getcookie() {
             console.log(getCookie("staff"));
             console.log(getCookie("patient"));
@@ -63,8 +61,8 @@
                                 </div>
 
                                <!--input mbsc-input data-input-style="box" data-label-style="stacked" name="appointment_time" class="form-control" id="appointment_time" -->                               
-                                <input type="hidden" name="staff_no" value={{getCookie("staff_no")}}>
-                                <input type="hidden" name="patient_id" value={{getCookie("patient_id")}}>
+                                <input type="hidden" name="staff_no" value={${getCookie("staff")}}>
+                                <input type="hidden" name="patient_id" value={${getCookie("patient")}}>
                                 <input type="submit" href="error" class="btn btn-primary btn-user btn-block"
                                     value="Register" onclick="return registerAppointment()">
                                 <hr>
