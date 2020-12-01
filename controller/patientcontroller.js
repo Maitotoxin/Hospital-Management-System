@@ -11,6 +11,60 @@ exports.createDoctorAppointment = createDoctorAppointment;
 exports.createLabAppointment = createLabAppointment;
 exports.updateDoctorAppointment = updateDoctorAppointment;
 exports.updateLabAppointment = updateLabAppointment;
+exports.deleteDoctorAppointment = deleteDoctorAppointment;
+exports.deleteLabAppointment = deleteLabAppointment;
+
+function deleteLabAppointment(req, res, next){
+    console.log('enter function deleteLabAppointment');
+    console.log(req.body);
+    const appointment_id = xss(parseInt(req.body.appointment_id));
+    
+    //verify
+    database.setUpDatabase(function (connection) {
+        connection.connect();
+        var sqlParams = ["3", appointment_id];
+        var sql = 'update lab_appointment set valid = ? where appointment_id = ?';
+        connection.query(sql, sqlParams, function (err, result) {
+            if (err) {
+                console.log('[SELECT ERROR] - ', err.message);
+                res.send("SQL query error");
+                return;
+            }
+            console.log('--------------------------INSERT----------------------------')
+            console.log('INSERT ID:', result)
+            console.log('------------------------------------------------------------')
+            connection.end(); 
+            res.redirect(301, '/patient/labRearrangeAppointment');
+
+        })
+    })
+}
+
+function deleteDoctorAppointment(req, res, next){
+    console.log('enter function deleteDoctorAppointment');
+    console.log(req.body);
+    const appointment_id = xss(parseInt(req.body.appointment_id));
+    
+    //verify
+    database.setUpDatabase(function (connection) {
+        connection.connect();
+        var sqlParams = ["3", appointment_id];
+        var sql = 'update doctor_appointment set valid = ? where appointment_id = ?';
+        connection.query(sql, sqlParams, function (err, result) {
+            if (err) {
+                console.log('[SELECT ERROR] - ', err.message);
+                res.send("SQL query error");
+                return;
+            }
+            console.log('--------------------------INSERT----------------------------')
+            console.log('INSERT ID:', result)
+            console.log('------------------------------------------------------------')
+            connection.end(); 
+            res.redirect(301, '/patient/doctorRearrangeAppointment');
+
+        })
+    })
+}
 
 function updateLabAppointment(req, res, next){
     console.log('enter function updateLabAppontment');

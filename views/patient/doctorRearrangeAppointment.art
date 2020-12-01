@@ -126,8 +126,13 @@
                   <!--input id="patient_id" type="hidden" name="patient_id" value={{patient_id}}-->
                   <!--input type="submit" value="appoint"-->
                   
-                  <a onclick="appointment()"> Edit </a>
-                  <a type="submit"  value="delete"> Cancel </a>
+                  <i type="submit" class="fas fa-edit" onclick="appointment()" value="aaa"></i>
+                  <!--<i class="fas fa-edit"></i>
+                  <i class="fas fa-trash"></i>  -->
+                </form>
+                <form method="post">
+                  <input type="hidden" name="appointment_id" value={{$value.appointment_id}}>
+                  <i type="submit" class="fas fa-trash" value="Delete"></i>
                 </form>
               </td>
             </tr>

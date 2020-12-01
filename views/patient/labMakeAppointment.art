@@ -113,7 +113,7 @@
                   <input id="lab_name" type="hidden" name="lab_name" value={{$value.lab_name}}>
                   <input id="patient_id" type="hidden" name="patient_id" value={{patient_id}}>
                   <!--input type="submit" value="appoint"-->
-                  <a type="submit"  onclick="appointment()"> Appointment </a>
+                  <a  onclick="appointment()"> Appointment </a>
                 </form>
               </td>
             </tr>

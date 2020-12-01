@@ -123,7 +123,10 @@
                   <!--input id="patient_id" type="hidden" name="patient_id" value={{patient_id}}-->
                   <!--input type="submit" value="appoint"-->
                   <a onclick="appointment()"> Edit </a>
-                  <a type="submit"  value="delete"> Cancel </a>
+                </form>
+                <form method="post">
+                  <input type="hidden" name="appointment_id" value={{$value.appointment_id}}>
+                  <input type="submit" value="delete">
                 </form>
               </td>
             </tr>
