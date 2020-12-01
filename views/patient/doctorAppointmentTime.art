@@ -39,6 +39,7 @@
         var staff_no=cookie.getCookie('staff')
         var patient_id=cookie.getCookie('patient')
     </script>
+
     <style>
         body {
             background-color: #303641;

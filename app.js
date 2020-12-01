@@ -24,7 +24,7 @@ app.set('view engine', 'art');
 
 //tell standard engine for attribute
 app.engine('art', require('express-art-template'));
-
+ 
 //open static directory
 app.use(express.static(path.join(__dirname, 'static')));
 const error = require('./routes/error');
@@ -56,3 +56,4 @@ app.use('/patient/doctorAppointmentTime', patientDoctorAppointmentTime);
 //listen port 3000 
 app.listen(3000);
 console.log('Server started');
+ 
