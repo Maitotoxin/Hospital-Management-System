@@ -15,7 +15,7 @@ function createDoctorAppointment(req, res, next){
     const staff_no = xss(parseInt(req.body.staff_no));
     const patient_id = xss(req.body.patient_id);
     const appointment_time = xss(req.body.appointment_time);
-
+    
     //verify
     database.setUpDatabase(function (connection) {
         connection.connect();
@@ -42,7 +42,7 @@ function createDoctorAppointment(req, res, next){
                 console.log('--------------------------INSERT----------------------------')
                 console.log('INSERT ID:', result)
                 console.log('------------------------------------------------------------')
-                connection.end();
+                connection.end(); 
                 res.redirect(301, '/patient/dashboard');
             })
         })
