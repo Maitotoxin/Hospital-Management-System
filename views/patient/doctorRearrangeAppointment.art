@@ -132,7 +132,7 @@
                 </form>
                 <form method="post">
                   <input type="hidden" name="appointment_id" value={{$value.appointment_id}}>
-                  <i type="submit" class="fas fa-trash" value="Delete"></i>
+                  <i type="submit" class="fas fa-trash" ></i>
                 </form>
               </td>
             </tr>
