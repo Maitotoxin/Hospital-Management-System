@@ -12,18 +12,17 @@
   <!-- Page level plugins -->
   <script src="/vendor/chart.js/Chart.min.js"></script>
 
- 
   <meta name="author" content="">
     <script type="text/javascript">
                   function appointment(){
-                    var s_no=document.getElementByid("staff_no");
-                    var p_no=document.getElementByid("patient_id");
-                    var exp = new Date();
-                    exp.setTime(exp.getTime()+(1*24*60*60*1000));
+                    //var s_no=document.getElementByid("staff_no");
+                    //var p_no=document.getElementByid("patient_id");
+                    //var exp = new Date();
+                    //exp.setTime(exp.getTime()+(1*24*60*60*1000));
                     
-                    document.cookie = "staff=" + escape(s_no.value)+ ";path=/;expires=" + exp.toUTCString();
-                    document.cookie = "patient=" + escape(p_no.value)+ ";path=/;expires=" + exp.toUTCString();
-                    window.location.href = 'doctorAppointmentTime';
+                    //document.cookie = "staff=" + escape(s_no.value)+ ";path=/;expires=" + exp.toUTCString();
+                    //document.cookie = "patient=" + escape(p_no.value)+ ";path=/;expires=" + exp.toUTCString();
+                    location.href = 'doctorAppointmentTime';
                   }
          </script>
 
@@ -109,9 +108,9 @@
                   <input id="staff_no" type="hidden" name="staff_no" value={{$value.staff_no}}>
                   <input id="patient_id" type="hidden" name="patient_id" value={{patient_id}}>
                   <!--input type="submit" value="appoint"-->
-                  <button type="submit",onclick="appointment()", href="doctorAppointmentTime"> Appointment </button>
+                  <a type="submit", href="doctorAppointmentTime"> Appointment </button>
 
-                  
+                   
                 </form>
               </td>
             </tr>

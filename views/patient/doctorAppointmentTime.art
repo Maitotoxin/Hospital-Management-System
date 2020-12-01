@@ -9,7 +9,9 @@
 
     <title>Patient-Register</title>
     <meta name="author" content="">
+
     <script type="text/javascript">
+    /*
        function getCookie(name) {
            var arr;
            var reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
@@ -18,7 +20,8 @@
             }
             else
             return null;
-           }
+        }
+        */
         /*function getcookie() {
             console.log(getCookie("staff"));
             console.log(getCookie("patient"));
@@ -33,6 +36,7 @@
             return validateAppointmentRegisterInput(res);
         }
     </script>
+
     <style>
         body {
             background-color: #303641;
@@ -52,7 +56,7 @@
                                 <h1 class="h4 text-gray-900 mb-4">Make</h1>
                             </div>
 
-                            <form action="/patient/dashboard" method="post" id="registerForm">
+                            <form action="/patient/doctorAppointmentTime" method="post" id="registerForm">
                                 <div class="mbsc-col-sm-12 mbsc-col-lg-6">
                                    <label>
                                      Appointment Time
@@ -61,8 +65,8 @@
                                 </div>
 
                                <!--input mbsc-input data-input-style="box" data-label-style="stacked" name="appointment_time" class="form-control" id="appointment_time" -->                               
-                                <input type="hidden" name="staff_no" value={${getCookie("staff")}}>
-                                <input type="hidden" name="patient_id" value={${getCookie("patient")}}>
+                                <input type="hidden" name="staff_no" value={{getCookie("staff")}}>
+                                <input type="hidden" name="patient_id" value={{getCookie("patient")}}>
                                 <input type="submit" href="error" class="btn btn-primary btn-user btn-block"
                                     value="Register" onclick="return registerAppointment()">
                                 <hr>
