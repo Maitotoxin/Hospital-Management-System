@@ -40,6 +40,8 @@ const patientHospitalInfoDisplay = require('./routes/patient/hospitalInfoDisplay
 const patientInsuranceCompanyInfoDisplay = require('./routes/patient/insuranceCompanyInfoDisplay');
 const patientDoctorMakeAppointment = require('./routes/patient/doctorMakeAppointment');
 const patientDoctorAppointmentTime = require('./routes/patient/doctorAppointmentTime');
+const patientDoctorRearrangeAppointment = require('./routes/patient/doctorRearrangeAppointment');
+const patientDoctorRearrangeAppointmentTime = require('./routes/patient/doctorRearrangeAppointmentTime');
 const patientLabMakeAppointment = require('./routes/patient/labMakeAppointment');
 const patientLabAppointmentTime = require('./routes/patient/labAppointmentTime');
 app.use('/patient/login', patientLogin);
@@ -53,6 +55,8 @@ app.use('/patient/hospitalInfoDisplay', patientHospitalInfoDisplay);
 app.use('/patient/insuranceCompanyInfoDisplay', patientInsuranceCompanyInfoDisplay);
 app.use('/patient/doctorMakeAppointment', patientDoctorMakeAppointment);
 app.use('/patient/doctorAppointmentTime', patientDoctorAppointmentTime);
+app.use('/patient/doctorRearrangeAppointment', patientDoctorRearrangeAppointment);
+app.use('/patient/doctorRearrangeAppointmentTime', patientDoctorRearrangeAppointmentTime);
 app.use('/patient/labMakeAppointment', patientLabMakeAppointment);
 app.use('/patient/labAppointmentTime', patientLabAppointmentTime);
 //listen port 3000 
