@@ -3,7 +3,7 @@ const patientLabRearrangeAppointment = require('../../controller/patientInfoCont
 const deletePatientLabAppointment = require('../../controller/patientController');
 const lab = express.Router();
 
-lab.get('/', patientLabRearrangeAppointment.getPatientLabAppointmentInfo);
+lab.get('/', patientLabRearrangeAppointment.getPatientEditLabAppointmentInfo);
 
 lab.post('/', deletePatientLabAppointment.deleteLabAppointment);
 module.exports = lab;

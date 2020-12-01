@@ -3,6 +3,6 @@ const patientDoctorRearrangeAppointment = require('../../controller/patientInfoC
 const deletePatientDoctorAppointment = require('../../controller/patientController');
 const doctor = express.Router();
 
-doctor.get('/', patientDoctorRearrangeAppointment.getPatientDoctorAppointmentInfo);
+doctor.get('/', patientDoctorRearrangeAppointment.getPatientEditDoctorAppointmentInfo);
 doctor.post('/', deletePatientDoctorAppointment.deleteDoctorAppointment);
 module.exports = doctor;

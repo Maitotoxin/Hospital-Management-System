@@ -8,8 +8,8 @@ exports.getPatientLabInfo = getPatientLabInfo;
 exports.getPatientInsuranceCompanyInfo = getPatientInsuranceCompanyInfo;
 exports.getPatientDoctorInfoMakeAppointment = getPatientDoctorInfoMakeAppointment;
 exports.getPatientLabInfoMakeAppointment = getPatientLabInfoMakeAppointment;
-exports.getPatientDoctorAppointmentInfo = getPatientDoctorAppointmentInfo;
-exports.getPatientLabAppointmentInfo = getPatientLabAppointmentInfo;
+exports.getPatientEditDoctorAppointmentInfo = getPatientEditDoctorAppointmentInfo;
+exports.getPatientEditLabAppointmentInfo = getPatientEditLabAppointmentInfo;
 
 function getPatientHospitalInfo(req, res, next) {
 	const patient_id = xss(req.session.patient_id);
@@ -131,7 +131,7 @@ function getPatientLabInfoMakeAppointment(req, res, next) {
 	});
 }  
 
-function getPatientDoctorAppointmentInfo(req, res, next) {
+function getPatientEditDoctorAppointmentInfo(req, res, next) {
 	const patient_id = xss(req.session.patient_id);
 	database.setUpDatabase(function (connection) {
 		connection.connect();
@@ -152,7 +152,7 @@ function getPatientDoctorAppointmentInfo(req, res, next) {
 	});
 }  
 
-function getPatientLabAppointmentInfo(req, res, next) {
+function getPatientEditLabAppointmentInfo(req, res, next) {
 	const patient_id = xss(req.session.patient_id);
 	database.setUpDatabase(function (connection) {
 		connection.connect();
