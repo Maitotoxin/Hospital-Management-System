@@ -27,12 +27,7 @@
             return validateAppointmentRegisterInput(res);
             //return true;
         }
-        var s_no=getCookie("staff");
-        console.log("a"+s_no);
-        //cookie.delCookie("staff");
-        //staff_no.toString();
-        var p_id=getCookie("patient");
-        console.log("b"+p_id);
+
         //cookie.delCookie("patient");
     </script>
 
@@ -64,9 +59,20 @@
                                 </div>
                                 
                                <!--input mbsc-input data-input-style="box" data-label-style="stacked" name="appointment_time" class="form-control" id="appointment_time" -->                               
-                                <input type="hidden" name="staff_no" value={{$s_no}}>
-                                <input type="hidden" name="patient_id" value={{$p_id}}>
-                                
+                                <input type="hidden" name="staff_no" id="staff_no" value="">
+                                <input type="hidden" name="patient_id" id="patient_id" value="">
+                                <script>
+                                    var s_no=getCookie("staff");
+                                    //cookie.delCookie("staff");
+                                    //staff_no.toString();
+                                    var p_no=getCookie("patient");
+                                    console.log("a"+s_no);
+                                    console.log("b"+p_no);
+                                    document.getElementById('staff_no').value = s_no;
+                                    alert(document.getElementById('staff_no').value);
+                                    document.getElementById('patient_id').value = p_no;
+                                    alert(document.getElementById('patient_id').value);
+                                </script>
                                 <input type="submit" href="error" class="btn btn-primary btn-user btn-block"
                                     value="Register" onclick="return registerAppointment()">
                                 <hr>

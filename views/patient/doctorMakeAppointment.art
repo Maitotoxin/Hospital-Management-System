@@ -11,47 +11,26 @@
 
   <!-- Page level plugins -->
   <script src="/vendor/chart.js/Chart.min.js"></script>
-  <script src="/js/cookie.js"></script>
+
   <meta name="author" content="">
-  
-    <script type="text/javascript">
+            <script>
                   function appointment(){
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    //var s_no=document.getElementByid("staff_no");
-                    //var p_no=document.getElementByid("patient_id");
-                    //var exp = new Date();
-                    //exp.setTime(exp.getTime()+(1*24*60*60*1000));
-                    
-                    //document.cookie = "staff=" + escape(s_no.value)+ ";path=/;expires=" + exp.toUTCString();
-                    //document.cookie = "patient=" + escape(p_no.value)+ ";path=/;expires=" + exp.toUTCString();
-                    location.href = 'doctorAppointmentTime';
-=======
-                    var s_no=document.getElementByid("staff_no").value;
-=======
-                    var s_no=document.getElementByid("staff_no");
->>>>>>> e0671b8d322ebcd342d4c0cbfc185adc9c154977
-                    
+                    var s_no=document.getElementById("staff_no").value;
                     //var s_no = $value.staff_no; 
                     //console.log(s_no);
                     //s_no.toString();
-                    var p_no=document.getElementByid("patient_id");
-                   
+                    var p_no=document.getElementById("patient_id").value;
+                    console.log("qw"+s_no);
+                    console.log("qw"+p_no);
                     var exp = new Date();
                     exp.setTime(exp.getTime()+(1*24*60*60*1000));
-                    setCookie(staff,s_no.value,1);
+                    document.cookie = "staff=" + s_no+";expires=" + exp.toUTCString();
                     //setCookie('staff_no',s_no);
-                    setCookie(patient,p_no.value,1);
-                    //document.cookie = "patient=" + p_no+";expires=" + exp.toUTCString();
+                    document.cookie = "patient=" + p_no+";expires=" + exp.toUTCString();
+
                      //setCookie('patient_id',p_no);
                    // document.cookie = "patient=" + escape(p_no.value)+ ";path=/doctorAppointmentTime/;expires=" + exp.toUTCString();
-<<<<<<< HEAD
-                    //window.location.href = 'doctorAppointmentTime';
->>>>>>> refs/remotes/origin/main
-=======
-                    window.location.href = 'doctorAppointmentTime';
-                    return false;
->>>>>>> e0671b8d322ebcd342d4c0cbfc185adc9c154977
+                    location.href = 'doctorAppointmentTime';
                   }
          </script>
 
@@ -138,13 +117,7 @@
                   
                   <input id="patient_id" type="hidden" name="patient_id" value={{patient_id}}>
                   <!--input type="submit" value="appoint"-->
-<<<<<<< HEAD
-                  <a type="submit", href="doctorAppointmentTime"> Appointment </button>
-
-                   
-=======
-                  <a type="submit",onclick="appointment()", href="doctorAppointmentTime"> Appointment </a>
->>>>>>> refs/remotes/origin/main
+                  <a type="submit"  onclick="appointment()"> Appointment </a>
                 </form>
               </td>
             </tr>
