@@ -125,7 +125,9 @@
                   <input id="last_name" type="hidden" name="last_name" value={{$value.last_name}}>
                   <!--input id="patient_id" type="hidden" name="patient_id" value={{patient_id}}-->
                   <!--input type="submit" value="appoint"-->
-                  <a type="submit"  onclick="appointment()"> Edit </a>
+                  
+                  <a onclick="appointment()"> Edit </a>
+                  <a type="submit"  onclick="delete()"> Cancel </a>
                 </form>
               </td>
             </tr>
