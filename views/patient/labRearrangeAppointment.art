@@ -122,11 +122,13 @@
                   <input id="lab_name" type="hidden" name="lab_name" value={{$value.lab_name}}>
                   <!--input id="patient_id" type="hidden" name="patient_id" value={{patient_id}}-->
                   <!--input type="submit" value="appoint"-->
-                  <a onclick="appointment()"> Edit </a>
+                  <i class="fas fa-edit"></i>
+                  <input type="button" class="fas fa-edit" onclick="appointment()" value="Edit">
                 </form>
                 <form method="post">
                   <input type="hidden" name="appointment_id" value={{$value.appointment_id}}>
-                  <input type="submit" value="delete">
+                  <i class="fas fa-trash"></i>
+                  <input type="submit" class="fas fa-trash" value="Delete">
                 </form>
               </td>
             </tr>
