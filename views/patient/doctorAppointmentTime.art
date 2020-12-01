@@ -10,23 +10,9 @@
 
     <title>Patient-Register</title>
     <meta name="author" content="">
+    <script src="/js/cookie.js"></script>
     <script>
-       var cookie={
-           getCookie:function (name) {
-           var arr;
-           var reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
-           if (arr = document.cookie.match(reg)){
-               return unescape(arr[2]);
-            }
-            else
-            return null;
-           },
-           delCookie:function(name){
-               var exp=new Date();
-               exp.setTime(exp.getTime()+(1*24*60*60*1000));
-               document.cookie=name+'=;expires='+exp;
-            }
-       }
+    
         /*function getcookie() {
             console.log(getCookie("staff"));
             console.log(getCookie("patient"));
@@ -41,13 +27,13 @@
             return validateAppointmentRegisterInput(res);
             //return true;
         }
-        var staff_no=cookie.getCookie('staff');
-        
-        cookie.delCookie('staff');
+        var s_no=getCookie("staff");
+        console.log("a"+s_no);
+        //cookie.delCookie("staff");
         //staff_no.toString();
-        var patient_id=cookie.getCookie('patient');
-        
-        cookie.delCookie('patient');
+        var p_id=getCookie("patient");
+        console.log("b"+p_id);
+        //cookie.delCookie("patient");
     </script>
 
     <style>
@@ -78,8 +64,8 @@
                                 </div>
                                 
                                <!--input mbsc-input data-input-style="box" data-label-style="stacked" name="appointment_time" class="form-control" id="appointment_time" -->                               
-                                <input type="hidden" name="staff_no" value={{staff_no}}>
-                                <input type="hidden" name="patient_id" value={{patient_id}}>
+                                <input type="hidden" name="staff_no" value={{$s_no}}>
+                                <input type="hidden" name="patient_id" value={{$p_id}}>
                                 
                                 <input type="submit" href="error" class="btn btn-primary btn-user btn-block"
                                     value="Register" onclick="return registerAppointment()">
