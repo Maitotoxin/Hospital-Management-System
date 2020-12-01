@@ -84,10 +84,7 @@
               <td>{{$value.company_name}}</td>
               <td>{{$value.discount}}% off</td>
               
-              <td>
-                  <i class="fas fa-edit"></i>
-                  <i class="fas fa-trash"></i>
-              </td>
+              
             </tr>
             {{/each}}
           </tbody>
