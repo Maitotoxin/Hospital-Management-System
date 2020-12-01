@@ -71,7 +71,7 @@
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Make Appointment</h1>
           </div>
-          <form action="/patient/doctorAppointmentTime" method="post" id="registerForm">
+          <form action="/patient/labAppointmentTime" method="post" id="registerForm">
                 <!--div class="form-group row">
                     <div class="col-sm-3 mb-3 mb-sm-0">
                         <label class=""> <b>Selected Doctor No.</b> </label>
