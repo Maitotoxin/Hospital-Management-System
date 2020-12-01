@@ -27,7 +27,7 @@ function createDoctorAppointment(req, res, next){
                 return;
             }
             patient = result[0];
-            
+          
             var addSqlParams = [60, patient.patient_no, staff_no, appointment_time, "0"];
             //console.log(addSqlParams);
             var addSql = 'insert into doctor_appointment (estimated_duration, patient_no, staff_no, appointment_time, valid) values (?, ?, ?, ?, ?)';
