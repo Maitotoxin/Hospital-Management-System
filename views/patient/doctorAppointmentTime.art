@@ -1,14 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-   
-    {{include '../common/header.art'}}
 
-    <!-- Custom scripts for all pages-->
-    <script src="/js/sb-admin-2.min.js"></script>
-
-    <title>Patient-Register</title>
+  {{include '../common/header.art'}}
+  <title>Doctor Appointment</title>
     <meta name="author" content="">
     <script src="/js/cookie.js"></script>
     <script>
@@ -23,6 +19,10 @@
            // getCookie("staff");
             //getCookie("patient");
             var res = formContentToJson($("#registerForm"));
+            delCookie("staff");
+            delCookie("patient");
+            delCookie("last_name");
+            delCookie("first_name");
             //if user did not enter userid or password
             return validateAppointmentRegisterInput(res);
             //return true;
@@ -31,60 +31,133 @@
         //cookie.delCookie("patient");
     </script>
 
-    <style>
-        body {
-            background-color: #303641;
-        }
-    </style>
+  <!-- Custom scripts for all pages-->
+  <script src="/js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="/vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Page level custom scripts
+  <script src="/js/demo/chart-area-demo.js"></script>
+  <script src="/js/demo/chart-pie-demo.js"></script>
+  -->
+ 
+
 </head>
-<body class="bg-gradient-primary">
 
-    <div class="container">
-        <div class="card o-hidden border-0 shadow-lg my-5">
-            <div class="card-body p-0">
-                <div class="row">
-                    <div class="col-lg-6 d-none d-lg-block bg-register-image"></div>
-                    <div class="col-lg-6">
-                        <div class="p-5">
-                            <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Make</h1>
-                            </div>
+<body id="page-top">
 
-                            <form action="/patient/doctorAppointmentTime" method="post" id="registerForm">
-                                <div class="mbsc-col-sm-12 mbsc-col-lg-6">
-                                   <label>
-                                     Appointment Time
-                                <input mbsc-input data-input-style="box" type="datetime-local" data-label-style="stacked" name="appointment_time" class="form-control" id="appointment_time" >
-                                   </label>
-                                </div>
-                                
-                               <!--input mbsc-input data-input-style="box" data-label-style="stacked" name="appointment_time" class="form-control" id="appointment_time" -->                               
-                                <input type="hidden" name="staff_no" id="staff_no" value="">
-                                <input type="hidden" name="patient_id" id="patient_id" value="">
-                                <script>
-                                    var s_no=getCookie("staff");
-                                    //cookie.delCookie("staff");
-                                    //staff_no.toString();
-                                    var p_no=getCookie("patient");
-                                    console.log("a"+s_no);
-                                    console.log("b"+p_no);
-                                    document.getElementById('staff_no').value = s_no;
-                                    alert(document.getElementById('staff_no').value);
-                                    document.getElementById('patient_id').value = p_no;
-                                    alert(document.getElementById('patient_id').value);
-                                </script>
-                                <input type="submit" href="error" class="btn btn-primary btn-user btn-block"
-                                    value="Register" onclick="return registerAppointment()">
-                                <hr>
-                            </form>
-                            <hr>
-                           
+  <!-- Page Wrapper -->
+  <div id="wrapper">
 
-                        </div>
+    <!-- Sidebar -->
+    {{include '../common/sidebar.art'}}
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        {{include '../common/topbar.art'}}
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Make Appointment</h1>
+          </div>
+          <form action="/patient/doctorAppointmentTime" method="post" id="registerForm">
+                <!--div class="form-group row">
+                    <div class="col-sm-3 mb-3 mb-sm-0">
+                        <label class=""> <b>Selected Doctor No.</b> </label>
                     </div>
+                    <div class="col-sm-7">
+                        <input type="text" name="staff_no" id="staff_no" value="" disabled>
+                    </div>
+                </div-->    
+                <div class="form-group row">
+                    <div class="col-sm-3 mb-3 mb-sm-0">
+                        <label class=""> <b> Doctor First Name</b> </label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" name="first_name" id="first_name" value="" disabled>
+                    </div>
+                </div>    
+                <div class="form-group row">
+                    <div class="col-sm-3 mb-3 mb-sm-0">
+                        <label class=""> <b>Doctor Last Name</b> </label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" name="last_name" id="last_name" value="" disabled>
+                    </div>
+                </div>    
+                <input type="hidden" name="staff_no" id="staff_no" value="">
+                <input type="hidden" name="patient_id" id="patient_id" value="">
+                <div class="form-group row">
+                    <div class="col-sm-3 mb-3 mb-sm-0">
+                        <label class=""> <b>Appointment Time</b> </label>
+                    </div>
+                <div class="col-sm-7">
+                    
+                     <input mbsc-input data-input-style="box" type="datetime-local" data-label-style="stacked" name="appointment_time" class="form-control" id="appointment_time" >
+                    
                 </div>
-            </div>
+                                
+                 <!--input mbsc-input data-input-style="box" data-label-style="stacked" name="appointment_time" class="form-control" id="appointment_time" -->                               
+                
+                    <script>
+                        var s_no=getCookie("staff");
+                        var p_no=getCookie("patient");
+                        var l_name=getCookie("last_name");
+                        var f_name=getCookie("first_name");
+                        //console.log("a"+s_no);
+                        //console.log("b"+p_no);
+                        document.getElementById('staff_no').value = s_no;
+                        //alert(document.getElementById('staff_no').value);
+                        document.getElementById('patient_id').value = p_no;
+                        document.getElementById("last_name").value=l_name;
+                        document.getElementById("first_name").value=f_name;
+                        //alert(document.getElementById('patient_id').value);
+                    </script>
+                <input type="submit" href="error" class="btn btn-primary btn-user btn-block"
+                     value="Make Appointment" onclick="return registerAppointment()">
+                      <hr>
+            </form>
+        
+          <!-- Content Row -->
+          
+          <!-- Content Row -->
+
+          
+          
+
         </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      {{include '../common/footer.art'}}
+      <!-- End of Footer -->
+
     </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+
 </body>
+
 </html>
