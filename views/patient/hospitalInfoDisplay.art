@@ -98,10 +98,7 @@
               <td>{{$value.zipcode}}</td>
               <td>{{$value.phone}}</td>
               <td>{{$value.maximum_patients}}</td>
-              <td>
-                  <i class="fas fa-edit"></i>
-                  <i class="fas fa-trash"></i>
-              </td>
+             
             </tr>
             {{/each}}
           </tbody>

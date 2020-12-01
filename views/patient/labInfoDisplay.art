@@ -85,10 +85,7 @@
               <td>{{$value.lab_id}}</td>
               <td>{{$value.lab_name}}</td>
               <td>{{$value.description}}</td>
-              <td>
-                  <i class="fas fa-edit"></i>
-                  <i class="fas fa-trash"></i>
-              </td>
+              
             </tr>
             {{/each}}
           </tbody>
