@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -9,8 +10,9 @@
 
     <title>Patient-Register</title>
     <meta name="author" content="">
-    <script type="text/javascript">
-       function getCookie(name) {
+    <script>
+       var cookie={
+           getCookie:function (name) {
            var arr;
            var reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
            if (arr = document.cookie.match(reg)){
@@ -19,6 +21,7 @@
             else
             return null;
            }
+       }
         /*function getcookie() {
             console.log(getCookie("staff"));
             console.log(getCookie("patient"));
@@ -31,7 +34,10 @@
             var res = formContentToJson($("#registerForm"));
             //if user did not enter userid or password
             return validateAppointmentRegisterInput(res);
+            //return true;
         }
+        var staff_no=cookie.getCookie('staff')
+        var patient_id=cookie.getCookie('patient')
     </script>
     <style>
         body {
@@ -52,17 +58,17 @@
                                 <h1 class="h4 text-gray-900 mb-4">Make</h1>
                             </div>
 
-                            <form action="/patient/dashboard" method="post" id="registerForm">
+                            <form action="/patient/doctorAppointmentTime" method="post" id="registerForm">
                                 <div class="mbsc-col-sm-12 mbsc-col-lg-6">
                                    <label>
                                      Appointment Time
                                 <input mbsc-input data-input-style="box" type="datetime-local" data-label-style="stacked" name="appointment_time" class="form-control" id="appointment_time" >
                                    </label>
                                 </div>
-
+                                var 
                                <!--input mbsc-input data-input-style="box" data-label-style="stacked" name="appointment_time" class="form-control" id="appointment_time" -->                               
-                                <input type="hidden" name="staff_no" value={${getCookie("staff")}}>
-                                <input type="hidden" name="patient_id" value={${getCookie("patient")}}>
+                                <input type="hidden" name="staff_no" value={{$staff_no}}>
+                                <input type="hidden" name="patient_id" value={{patient_id}}>
                                 <input type="submit" href="error" class="btn btn-primary btn-user btn-block"
                                     value="Register" onclick="return registerAppointment()">
                                 <hr>
