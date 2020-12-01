@@ -12,7 +12,7 @@ exports.createDoctorAppointment = createDoctorAppointment;
 function createDoctorAppointment(req, res, next){
     console.log('enter function createAppontment');
     console.log(req.body);
-    const staff_no = xss(req.body.staff_no);
+    const staff_no = xss(parseInt(req.body.staff_no));
     const patient_id = xss(req.body.patient_id);
     const appointment_time = xss(req.body.appointment_time);
 
