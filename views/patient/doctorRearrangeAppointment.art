@@ -126,7 +126,7 @@
                   <!--input id="patient_id" type="hidden" name="patient_id" value={{patient_id}}-->
                   <!--input type="submit" value="appoint"-->
                   
-                  <a   onclick="appointment()"> Edit </a>
+                  <a onclick="appointment()"> Edit </a>
                   <a type="submit"  onclick="delete()"> Cancel </a>
                 </form>
               </td>
