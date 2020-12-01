@@ -17,23 +17,23 @@
     <script type="text/javascript">
                   
                   function appointment(){
-                    var s_no=document.getElementByid("staff_no");
+                    var s_no=document.getElementById("staff_no");
                     
                     //var s_no = $value.staff_no; 
                     //console.log(s_no);
                     //s_no.toString();
-                    var p_no=document.getElementByid("patient_id");
+                    var p_no=document.getElementById("patient_id");
                    
                     var exp = new Date();
                     exp.setTime(exp.getTime()+(1*24*60*60*1000));
-                    setCookie(staff,s_no.value,1);
+                    setCookie("staff",s_no.value,1);
                     //setCookie('staff_no',s_no);
-                    setCookie(patient,p_no.value,1);
+                    setCookie("patient",p_no.value,1);
                     //document.cookie = "patient=" + p_no+";expires=" + exp.toUTCString();
                      //setCookie('patient_id',p_no);
                    // document.cookie = "patient=" + escape(p_no.value)+ ";path=/doctorAppointmentTime/;expires=" + exp.toUTCString();
-                    window.location.href = 'doctorAppointmentTime';
-                    return false;
+                    location.href = 'doctorAppointmentTime';
+                    //return false;
                   }
          </script>
 
@@ -120,7 +120,7 @@
                   
                   <input id="patient_id" type="hidden" name="patient_id" value={{patient_id}}>
                   <!--input type="submit" value="appoint"-->
-                  <a type="submit",onclick="appointment()", href="doctorAppointmentTime"> Appointment </a>
+                  <a type="submit" onclick="appointment()"> Appointment </a>
                 </form>
               </td>
             </tr>

@@ -64,8 +64,8 @@
                                 </div>
                                 
                                <!--input mbsc-input data-input-style="box" data-label-style="stacked" name="appointment_time" class="form-control" id="appointment_time" -->                               
-                                <input type="hidden" name="staff_no" value={{$s_no}}>
-                                <input type="hidden" name="patient_id" value={{$p_id}}>
+                                <input type="hidden" name="staff_no" value={{s_no}}>
+                                <input type="hidden" name="patient_id" value={{p_id}}>
                                 
                                 <input type="submit" href="error" class="btn btn-primary btn-user btn-block"
                                     value="Register" onclick="return registerAppointment()">
