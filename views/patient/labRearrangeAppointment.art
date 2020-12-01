@@ -34,7 +34,7 @@
                      setCookie("lab_name",l_name,1);
                      //setCookie("first_name",f_name,1);
                    // document.cookie = "patient=" + escape(p_no.value)+ ";path=/doctorAppointmentTime/;expires=" + exp.toUTCString();
-                    location.href = 'doctorRearrangeAppointmentTime';
+                    location.href = 'labRearrangeAppointmentTime';
                   }
          </script>
 
