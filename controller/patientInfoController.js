@@ -10,6 +10,8 @@ exports.getPatientDoctorInfoMakeAppointment = getPatientDoctorInfoMakeAppointmen
 exports.getPatientLabInfoMakeAppointment = getPatientLabInfoMakeAppointment;
 exports.getPatientEditDoctorAppointmentInfo = getPatientEditDoctorAppointmentInfo;
 exports.getPatientEditLabAppointmentInfo = getPatientEditLabAppointmentInfo;
+exports.getPatientDoctorAppointmentInfo = getPatientDoctorAppointmentInfo;
+exports.getPatientLabAppointmentInfo = getPatientLabAppointmentInfo;
 
 function getPatientHospitalInfo(req, res, next) {
 	const patient_id = xss(req.session.patient_id);
@@ -144,6 +146,7 @@ function getPatientEditDoctorAppointmentInfo(req, res, next) {
 				return;
 			}
 			patientDoctorAppointmentInfo = result;
+			common.correctAppointmentInfo(patientDoctorAppointmentInfo);
 			console.log(patientDoctorAppointmentInfo);
 			res.render('patient/doctorRearrangeAppointment', {
 				patientDoctorAppointmentInfo: patientDoctorAppointmentInfo
@@ -165,9 +168,52 @@ function getPatientEditLabAppointmentInfo(req, res, next) {
 				return;
 			}
 			patientLabAppointmentInfo = result;
+			common.correctAppointmentInfo(patientLabAppointmentInfo);
 			console.log(patientLabAppointmentInfo);
 			res.render('patient/labRearrangeAppointment', {
 				patientLabAppointmentInfo: patientLabAppointmentInfo
+			});
+		});
+	});
+}  
+
+function getPatientDoctorAppointmentInfo(req, res, next) {
+	const patient_id = xss(req.session.patient_id);
+	database.setUpDatabase(function (connection) {
+		connection.connect();
+		var sql = 'select a.appointment_id, a.staff_no, b.first_name, b.last_name, a.appointment_time, a.estimated_duration, a.valid from doctor_appointment a inner join staff b on a.staff_no = b.staff_no'; 
+		connection.query(sql, [patient_id], function (err, result) {
+			if (err) {
+				console.log('[SELECT ERROR] - ', err.message);
+				res.send('SQL query error');
+				return;
+			}
+			patientDoctorListAppointmentInfo = result;
+			common.correctAppointmentInfo(patientDoctorListAppointmentInfo);
+			console.log(patientDoctorListAppointmentInfo);
+			res.render('patient/doctorListAppointment', {
+				patientDoctorListAppointmentInfo: patientDoctorListAppointmentInfo
+			}); 
+		});
+	});
+}  
+
+function getPatientLabAppointmentInfo(req, res, next) {
+	const patient_id = xss(req.session.patient_id);
+	database.setUpDatabase(function (connection) {
+		connection.connect();
+		var sql = 'select a.appointment_id, a.lab_id, b.lab_name, a.appointment_time, a.estimated_duration, a.valid from lab_appointment a inner join lab b on a.lab_id = b.lab_id';
+		connection.query(sql, [patient_id], function (err, result) {
+			if (err) {
+				console.log('[SELECT ERROR] - ', err.message);
+				res.send('SQL query error');
+				return;
+			}
+			patientLablistAppointmentInfo = result;
+			common.correctAppointmentInfo(patientLablistAppointmentInfo);
+			console.log(patientLablistAppointmentInfo);
+			res.render('patient/labRearrangeAppointment', {
+				patientLablistAppointmentInfo: patientLablistAppointmentInfo
 			});
 		});
 	});
