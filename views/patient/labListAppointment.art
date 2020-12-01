@@ -13,41 +13,7 @@
   <script src="/vendor/chart.js/Chart.min.js"></script>
   <script src="/js/cookie.js"></script>
   <meta name="author" content="">
-            <script>
-                  function appointment(){
-                    var s_no=document.getElementById("appointment_id").value;
-                    //var s_no = $value.staff_no; 
-                    //console.log(s_no);
-                    //s_no.toString();
-                    //var p_no=document.getElementById("patient_id").value;
-                    var l_name=document.getElementById("lab_name").value;
-                    //var f_name=document.getElementById("first_name").value;
-                    //console.log("qw"+s_no);
-                    //console.log("qw"+p_no);
-                    //var exp = new Date();
-                    //exp.setTime(exp.getTime()+(1*24*60*60*1000));
-                    //document.cookie = "staff=" + s_no+";expires=" + exp.toUTCString();
-                    setCookie("appointment",s_no,1);
-                    //document.cookie = "patient=" + p_no+";expires=" + exp.toUTCString();
-
-                     //setCookie("patient",p_no,1);
-                     setCookie("lab_name",l_name,1);
-                     //setCookie("first_name",f_name,1);
-                   // document.cookie = "patient=" + escape(p_no.value)+ ";path=/doctorAppointmentTime/;expires=" + exp.toUTCString();
-                    location.href = 'labRearrangeAppointmentTime';
-                  }
-         </script>
-
-  <!--
-  <script>
-    function registerHome() {
-      var res = formContentToJson($("#registerForm"));
-      //if user did not enter userid or password
-      return validateHomeInput(res);
-    }
-  </script>
-  -->
-
+           
 </head>
 
 <body id="page-top">
@@ -92,7 +58,7 @@
               <th>Appointment Time</th>
               <th>Estimated Duration</th>
               <th>Appointment Status</th>
-              <th> </th>
+              
             </tr>
           </thead>
           <tfoot>
@@ -103,7 +69,7 @@
               <th>Appointment Time</th>
               <th>Estimated Duration</th>
               <th>Appointment Status</th>
-              <th> </th>
+              
             </tr>
           </tfoot>
           <tbody>
@@ -115,22 +81,7 @@
               <td>{{$value.appointment_time}}</td>
               <td>{{$value.estimated_duration}} minutes</td>
               <td>{{$value.valid}}</td>
-              <td>
-                <form> 
-                  <input id="appointment_id" type="hidden" name="appointment_id" value={{$value.appointment_id}}>
-                  <!--input id="first_name" type="hidden" name="first_name" value={{$value.first_name}}-->
-                  <input id="lab_name" type="hidden" name="lab_name" value={{$value.lab_name}}>
-                  <!--input id="patient_id" type="hidden" name="patient_id" value={{patient_id}}-->
-                  <!--input type="submit" value="appoint"-->
-                  <i class="fas fa-edit"></i>
-                  <input type="button" class="fas fa-edit" onclick="appointment()" value="Edit">
-                </form>
-                <form method="post">
-                  <input type="hidden" name="appointment_id" value={{$value.appointment_id}}>
-                  <i class="fas fa-trash"></i>
-                  <input type="submit" class="fas fa-trash" value="Delete">
-                </form>
-              </td>
+              
             </tr>
             {{/each}}
           </tbody>

@@ -96,7 +96,7 @@
             <h6 class="collapse-header">Option:</h6>
             <a class="collapse-item" href="doctorMakeAppointment">Make Appointment</a>
             <a class="collapse-item" href="doctorRearrangeAppointment">Edit Appointment</a>
-            <a class="collapse-item" href="policyDisplay">Cancel Appointment</a>
+            <a class="collapse-item" href="doctorListAppointment">My Appointment</a>
           </div>
         </div>
       </li>
@@ -114,7 +114,7 @@
             <h6 class="collapse-header">Option:</h6>
             <a class="collapse-item" href="labMakeAppointment">Make Appointment</a>
             <a class="collapse-item" href="labRearrangeAppointment">Edit Appointment</a>
-            <a class="collapse-item" href="policyDisplay">Cancel Appointment</a>
+            <a class="collapse-item" href="labListAppointment">My Appointment</a>
           </div>
         </div>
       </li>
