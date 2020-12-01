@@ -113,7 +113,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Option:</h6>
             <a class="collapse-item" href="labMakeAppointment">Make Appointment</a>
-            <a class="collapse-item" href="policyDisplay">Rearrange Appointment</a>
+            <a class="collapse-item" href="labRearrangeAppointment">Rearrange Appointment</a>
             <a class="collapse-item" href="policyDisplay">Cancel Appointment</a>
           </div>
         </div>

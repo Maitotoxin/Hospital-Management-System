@@ -19,8 +19,8 @@
            // getCookie("staff");
             //getCookie("patient");
             var res = formContentToJson($("#registerForm"));
-            delCookie("lab");
-            delCookie("patient");
+            delCookie("appointment");
+            //delCookie("patient");
             delCookie("lab_name");
             //delCookie("first_name");
             //if user did not enter userid or password
@@ -69,9 +69,9 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Make Appointment</h1>
+            <h1 class="h3 mb-0 text-gray-800">Rearrange Appointment</h1>
           </div>
-          <form action="/patient/labAppointmentTime" method="post" id="registerForm">
+          <form action="/patient/labRearrangeAppointmentTime" method="post" id="registerForm">
                 <!--div class="form-group row">
                     <div class="col-sm-3 mb-3 mb-sm-0">
                         <label class=""> <b>Selected Doctor No.</b> </label>
@@ -82,15 +82,22 @@
                 </div-->    
                 <div class="form-group row">
                     <div class="col-sm-3 mb-3 mb-sm-0">
-                        <label class=""> <b> Lab Name</b> </label>
+                        <label class=""> <b> Lab  Name</b> </label>
                     </div>
                     <div class="col-sm-7">
                         <input type="text" name="lab_name" id="lab_name" value="" disabled>
                     </div>
                 </div>    
-                 
-                <input type="hidden" name="lab_id" id="lab_id" value="">
-                <input type="hidden" name="patient_id" id="patient_id" value="">
+                <!--div class="form-group row">
+                    <div class="col-sm-3 mb-3 mb-sm-0">
+                        <label class=""> <b>Doctor Last Name</b> </label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" name="last_name" id="last_name" value="" disabled>
+                    </div>
+                </div-->    
+                <input type="hidden" name="appointment_id" id="appointment_id" value="">
+                <!--input type="hidden" name="patient_id" id="patient_id" value=""-->
                 <div class="form-group row">
                     <div class="col-sm-3 mb-3 mb-sm-0">
                         <label class=""> <b>Appointment Time</b> </label>
@@ -104,21 +111,21 @@
                  <!--input mbsc-input data-input-style="box" data-label-style="stacked" name="appointment_time" class="form-control" id="appointment_time" -->                               
                 
                     <script>
-                        var s_no=getCookie("lab");
-                        var p_no=getCookie("patient");
+                        var s_no=getCookie("appointment");
+                        //var p_no=getCookie("patient");
                         var l_name=getCookie("lab_name");
                         //var f_name=getCookie("first_name");
                         //console.log("a"+s_no);
                         //console.log("b"+p_no);
-                        document.getElementById('lab_id').value = s_no;
+                        document.getElementById('appointment_id').value = s_no;
                         //alert(document.getElementById('staff_no').value);
-                        document.getElementById('patient_id').value = p_no;
+                        //document.getElementById('patient_id').value = p_no;
                         document.getElementById("lab_name").value=l_name;
                         //document.getElementById("first_name").value=f_name;
                         //alert(document.getElementById('patient_id').value);
                     </script>
                 <input type="submit" href="error" class="btn btn-primary btn-user btn-block"
-                     value="Make Appointment" onclick="return registerAppointment()">
+                     value="Rearrange Appointment" onclick="return registerAppointment()">
                       <hr>
             </form>
         
