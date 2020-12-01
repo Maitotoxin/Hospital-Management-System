@@ -9,7 +9,64 @@ exports.loginPatient = loginPatient;
 exports.updatePatientProfile = updatePatientProfile;
 exports.createDoctorAppointment = createDoctorAppointment;
 exports.createLabAppointment = createLabAppointment;
- 
+exports.updateDoctorAppointment = updateDoctorAppointment;
+exports.updateLabAppointment = updateLabAppointment;
+
+function updateLabAppointment(req, res, next){
+    console.log('enter function updateLabAppontment');
+    console.log(req.body);
+    const appointment_id = xss(parseInt(req.body.appointment_id));
+    const appointment_time = xss(req.body.appointment_time); 
+    
+    //verify
+    database.setUpDatabase(function (connection) {
+        connection.connect();
+        var sqlParams = [appointment_time, "0", appointment_id];
+        var sql = 'update lab_appointment set appointment_time = ?, valid = ? where appointment_id = ?';
+        connection.query(sql, sqlParams, function (err, result) {
+            if (err) {
+                console.log('[SELECT ERROR] - ', err.message);
+                res.send("SQL query error");
+                return;
+            }
+            console.log('--------------------------INSERT----------------------------')
+            console.log('INSERT ID:', result)
+            console.log('------------------------------------------------------------')
+            connection.end(); 
+            res.redirect(301, '/patient/labRearrangeAppointment');
+
+        })
+    })
+}
+
+
+function updateDoctorAppointment(req, res, next){
+    console.log('enter function updateDoctorAppontment');
+    console.log(req.body);
+    const appointment_id = xss(parseInt(req.body.appointment_id));
+    const appointment_time = xss(req.body.appointment_time); 
+    
+    //verify
+    database.setUpDatabase(function (connection) {
+        connection.connect();
+        var sqlParams = [appointment_time, "0", appointment_id];
+        var sql = 'update doctor_appointment set appointment_time = ?, valid = ? where appointment_id = ?';
+        connection.query(sql, sqlParams, function (err, result) {
+            if (err) {
+                console.log('[SELECT ERROR] - ', err.message);
+                res.send("SQL query error");
+                return;
+            }
+            console.log('--------------------------INSERT----------------------------')
+            console.log('INSERT ID:', result)
+            console.log('------------------------------------------------------------')
+            connection.end(); 
+            res.redirect(301, '/patient/doctorRearrangeAppointment');
+
+        })
+    })
+}
+
 function createLabAppointment(req, res, next){
     console.log('enter function createLabAppontment');
     console.log(req.body);

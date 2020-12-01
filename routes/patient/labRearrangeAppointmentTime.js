@@ -9,4 +9,4 @@ labRearrangeAppontment.get('/',(req, res) =>{
 
 labRearrangeAppontment.post('/', labRearrangeAppointmentTime.updateLabAppointment);
 
-module.exports = labAppontment;
+module.exports = labRearrangeAppontment;
