@@ -1,9 +1,10 @@
 const express = require('express');
-const patientLabListAppointment = require('../../controller/patientInfoController');
+const patientLabAppointmentInfo = require('../../controller/patientInfoController');
 
 const lab = express.Router();
 
-lab.get('/', patientLabListAppointment.getPatientLabAppointmentInfo);
-
-
+lab.get('/',(req,res)=>{
+    res.render('patient/labListAppointment');
+});
+lab.post('/', patientLabAppointmentInfo.getPatientLabAppointmentInfo);
 module.exports = lab;

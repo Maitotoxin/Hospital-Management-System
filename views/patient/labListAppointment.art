@@ -12,8 +12,7 @@
   <!-- Page level plugins -->
   <script src="/vendor/chart.js/Chart.min.js"></script>
   <script src="/js/cookie.js"></script>
-  <meta name="author" content="">
-           
+   <meta name="author" content="">
 </head>
 
 <body id="page-top">
@@ -44,7 +43,7 @@
             <h1 class="h3 mb-2 text-gray-800">Lab Appointment Display</h1>
           </div>
           <!-- DataTales Example -->
-
+          
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -111,3 +110,4 @@
 
 
 </body>
+</html>

@@ -90,6 +90,7 @@
               <td>{{$value.gender}}</td>
               <td>{{$value.phone}}</td>
               <td>{{$value.description}}</td>
+              
             </tr>
             {{/each}}
           </tbody>

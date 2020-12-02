@@ -41,6 +41,7 @@ const patientInsuranceCompanyInfoDisplay = require('./routes/patient/insuranceCo
 const patientDoctorMakeAppointment = require('./routes/patient/doctorMakeAppointment');
 const patientDoctorAppointmentTime = require('./routes/patient/doctorAppointmentTime');
 const patientDoctorRearrangeAppointment = require('./routes/patient/doctorRearrangeAppointment');
+const patientDoctorListAppointment = require('./routes/patient/doctorListAppointment');
 const patientDoctorRearrangeAppointmentTime = require('./routes/patient/doctorRearrangeAppointmentTime');
 const patientLabMakeAppointment = require('./routes/patient/labMakeAppointment');
 const patientLabAppointmentTime = require('./routes/patient/labAppointmentTime');
@@ -59,6 +60,7 @@ app.use('/patient/insuranceCompanyInfoDisplay', patientInsuranceCompanyInfoDispl
 app.use('/patient/doctorMakeAppointment', patientDoctorMakeAppointment);
 app.use('/patient/doctorAppointmentTime', patientDoctorAppointmentTime);
 app.use('/patient/doctorRearrangeAppointment', patientDoctorRearrangeAppointment);
+app.use('/patient/doctorListAppointment', patientDoctorListAppointment);
 app.use('/patient/doctorRearrangeAppointmentTime', patientDoctorRearrangeAppointmentTime);
 app.use('/patient/labMakeAppointment', patientLabMakeAppointment);
 app.use('/patient/labAppointmentTime', patientLabAppointmentTime);

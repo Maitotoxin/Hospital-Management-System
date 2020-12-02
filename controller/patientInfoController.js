@@ -212,7 +212,7 @@ function getPatientLabAppointmentInfo(req, res, next) {
 			patientLablistAppointmentInfo = result;
 			common.correctAppointmentInfo(patientLablistAppointmentInfo);
 			console.log(patientLablistAppointmentInfo);
-			res.render('patient/labRearrangeAppointment', {
+			res.render('patient/labListAppointment', {
 				patientLablistAppointmentInfo: patientLablistAppointmentInfo
 			});
 		});
