@@ -24,18 +24,20 @@ function correctPatientInfo(patientInfo) {
 
 function correctAppointmentInfo(appointmentInfo){
     console.log("enter function for correcting valid value")
-    switch (appointmentInfo.valid){
-        case '0': 
-            appointmentInfo.valid = 'Waiting';
-            break;
-        case '1':
-            appointmentInfo.valid = 'Accept';
-            break;
-        case '2':
-            appointmentInfo.valid = 'Complete';
-            break;
-        case '3':
-            appointmentInfo.valid = 'Abort';
-            break;
+    for(var i = 0; i < appointmentInfo.length; ++i) {
+        switch (appointmentInfo[i].valid){
+            case '0': 
+                appointmentInfo[i].valid = 'Waiting';
+                break;
+            case '1':
+                appointmentInfo[i].valid = 'Accept';
+                break;
+            case '2':
+                appointmentInfo[i].valid = 'Complete';
+                break;
+            case '3':
+                appointmentInfo[i].valid = 'Abort';
+                break;
+        }
     }
 }
