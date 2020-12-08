@@ -1,8 +1,8 @@
 const express = require('express');
-const userAuto = require('../../../controller/autoController');
+const patientInvoice = require('../../controller/patientController');
 
-const auto = express.Router();
+const invoice = express.Router();
 
-auto.get('/', userAuto.getAutosInfo);
+invoice.get('/', patientInvoice.getInvoiceInfo);
 
-module.exports = auto;
+module.exports = invoice;
