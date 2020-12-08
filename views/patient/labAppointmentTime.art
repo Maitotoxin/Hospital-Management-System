@@ -22,7 +22,8 @@
             delCookie("lab");
             delCookie("patient");
             delCookie("lab_name");
-            //delCookie("first_name");
+            delCookie("test_id");
+            delCookie("test_name");
             //if user did not enter userid or password
             return validateAppointmentRegisterInput(res);
             //return true;
@@ -79,7 +80,15 @@
                     <div class="col-sm-7">
                         <input type="text" name="staff_no" id="staff_no" value="" disabled>
                     </div>
-                </div-->    
+                </div--> 
+                <div class="form-group row">
+                    <div class="col-sm-3 mb-3 mb-sm-0">
+                        <label class=""> <b> Test Name</b> </label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" name="test_name" id="test_name" value="" disabled>
+                    </div>
+                </div>       
                 <div class="form-group row">
                     <div class="col-sm-3 mb-3 mb-sm-0">
                         <label class=""> <b> Lab Name</b> </label>
@@ -88,7 +97,7 @@
                         <input type="text" name="lab_name" id="lab_name" value="" disabled>
                     </div>
                 </div>    
-                 
+                <input type="hidden" name="test_id" id="test_id" value=""> 
                 <input type="hidden" name="lab_id" id="lab_id" value="">
                 <input type="hidden" name="patient_id" id="patient_id" value="">
                 <div class="form-group row">
@@ -107,14 +116,16 @@
                         var s_no=getCookie("lab");
                         var p_no=getCookie("patient");
                         var l_name=getCookie("lab_name");
-                        //var f_name=getCookie("first_name");
+                        var f_name=getCookie("test_name");
+                        var t_name=getCookie("test_id");
                         //console.log("a"+s_no);
                         //console.log("b"+p_no);
                         document.getElementById('lab_id').value = s_no;
                         //alert(document.getElementById('staff_no').value);
                         document.getElementById('patient_id').value = p_no;
                         document.getElementById("lab_name").value=l_name;
-                        //document.getElementById("first_name").value=f_name;
+                        document.getElementById("test_name").value=f_name;
+                        document.getElementById("test_id").value=t_name;
                         //alert(document.getElementById('patient_id').value);
                     </script>
                 <input type="submit" href="error" class="btn btn-primary btn-user btn-block"

@@ -21,8 +21,6 @@
                     //s_no.toString();
                     var p_no=document.getElementById("patient_id").value;
                     var l_name=document.getElementById("lab_name").value;
-                    //var t_id=document.getElementById("test_id").value;
-                    //var f_name=document.getElementById("test_name").value;
                     //console.log("qw"+s_no);
                     //console.log("qw"+p_no);
                     //var exp = new Date();
@@ -33,8 +31,6 @@
 
                      setCookie("patient",p_no,1);
                      setCookie("lab_name",l_name,1);
-                     //setCookie("test_id",t_id,1);
-                     //setCookie("test_name",f_name,1);
                      //setCookie("first_name",f_name,1);
                    // document.cookie = "patient=" + escape(p_no.value)+ ";path=/doctorAppointmentTime/;expires=" + exp.toUTCString();
                     location.href = 'labAppointmentTime';
