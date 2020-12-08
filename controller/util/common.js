@@ -23,8 +23,9 @@ function correctPatientInfo(patientInfo) {
 }
 
 function correctAppointmentInfo(appointmentInfo){
+    console.log("enter function for correcting valid value")
     switch (appointmentInfo.valid){
-        case '0':
+        case '0': 
             appointmentInfo.valid = 'Waiting';
             break;
         case '1':
