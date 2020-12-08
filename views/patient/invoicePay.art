@@ -72,10 +72,10 @@
                                         <label class=""> <b>Choose the invoice you want to pay for</b> </label>
                                     </div>
                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                      <select name="receipt_id" id="receipt_id" class="form-control" >
+                                      <select name="invoice_id" id="invoice_id" class="form-control" >
                                         <option value="" selected disabled> -Please Select- </option>
-		                                    {{each unpaidAutoInsurancesInfo}}
-			                                    <option value = {{$value.receipt_id}}>InvoiceID: {{$value.receipt_id}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Amount not paid: ${{$value.leftamount}}</option>
+		                                    {{each receiptInfo}}
+			                                    <option value = {{$value.invoice_id}}>InvoiceID: {{$value.invoice_id}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Amount not paid: ${{$value.leftamount}}</option>
 			                                  {{/each}}
 		                                  </select>
                                     </div>
