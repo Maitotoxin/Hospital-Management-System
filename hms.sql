@@ -2,11 +2,30 @@ DROP DATABASE IF EXISTS hms;
 CREATE DATABASE hms;
 USE hms;
 
-CREATE TABLE lab_appointment (
+CREATE TABLE test(
+   test_id             INT NOT NULL AUTO_INCREMENT,
+   test_name           VARCHAR(30) NOT NULL,
+   description         VARCHAR(200),
+   price               DECIMAL(7, 2) NOT NULL,
+   last_update         DATETIME NOT NULL default CURRENT_TIMESTAMP,
+   PRIMARY KEY (test_id)
+);
+
+CREATE TABLE test_lab(
+    test_id             INT NOT NULL,
+    test_name           VARCHAR(30) NOT NULL,
+    lab_id              INT NOT NULL,
+    lab_name            VARCHAR(30) NOT NULL,
+    last_update         DATETIME NOT NULL default CURRENT_TIMESTAMP
+);
+
+CREATE TABLE test_appointment (
     appointment_id      INT NOT NULL AUTO_INCREMENT,
     estimated_duration  INT NOT NULL,
     patient_no          INT NOT NULL,
     lab_id              INT NOT NULL,
+    test_id             INT NOT NULL,
+    invoice_id          INT NOT NULL,
     appointment_time    DATETIME NOT NULL default CURRENT_TIMESTAMP,
     last_update         DATETIME NOT NULL default CURRENT_TIMESTAMP,
     valid               CHAR(1) NOT NULL,                                     
@@ -17,7 +36,7 @@ CREATE TABLE doctor_appointment (
     appointment_id      INT NOT NULL AUTO_INCREMENT,
     estimated_duration  INT NOT NULL,
     patient_no          INT NOT NULL,
-    staff_no              INT NOT NULL,
+    staff_no            INT NOT NULL,
     appointment_time    DATETIME NOT NULL default CURRENT_TIMESTAMP,
     last_update         DATETIME NOT NULL default CURRENT_TIMESTAMP,
     valid               CHAR(1) NOT NULL,                                     
@@ -48,7 +67,7 @@ CREATE TABLE icd (
 
 
 CREATE TABLE in_patient (
-    patient_id INT NOT NULL,
+    patient_id                  INT NOT NULL,
     last_update                 DATETIME NOT NULL default CURRENT_TIMESTAMP,
     PRIMARY KEY (patient_id)
 );
@@ -66,9 +85,9 @@ CREATE TABLE insurance_company (
 
 CREATE TABLE invoice (
     invoice_id                  INT NOT NULL AUTO_INCREMENT,
-    patient_no          INT NOT NULL,
+    patient_no                  INT NOT NULL,
     price                       DECIMAL(8, 2) NOT NULL,
-    price_paid                   INT NOT NULL,
+    price_paid                  INT NOT NULL,
     due_date                    DATETIME NOT NULL default CURRENT_TIMESTAMP,
     last_update                 DATETIME NOT NULL default CURRENT_TIMESTAMP,
     PRIMARY KEY (invoice_id)
@@ -79,7 +98,7 @@ CREATE TABLE patient_icd(
    patient_no          INT NOT NULL,
    icd_id              INT NOT NULL,
    disease_name        VARCHAR(30) NOT NULL,
-   last_update   DATETIME NOT NULL default CURRENT_TIMESTAMP
+   last_update         DATETIME NOT NULL default CURRENT_TIMESTAMP
 );
 
 
@@ -92,7 +111,7 @@ CREATE TABLE lab (
 );
 
 CREATE TABLE out_patient (
-    patient_id INT NOT NULL,
+    patient_id                  INT NOT NULL,
     last_update                 DATETIME NOT NULL default CURRENT_TIMESTAMP,
     PRIMARY KEY (patient_id)
 );
