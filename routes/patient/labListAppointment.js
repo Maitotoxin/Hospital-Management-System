@@ -3,8 +3,5 @@ const patientLabAppointmentInfo = require('../../controller/patientInfoControlle
 
 const lab = express.Router();
 
-lab.get('/',(req,res)=>{
-    res.render('patient/labListAppointment');
-});
-lab.post('/', patientLabAppointmentInfo.getPatientLabAppointmentInfo);
+lab.get('/', patientLabAppointmentInfo.getPatientLabAppointmentInfo);
 module.exports = lab;

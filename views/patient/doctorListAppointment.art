@@ -86,7 +86,7 @@
             </tr>
           </tfoot>
           <tbody>
-            {{each patientDoctorAppointmentInfo}}
+            {{each patientDoctorListAppointmentInfo}}
             <tr>
               <td>{{$value.appointment_id}}</td>
               <td>{{$value.staff_no}}</td>
