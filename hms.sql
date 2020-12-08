@@ -66,7 +66,7 @@ CREATE TABLE insurance_company (
 
 CREATE TABLE invoice (
     invoice_id                  INT NOT NULL AUTO_INCREMENT,
-    patient_no          INT NOT NULL,
+    patient_no                  INT NOT NULL,
     price                       DECIMAL(8, 2) NOT NULL,
     price_paid                   INT NOT NULL,
     due_date                    DATETIME NOT NULL default CURRENT_TIMESTAMP,

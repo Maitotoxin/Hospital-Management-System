@@ -41,3 +41,5 @@ function correctAppointmentInfo(appointmentInfo){
         }
     }
 }
+
+function 

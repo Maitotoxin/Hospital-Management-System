@@ -14,6 +14,71 @@ exports.updateLabAppointment = updateLabAppointment;
 exports.deleteDoctorAppointment = deleteDoctorAppointment;
 exports.deleteLabAppointment = deleteLabAppointment;
 
+function createPatientInvoice(req, res, next) {
+	const userid = xss(req.session.userid);
+	const homename = xss(req.body.homename);
+	const policyname = xss(req.body.policyname);
+	const startdate = xss(req.body.startdate);
+	const enddate = xss(req.body.enddate);
+	const monthDifference = common.getMonthDifference(startdate, enddate);
+	console.log(req.body.homename);
+	console.log(req.body.policyname);
+	console.log(monthDifference);
+	database.setUpDatabase(function (connection) {
+		connection.connect();
+		var customerSql = 'select * from customer where customer.userid = ? and customer.type = "H"';
+		connection.query(customerSql, userid, function (err, result) {
+			if (err) {
+				console.log('[SELECT ERROR] - ', err.message);
+				res.send('SQL query error');
+				return;
+			} else if (result.length == 0) {
+				var sql = 'insert into customer (type, userid) values ("H", ?)';
+				connection.query(sql, userid, function (err, result) {
+					if (err) {
+						console.log('[SELECT ERROR] - ', err.message);
+						res.send('SQL query error');
+						return;
+					}
+					console.log('--------------------------INSERT----------------------------')
+					console.log('INSERT ID:', result)
+					console.log('------------------------------------------------------------')
+				});
+			} else {
+				var sql = 'select amount from policy where policy.policyname = ?'
+				connection.query(sql, [policyname], function (err, result) {
+					if (err) {
+						console.log('[SELECT ERROR] - ', err.message);
+						res.send('SQL query error');
+						return;
+					} else if (result.length == 0) {
+						console.log('no such policy');
+						res.send('no such policy');
+						return;
+					} else {
+						var price = result[0].amount;
+						sql = 'insert into home_policy (userid, startdate, enddate, amount, homename, policyname, paymentduedate, amountpaid) values (?, ?, ?, ?, ?, ?, ?, 0)';
+						var sqlParam = [userid, startdate, enddate, price * monthDifference, homename, policyname, enddate];
+						console.log(sqlParam);
+						connection.query(sql, sqlParam, function (err, result) {
+							if (err) {
+								console.log('[SELECT ERROR] - ', err.message);
+								res.send('SQL query error');
+								return;
+							}
+							console.log('--------------------------INSERT----------------------------')
+							console.log('INSERT ID:', result)
+							console.log('------------------------------------------------------------')
+							connection.end();
+							res.redirect(301, '/dashboard');
+						});
+					}
+				});
+			}
+		});
+	});
+}
+
 function deleteLabAppointment(req, res, next){
     console.log('enter function deleteLabAppointment');
     console.log(req.body);
