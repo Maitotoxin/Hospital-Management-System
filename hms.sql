@@ -154,7 +154,6 @@ CREATE TABLE medicine (
     medicine_id   INT NOT NULL AUTO_INCREMENT,
     description    VARCHAR(200),
     medicine_name  VARCHAR(30) NOT NULL,
-    dose           VARCHAR(30) NOT NULL,
     price          DECIMAL(7, 2) NOT NULL,
     last_update    DATETIME NOT NULL default CURRENT_TIMESTAMP,
     PRIMARY KEY (medicine_id)
@@ -165,6 +164,7 @@ CREATE TABLE patient_medicine(
    patient_no          INT NOT NULL,
    medicine_id              INT NOT NULL,
    medicine_name        VARCHAR(30) NOT NULL,
+   dose           VARCHAR(30) NOT NULL,
    last_update   DATETIME NOT NULL default CURRENT_TIMESTAMP
 );
 
@@ -172,7 +172,7 @@ CREATE TABLE treatment (
     treatment_id   INT NOT NULL AUTO_INCREMENT,
     description    VARCHAR(200),
     treatment_name  VARCHAR(30) NOT NULL,
-    time           VARCHAR(30) NOT NULL,
+    
     price          DECIMAL(7, 2) NOT NULL,
     last_update    DATETIME NOT NULL default CURRENT_TIMESTAMP,
     PRIMARY KEY (treatment_id)
@@ -183,6 +183,7 @@ CREATE TABLE patient_treatment(
    patient_no          INT NOT NULL,
    treatment_id              INT NOT NULL,
    treatment_name        VARCHAR(30) NOT NULL,
+   time           VARCHAR(30) NOT NULL,
    last_update   DATETIME NOT NULL default CURRENT_TIMESTAMP
 );
 
