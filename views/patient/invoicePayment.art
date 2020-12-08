@@ -69,7 +69,7 @@
               <th>Invoice Due Date</th>
               <th>Invoice Amount</th>
               <th> Invoice Paid</th>
-            
+              <th></th>
             </tr>
           </thead>
           <tfoot>
@@ -78,6 +78,7 @@
               <th>Invoice Due Date</th>
               <th>Invoice Amount</th>
               <th> Invoice Paid</th>
+              <th></th>
             </tr>
           </tfoot>
           <tbody>
@@ -88,6 +89,7 @@
               <td>{{$value.due_date}}</td>
               <td>${{$value.price}}</td>
               <td>${{$value.price_paid}}</td>
+              
             </tr>
             {{/each}}
           </tbody>
