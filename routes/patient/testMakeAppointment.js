@@ -4,5 +4,6 @@ const patientTestMakeAppointment = require('../../controller/patientInfoControll
 const test = express.Router();
 
 test.get('/', patientTestMakeAppointment.getPatientTestInfoMakeAppointment);
+test.post('/', patientTestMakeAppointment.getPatientLabInfoIncludingTest);
 
 module.exports = test;

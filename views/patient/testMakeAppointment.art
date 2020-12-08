@@ -15,22 +15,22 @@
   <meta name="author" content="">
             <script>
                   function appointment(){
-                    var s_no=document.getElementById("test_id").value;
+                    var t_id=document.getElementById("test_id").value;
                     //var s_no = $value.staff_no; 
                     //console.log(s_no);
                     //s_no.toString();
                     var p_no=document.getElementById("patient_id").value;
-                    var l_name=document.getElementById("test_name").value;
+                    var t_name=document.getElementById("test_name").value;
                     //console.log("qw"+s_no);
                     //console.log("qw"+p_no);
                     //var exp = new Date();
                     //exp.setTime(exp.getTime()+(1*24*60*60*1000));
                     //document.cookie = "staff=" + s_no+";expires=" + exp.toUTCString();
-                    setCookie("test",s_no,1);
+                    setCookie("test",t_id,1);
                     //document.cookie = "patient=" + p_no+";expires=" + exp.toUTCString();
 
                      setCookie("patient",p_no,1);
-                     setCookie("test_name",l_name,1);
+                     setCookie("test_name",t_name,1);
                      //setCookie("first_name",f_name,1);
                    // document.cookie = "patient=" + escape(p_no.value)+ ";path=/doctorAppointmentTime/;expires=" + exp.toUTCString();
                     location.href = 'labMakeAppointment';
@@ -116,7 +116,7 @@
                   <input id="test_name" type="hidden" name="test_name" value={{$value.test_name}}>
                   <input id="patient_id" type="hidden" name="patient_id" value={{patient_id}}>
                   <!--input type="submit" value="appoint"-->
-                  <a  onclick="appointment()"> Appointment </a>
+                  <a type="submit" onclick="appointment()"> Appointment </a>
                 </form>
               </td>
             </tr>

@@ -236,8 +236,8 @@ END$$
  delimiter ;
 
   delimiter $$
-CREATE TRIGGER lab_appointment_up_dt_trg BEFORE
-    UPDATE ON lab_appointment
+CREATE TRIGGER test_appointment_up_dt_trg BEFORE
+    UPDATE ON test_appointment
     FOR EACH ROW
 BEGIN
    SET NEW.last_update = CURRENT_TIMESTAMP;

@@ -38,8 +38,6 @@ const patientDoctorInfoDisplay = require('./routes/patient/doctorInfoDisplay');
 const patientLabInfoDisplay = require('./routes/patient/labInfoDisplay');
 const patientTestInfoDisplay = require('./routes/patient/testInfoDisplay');
 const patientHospitalInfoDisplay = require('./routes/patient/hospitalInfoDisplay');
-const patientInvoiceInfoDisplay = require('./routes/patient/invoiceDisplay');
-const patientPayInfoDisplay = require('./routes/patient/payDisplay');
 const patientInsuranceCompanyInfoDisplay = require('./routes/patient/insuranceCompanyInfoDisplay');
 const patientDoctorMakeAppointment = require('./routes/patient/doctorMakeAppointment');
 const patientDoctorAppointmentTime = require('./routes/patient/doctorAppointmentTime');
@@ -47,10 +45,10 @@ const patientDoctorRearrangeAppointment = require('./routes/patient/doctorRearra
 const patientDoctorListAppointment = require('./routes/patient/doctorListAppointment');
 const patientDoctorRearrangeAppointmentTime = require('./routes/patient/doctorRearrangeAppointmentTime');
 const patientTestMakeAppointment = require('./routes/patient/testMakeAppointment');
+const patientLabMakeAppointment = require('./routes/patient/labMakeAppointment');
 const patientLabAppointmentTime = require('./routes/patient/labAppointmentTime');
 //const patientLabRearrangeAppointment = require('./routes/patient/labRearrangeAppointment');
 const patientLabListAppointment = require('./routes/patient/labListAppointment');
-const patientInvoicePay = require('./routes/patient/invoicePay');
 //const patientLabRearrangeAppointmentTime = require('./routes/patient/labRearrangeAppointmentTime');
 app.use('/patient/login', patientLogin);
 app.use('/patient/logout', patientLogout);
@@ -61,8 +59,6 @@ app.use('/patient/doctorInfoDisplay', patientDoctorInfoDisplay);
 app.use('/patient/labInfoDisplay', patientLabInfoDisplay);
 app.use('/patient/testInfoDisplay', patientTestInfoDisplay);
 app.use('/patient/hospitalInfoDisplay', patientHospitalInfoDisplay);
-app.use('/patient/invoiceDisplay', patientInvoiceInfoDisplay);
-app.use('/patient/payDisplay', patientPayInfoDisplay);
 app.use('/patient/insuranceCompanyInfoDisplay', patientInsuranceCompanyInfoDisplay);
 app.use('/patient/doctorMakeAppointment', patientDoctorMakeAppointment);
 app.use('/patient/doctorAppointmentTime', patientDoctorAppointmentTime);
@@ -70,11 +66,13 @@ app.use('/patient/doctorRearrangeAppointment', patientDoctorRearrangeAppointment
 app.use('/patient/doctorListAppointment', patientDoctorListAppointment);
 app.use('/patient/doctorRearrangeAppointmentTime', patientDoctorRearrangeAppointmentTime);
 app.use('/patient/testMakeAppointment', patientTestMakeAppointment);
+app.use('/patient/labMakeAppointment', patientLabMakeAppointment);
 app.use('/patient/labAppointmentTime', patientLabAppointmentTime);
 //app.use('/patient/labRearrangeAppointment', patientLabRearrangeAppointment);
 ///app.use('/patient/labRearrangeAppointmentTime', patientLabRearrangeAppointmentTime);
 app.use('/patient/labListAppointment', patientLabListAppointment);
-app.use('/patient/invoicePay', patientInvoicePay);
+
+ 
 //listen port 3000 
 app.listen(3000);
 console.log('Server started'); 

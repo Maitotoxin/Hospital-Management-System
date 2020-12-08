@@ -3,6 +3,6 @@ const patientLabMakeAppointment = require('../../controller/patientInfoControlle
 
 const lab = express.Router();
 
-lab.get('/', patientLabMakeAppointment.getPatientLabInfoMakeAppointment);
+lab.get('/', patientLabMakeAppointment.getPatientLabInfoIncludingTest);
 
 module.exports = lab;

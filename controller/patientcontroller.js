@@ -7,264 +7,28 @@ exports.createPatient = createPatient;
 exports.logoutPatient = logoutPatient;
 exports.loginPatient = loginPatient;
 exports.updatePatientProfile = updatePatientProfile;
-exports.createDoctorAppointment = createDoctorAppointment;
-exports.createLabAppointment = createLabAppointment;
-exports.updateDoctorAppointment = updateDoctorAppointment;
-exports.updateLabAppointment = updateLabAppointment;
-exports.deleteDoctorAppointment = deleteDoctorAppointment;
-exports.deleteLabAppointment = deleteLabAppointment;
 
+
+/*
 function createPatientInvoice(req, res, next) {
-	const userid = xss(req.session.userid);
-	const homename = xss(req.body.homename);
-	const policyname = xss(req.body.policyname);
-	const startdate = xss(req.body.startdate);
-	const enddate = xss(req.body.enddate);
-	const monthDifference = common.getMonthDifference(startdate, enddate);
-	console.log(req.body.homename);
-	console.log(req.body.policyname);
-	console.log(monthDifference);
+    const patient_id = xss(req.body.patient_id);
 	database.setUpDatabase(function (connection) {
 		connection.connect();
-		var customerSql = 'select * from customer where customer.userid = ? and customer.type = "H"';
-		connection.query(customerSql, userid, function (err, result) {
+		var sql = 'select patient_no from patient where patient_id = ?';
+		connection.query(sql, patient_id, function (err, result) {
 			if (err) {
 				console.log('[SELECT ERROR] - ', err.message);
 				res.send('SQL query error');
 				return;
-			} else if (result.length == 0) {
-				var sql = 'insert into customer (type, userid) values ("H", ?)';
-				connection.query(sql, userid, function (err, result) {
-					if (err) {
-						console.log('[SELECT ERROR] - ', err.message);
-						res.send('SQL query error');
-						return;
-					}
-					console.log('--------------------------INSERT----------------------------')
-					console.log('INSERT ID:', result)
-					console.log('------------------------------------------------------------')
-				});
-			} else {
-				var sql = 'select amount from policy where policy.policyname = ?'
-				connection.query(sql, [policyname], function (err, result) {
-					if (err) {
-						console.log('[SELECT ERROR] - ', err.message);
-						res.send('SQL query error');
-						return;
-					} else if (result.length == 0) {
-						console.log('no such policy');
-						res.send('no such policy');
-						return;
-					} else {
-						var price = result[0].amount;
-						sql = 'insert into home_policy (userid, startdate, enddate, amount, homename, policyname, paymentduedate, amountpaid) values (?, ?, ?, ?, ?, ?, ?, 0)';
-						var sqlParam = [userid, startdate, enddate, price * monthDifference, homename, policyname, enddate];
-						console.log(sqlParam);
-						connection.query(sql, sqlParam, function (err, result) {
-							if (err) {
-								console.log('[SELECT ERROR] - ', err.message);
-								res.send('SQL query error');
-								return;
-							}
-							console.log('--------------------------INSERT----------------------------')
-							console.log('INSERT ID:', result)
-							console.log('------------------------------------------------------------')
-							connection.end();
-							res.redirect(301, '/dashboard');
-						});
-					}
-				});
-			}
+            } 
+            patient_no = result[0].patient_no;
+            sql = "select "
 		});
 	});
 }
-
-function deleteLabAppointment(req, res, next){
-    console.log('enter function deleteLabAppointment');
-    console.log(req.body);
-    const appointment_id = xss(parseInt(req.body.appointment_id));
-    
-    //verify
-    database.setUpDatabase(function (connection) {
-        connection.connect();
-        var sqlParams = ["3", appointment_id];
-        var sql = 'update lab_appointment set valid = ? where appointment_id = ?';
-        connection.query(sql, sqlParams, function (err, result) {
-            if (err) {
-                console.log('[SELECT ERROR] - ', err.message);
-                res.send("SQL query error");
-                return;
-            }
-            console.log('--------------------------INSERT----------------------------')
-            console.log('INSERT ID:', result)
-            console.log('------------------------------------------------------------')
-            connection.end(); 
-            res.redirect(301, '/patient/labRearrangeAppointment');
-
-        })
-    })
-}
-
-function deleteDoctorAppointment(req, res, next){
-    console.log('enter function deleteDoctorAppointment');
-    console.log(req.body);
-    const appointment_id = xss(parseInt(req.body.appointment_id));
-    
-    //verify
-    database.setUpDatabase(function (connection) {
-        connection.connect();
-        var sqlParams = ["3", appointment_id];
-        var sql = 'update doctor_appointment set valid = ? where appointment_id = ?';
-        connection.query(sql, sqlParams, function (err, result) {
-            if (err) {
-                console.log('[SELECT ERROR] - ', err.message);
-                res.send("SQL query error");
-                return;
-            }
-            console.log('--------------------------INSERT----------------------------')
-            console.log('INSERT ID:', result)
-            console.log('------------------------------------------------------------')
-            connection.end(); 
-            res.redirect(301, '/patient/doctorRearrangeAppointment');
-
-        })
-    })
-}
-
-function updateLabAppointment(req, res, next){
-    console.log('enter function updateLabAppontment');
-    console.log(req.body);
-    const appointment_id = xss(parseInt(req.body.appointment_id));
-    const appointment_time = xss(req.body.appointment_time); 
-    
-    //verify
-    database.setUpDatabase(function (connection) {
-        connection.connect();
-        var sqlParams = [appointment_time, "0", appointment_id];
-        var sql = 'update lab_appointment set appointment_time = ?, valid = ? where appointment_id = ?';
-        connection.query(sql, sqlParams, function (err, result) {
-            if (err) {
-                console.log('[SELECT ERROR] - ', err.message);
-                res.send("SQL query error");
-                return;
-            }
-            console.log('--------------------------INSERT----------------------------')
-            console.log('INSERT ID:', result)
-            console.log('------------------------------------------------------------')
-            connection.end(); 
-            res.redirect(301, '/patient/labRearrangeAppointment');
-
-        })
-    })
-}
+*/
 
 
-function updateDoctorAppointment(req, res, next){
-    console.log('enter function updateDoctorAppontment');
-    console.log(req.body);
-    const appointment_id = xss(parseInt(req.body.appointment_id));
-    const appointment_time = xss(req.body.appointment_time); 
-    
-    //verify
-    database.setUpDatabase(function (connection) {
-        connection.connect();
-        var sqlParams = [appointment_time, "0", appointment_id];
-        var sql = 'update doctor_appointment set appointment_time = ?, valid = ? where appointment_id = ?';
-        connection.query(sql, sqlParams, function (err, result) {
-            if (err) {
-                console.log('[SELECT ERROR] - ', err.message);
-                res.send("SQL query error");
-                return;
-            }
-            console.log('--------------------------INSERT----------------------------')
-            console.log('INSERT ID:', result)
-            console.log('------------------------------------------------------------')
-            connection.end(); 
-            res.redirect(301, '/patient/doctorRearrangeAppointment');
-
-        })
-    })
-}
-
-function createLabAppointment(req, res, next){
-    console.log('enter function createLabAppontment');
-    console.log(req.body);
-    const lab_id = xss(parseInt(req.body.lab_id));
-    const patient_id = xss(req.body.patient_id);
-    const appointment_time = xss(req.body.appointment_time);
-    
-    //verify
-    database.setUpDatabase(function (connection) {
-        connection.connect();
-        var sql = 'select * from patient where patient_id = ?';
-        connection.query(sql, [patient_id], function (err, result) {
-            if (err) {
-                console.log('[SELECT ERROR] - ', err.message);
-                res.send("SQL query error");
-                return;
-            }
-            patient = result[0];
-          
-            var addSqlParams = [60, patient.patient_no, lab_id, appointment_time, "0"];
-            //console.log(addSqlParams);
-            var addSql = 'insert into lab_appointment (estimated_duration, patient_no, lab_id, appointment_time, valid) values (?, ?, ?, ?, ?)';
-            //var addSql = 'insert into user (userid, password) values (?, ?)';
-            //var addSqlParams = [id, password];
-            connection.query(addSql, addSqlParams, function (err, result) {
-                if (err) {
-                    console.log('[INSERT ERROR] - ', err.message)
-                    res.send("SQL insert error");
-                    return;
-                } 
-                console.log('--------------------------INSERT----------------------------')
-                console.log('INSERT ID:', result)
-                console.log('------------------------------------------------------------')
-                connection.end(); 
-                res.redirect(301, '/patient/dashboard');
-            })
-        })
-    })
-}
-
-function createDoctorAppointment(req, res, next){
-    console.log('enter function createDoctorAppontment');
-    console.log(req.body);
-    const staff_no = xss(parseInt(req.body.staff_no));
-    const patient_id = xss(req.body.patient_id);
-    const appointment_time = xss(req.body.appointment_time); 
-    
-    //verify
-    database.setUpDatabase(function (connection) {
-        connection.connect();
-        var sql = 'select * from patient where patient_id = ?';
-        connection.query(sql, [patient_id], function (err, result) {
-            if (err) {
-                console.log('[SELECT ERROR] - ', err.message);
-                res.send("SQL query error");
-                return;
-            }
-            patient = result[0];
-          
-            var addSqlParams = [60, patient.patient_no, staff_no, appointment_time, "0"];
-            //console.log(addSqlParams);
-            var addSql = 'insert into doctor_appointment (estimated_duration, patient_no, staff_no, appointment_time, valid) values (?, ?, ?, ?, ?)';
-            //var addSql = 'insert into user (userid, password) values (?, ?)';
-            //var addSqlParams = [id, password];
-            connection.query(addSql, addSqlParams, function (err, result) {
-                if (err) {
-                    console.log('[INSERT ERROR] - ', err.message)
-                    res.send("SQL insert error");
-                    return;
-                }
-                console.log('--------------------------INSERT----------------------------')
-                console.log('INSERT ID:', result)
-                console.log('------------------------------------------------------------')
-                connection.end(); 
-                res.redirect(301, '/patient/dashboard');
-            })
-        })
-    })
-}
 
 function createPatient(req, res, next) {
     console.log('enter function createPatient');

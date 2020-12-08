@@ -1,5 +1,5 @@
 const express = require('express');
-const doctorRearrangeAppointmentTime = require('../../controller/patientController')
+const doctorRearrangeAppointmentTime = require('../../controller/patientDoctorController')
 
 const doctorRearrangeAppontment = express.Router();
 

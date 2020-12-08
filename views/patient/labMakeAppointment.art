@@ -105,7 +105,7 @@
             </tr>
           </tfoot>
           <tbody>
-            {{each patientLabInfo}}
+            {{each labIncludingTestInfo}}
 
             <tr>
               <td>{{$value.lab_id}}</td>

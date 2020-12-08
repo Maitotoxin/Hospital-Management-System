@@ -12,6 +12,70 @@ exports.getPatientEditDoctorAppointmentInfo = getPatientEditDoctorAppointmentInf
 exports.getPatientEditLabAppointmentInfo = getPatientEditLabAppointmentInfo;
 exports.getPatientDoctorAppointmentInfo = getPatientDoctorAppointmentInfo;
 exports.getPatientLabAppointmentInfo = getPatientLabAppointmentInfo;
+exports.getPatientTestInfo = getPatientTestInfo;
+exports.getPatientTestInfoMakeAppointment = getPatientTestInfoMakeAppointment;
+exports.getPatientLabInfoIncludingTest = getPatientLabInfoIncludingTest;
+
+function getPatientLabInfoIncludingTest(req, res, next){
+	const test_id = xss(req.body.test_id);
+	console.log(test_id);
+	database.setUpDatabase(function (connection) {
+		connection.connect(); 
+		var sql = 'select a.lab_id, a.lab_name, a.description from lab a inner join test_lab b on a.lab_id = b.lab_id where b.test_id = ?';
+		connection.query(sql, [test_id], function (err, result) {
+			if (err) {
+				console.log('[SELECT ERROR] - ', err.message);
+				res.send('SQL query error');
+				return;
+			}
+			labIncludingTestInfo = result;
+			console.log(labIncludingTestInfo);
+			res.render('patient/labMakeAppointment', {
+				labIncludingTestInfo: labIncludingTestInfo
+			});
+		}); 
+	}); 
+}
+
+function getPatientTestInfoMakeAppointment(req, res, next){
+	const patient_id = xss(req.session.patient_id);
+	database.setUpDatabase(function (connection) {
+		connection.connect(); 
+		var sql = 'select test_id, test_name, description, price from test';
+		connection.query(sql, [patient_id], function (err, result) {
+			if (err) {
+				console.log('[SELECT ERROR] - ', err.message);
+				res.send('SQL query error');
+				return;
+			}
+			patientTestInfo = result;
+			//console.log(userInfo);
+			res.render('patient/testMakeAppointment', {
+				patientTestInfo: patientTestInfo
+			});
+		});
+	});
+}
+
+function getPatientTestInfo(req, res, next){
+	const patient_id = xss(req.session.patient_id);
+	database.setUpDatabase(function (connection) {
+		connection.connect();
+		var sql = 'select test_id, test_name, description, price from test';
+		connection.query(sql, [patient_id], function (err, result) {
+			if (err) {
+				console.log('[SELECT ERROR] - ', err.message);
+				res.send('SQL query error');
+				return;
+			}
+			patientTestInfo = result;
+			//console.log(userInfo);
+			res.render('patient/testInfoDisplay', {
+				patientTestInfo: patientTestInfo
+			});
+		});
+	});
+}
 
 function getPatientHospitalInfo(req, res, next) {
 	const patient_id = xss(req.session.patient_id);

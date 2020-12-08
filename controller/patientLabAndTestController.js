@@ -5,6 +5,7 @@ exports.createLabAppointment = createLabAppointment;
 exports.updateLabAppointment = updateLabAppointment;
 exports.deleteLabAppointment = deleteLabAppointment;
 
+
 function deleteLabAppointment(req, res, next){
     console.log('enter function deleteLabAppointment');
     console.log(req.body);

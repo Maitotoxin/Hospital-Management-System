@@ -1,5 +1,5 @@
 const express = require('express');
-const labRearrangeAppointmentTime = require('../../controller/patientController')
+const labRearrangeAppointmentTime = require('../../controller/patientLabAndTestController')
 
 const labRearrangeAppontment = express.Router();
 
@@ -9,4 +9,4 @@ labRearrangeAppontment.get('/',(req, res) =>{
 
 labRearrangeAppontment.post('/', labRearrangeAppointmentTime.updateLabAppointment);
 
-module.exports = labRearrangeAppontment;
+module.exports = labRearrangeAppontment; 
