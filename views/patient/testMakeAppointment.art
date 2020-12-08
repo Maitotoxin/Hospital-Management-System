@@ -4,7 +4,7 @@
 <head>
 
   {{include '../common/header.art'}}
-  <title>HMS {{patient_id}} Lab Appointment</title>
+  <title>HMS {{patient_id}} Test Appointment</title>
 
   <!-- Custom scripts for all pages-->
   <script src="/js/sb-admin-2.min.js"></script>
@@ -15,25 +15,25 @@
   <meta name="author" content="">
             <script>
                   function appointment(){
-                    var s_no=document.getElementById("lab_id").value;
+                    var s_no=document.getElementById("test_id").value;
                     //var s_no = $value.staff_no; 
                     //console.log(s_no);
                     //s_no.toString();
                     var p_no=document.getElementById("patient_id").value;
-                    var l_name=document.getElementById("lab_name").value;
+                    var l_name=document.getElementById("test_name").value;
                     //console.log("qw"+s_no);
                     //console.log("qw"+p_no);
                     //var exp = new Date();
                     //exp.setTime(exp.getTime()+(1*24*60*60*1000));
                     //document.cookie = "staff=" + s_no+";expires=" + exp.toUTCString();
-                    setCookie("lab",s_no,1);
+                    setCookie("test",s_no,1);
                     //document.cookie = "patient=" + p_no+";expires=" + exp.toUTCString();
 
                      setCookie("patient",p_no,1);
-                     setCookie("lab_name",l_name,1);
+                     setCookie("test_name",l_name,1);
                      //setCookie("first_name",f_name,1);
                    // document.cookie = "patient=" + escape(p_no.value)+ ";path=/doctorAppointmentTime/;expires=" + exp.toUTCString();
-                    location.href = 'labAppointmentTime';
+                    location.href = 'labMakeAppointment';
                   }
          </script>
 
@@ -74,7 +74,7 @@
         <div class="container-fluid">
         <table class="table table-striped table-bordered table-hover custom-table">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-2 text-gray-800">Lab Information Display</h1>
+            <h1 class="h3 mb-2 text-gray-800">Test Information Display</h1>
           </div>
           <!-- DataTales Example -->
 
@@ -86,31 +86,34 @@
 
           <thead>
             <tr>
-              <th>Lab ID</th>
-              <th>Lab Name</th>
+              <th>Test ID</th>
+              <th>Test Name</th>
               <th>Description</th>
+              <th>Price</th>
               <th> </th>
             </tr>
           </thead>
           <tfoot>
             <tr>
-              <th>Lab ID</th>
-              <th>Lab Name</th>
+              <th>Test ID</th>
+              <th>Test Name</th>
               <th>Description</th>
+              <th>Price</th>
               <th> </th>
             </tr>
           </tfoot>
           <tbody>
-            {{each patientLabInfo}}
+            {{each patientTestInfo}}
 
             <tr>
-              <td>{{$value.lab_id}}</td>
-              <td>{{$value.lab_name}}</td>
+              <td>{{$value.test_id}}</td>
+              <td>{{$value.test_name}}</td>
               <td>{{$value.description}}</td>
+              <td>${{$value.price}}</td>
               <td>
                 <form> 
-                  <input id="lab_id" type="hidden" name="lab_id" value={{$value.lab_id}}>
-                  <input id="lab_name" type="hidden" name="lab_name" value={{$value.lab_name}}>
+                  <input id="test_id" type="hidden" name="test_id" value={{$value.test_id}}>
+                  <input id="test_name" type="hidden" name="test_name" value={{$value.test_name}}>
                   <input id="patient_id" type="hidden" name="patient_id" value={{patient_id}}>
                   <!--input type="submit" value="appoint"-->
                   <a  onclick="appointment()"> Appointment </a>
