@@ -49,6 +49,7 @@ CREATE TABLE icd (
 
 CREATE TABLE in_patient (
     patient_id INT NOT NULL,
+    last_update                 DATETIME NOT NULL default CURRENT_TIMESTAMP,
     PRIMARY KEY (patient_id)
 );
 
@@ -65,10 +66,19 @@ CREATE TABLE insurance_company (
 
 CREATE TABLE invoice (
     invoice_id                  INT NOT NULL AUTO_INCREMENT,
+    patient_no          INT NOT NULL,
     price                       DECIMAL(8, 2) NOT NULL,
     due_date                    DATETIME NOT NULL default CURRENT_TIMESTAMP,
     last_update                 DATETIME NOT NULL default CURRENT_TIMESTAMP,
     PRIMARY KEY (invoice_id)
+);
+
+CREATE TABLE patient_icd(
+   invoice_id          INT NOT NULL,
+   patient_no          INT NOT NULL,
+   icd_id              INT NOT NULL,
+   disease_name        VARCHAR(30) NOT NULL,
+   last_update   DATETIME NOT NULL default CURRENT_TIMESTAMP
 );
 
 
@@ -82,6 +92,7 @@ CREATE TABLE lab (
 
 CREATE TABLE out_patient (
     patient_id INT NOT NULL,
+    last_update                 DATETIME NOT NULL default CURRENT_TIMESTAMP,
     PRIMARY KEY (patient_id)
 );
 
@@ -108,6 +119,7 @@ CREATE TABLE patient (
 
 CREATE TABLE receipt (
     receipt_id          INT NOT NULL AUTO_INCREMENT,
+    invoice_id          INT NOT NULL,
     amount              DECIMAL(7, 2) NOT NULL,
     payment_method      VARCHAR(30) NOT NULL,
     last_update         DATETIME NOT NULL default CURRENT_TIMESTAMP,
@@ -138,17 +150,41 @@ CREATE TABLE staff (
 
 
 
-CREATE TABLE treatment (
-    treatment_id   INT NOT NULL AUTO_INCREMENT,
-    type           VARCHAR(30) NOT NULL,
+CREATE TABLE medicine (
+    medicine_id   INT NOT NULL AUTO_INCREMENT,
     description    VARCHAR(200),
     medicine_name  VARCHAR(30) NOT NULL,
     dose           VARCHAR(30) NOT NULL,
     price          DECIMAL(7, 2) NOT NULL,
     last_update    DATETIME NOT NULL default CURRENT_TIMESTAMP,
+    PRIMARY KEY (medicine_id)
+);
+
+CREATE TABLE patient_medicine(
+   invoice_id          INT NOT NULL,
+   patient_no          INT NOT NULL,
+   medicine_id              INT NOT NULL,
+   medicine_name        VARCHAR(30) NOT NULL,
+   last_update   DATETIME NOT NULL default CURRENT_TIMESTAMP
+);
+
+CREATE TABLE treatment (
+    treatment_id   INT NOT NULL AUTO_INCREMENT,
+    description    VARCHAR(200),
+    treatment_name  VARCHAR(30) NOT NULL,
+    time           VARCHAR(30) NOT NULL,
+    price          DECIMAL(7, 2) NOT NULL,
+    last_update    DATETIME NOT NULL default CURRENT_TIMESTAMP,
     PRIMARY KEY (treatment_id)
 );
 
+CREATE TABLE patient_treatment(
+   invoice_id          INT NOT NULL,
+   patient_no          INT NOT NULL,
+   treatment_id              INT NOT NULL,
+   treatment_name        VARCHAR(30) NOT NULL,
+   last_update   DATETIME NOT NULL default CURRENT_TIMESTAMP
+);
 
 CREATE TABLE ward (
     ward_id                INT NOT NULL AUTO_INCREMENT,
@@ -159,6 +195,26 @@ CREATE TABLE ward (
 
 
  delimiter $$
+CREATE TRIGGER invoice_up_dt_trg BEFORE
+    UPDATE ON invoice
+    FOR EACH ROW
+BEGIN
+   SET NEW.last_update = CURRENT_TIMESTAMP;
+END$$
+
+ delimiter ;
+
+ delimiter $$
+CREATE TRIGGER receipt_up_dt_trg BEFORE
+    UPDATE ON receipt
+    FOR EACH ROW
+BEGIN
+   SET NEW.last_update = CURRENT_TIMESTAMP;
+END$$
+
+ delimiter ;
+
+  delimiter $$
 CREATE TRIGGER lab_appointment_up_dt_trg BEFORE
     UPDATE ON lab_appointment
     FOR EACH ROW
@@ -188,6 +244,40 @@ BEGIN
 END$$
 
  delimiter ;
+
+ delimiter $$
+
+CREATE TRIGGER patient_icd_up_dt_trg BEFORE
+    UPDATE ON patient_icd
+    FOR EACH ROW
+BEGIN
+     SET NEW.last_update = CURRENT_TIMESTAMP;
+END$$
+
+ delimiter ;
+
+ delimiter $$
+
+CREATE TRIGGER patient_medicine_up_dt_trg BEFORE
+    UPDATE ON patient_medicine
+    FOR EACH ROW
+BEGIN
+     SET NEW.last_update = CURRENT_TIMESTAMP;
+END$$
+
+ delimiter ;
+
+ delimiter $$
+
+CREATE TRIGGER patient_treatment_up_dt_trg BEFORE
+    UPDATE ON patient_treatment
+    FOR EACH ROW
+BEGIN
+     SET NEW.last_update = CURRENT_TIMESTAMP;
+END$$
+
+ delimiter ;
+
  delimiter $$
 
 CREATE TRIGGER icd_up_dt_trg BEFORE
@@ -198,6 +288,7 @@ BEGIN
 END$$
 
  delimiter ;
+
  delimiter $$
 
 CREATE TRIGGER insurance_company_up_dt_trg BEFORE
@@ -208,6 +299,7 @@ BEGIN
 END$$
 
  delimiter ;
+
  delimiter $$
 
 CREATE  TRIGGER lab_up_dt_trg BEFORE
@@ -250,6 +342,16 @@ END$$
 
  delimiter ;
  
+  delimiter $$
+CREATE TRIGGER medicine_dt_trg BEFORE
+    UPDATE ON medicine
+    FOR EACH ROW
+BEGIN
+     SET NEW.last_update = CURRENT_TIMESTAMP;
+END$$
+
+ delimiter ;
+
  delimiter $$
 CREATE TRIGGER ward_dt_trg BEFORE
     UPDATE ON ward
