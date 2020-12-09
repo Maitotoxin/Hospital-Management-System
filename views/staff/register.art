@@ -32,7 +32,7 @@
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Create Your WDS Account!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Create Your HMS Staff Account!</h1>
                             </div>
 
                             <form action="/register" method="post" id="registerForm">
@@ -107,13 +107,33 @@
                                         </select>
                                     </div>
                                 </div>
-
+                                <div class="form-group row">
+                                    <div class="col-sm-5 mb-3 mb-sm-0">
+                                        <label class=""> <b>Staff Class</b> </label>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <select name="staff_class" id="staff_class" class="form-control">
+                                            <option value="" selected disabled> -Please Select- </option>
+                                            <option value="D">Doctor</option>
+                                            <option value="N">Nurse</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="form-group row">
                                     <div class="col-sm-5 mb-3 mb-sm-0">
                                         <label class=""> <b>Birth Date</b> </label>
                                     </div>
                                     <div class="col-sm-7">
                                         <input name="birthdate" class="form-control" id="birthdate" type="date">
+                                    </div>
+                                </div>
+
+                                 <div class="form-group row">
+                                    <div class="col-sm-5 mb-3 mb-sm-0">
+                                        <label class=""> <b>Description of yourself</b> </label>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <input name="description" class="form-control" id="description" type="text" rows="20" cols="50">
                                     </div>
                                 </div>
 

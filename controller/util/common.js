@@ -1,5 +1,6 @@
 exports.correctPatientInfo = correctPatientInfo;
 exports.correctAppointmentInfo = correctAppointmentInfo;
+exports.correctStaffInfo = correctStaffInfo;
 
 function correctPatientInfo(patientInfo) {
     switch (patientInfo.gender) {
@@ -39,5 +40,26 @@ function correctAppointmentInfo(appointmentInfo){
                 appointmentInfo[i].valid = 'Abort';
                 break;
         }
+    }
+}
+
+function correctStaffInfo(staffInfo) {
+    switch (staffInfo.gender) {
+        case 'M':
+            patientInfo.gender = 'Male';
+            break;
+        case 'F':
+            patientInfo.gender = 'Female';
+            break;
+        default:
+            break;
+    }
+    switch (staffInfo.staff_class) {
+        case 'D':
+            staffInfo.staff_class = 'Doctor';
+            break;
+        case 'N':
+            staffInfo.staff_class = 'Nurse';
+
     }
 }
