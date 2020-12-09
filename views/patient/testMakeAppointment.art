@@ -111,7 +111,7 @@
               <td>{{$value.description}}</td>
               <td>${{$value.price}}</td>
               <td>
-                <form method = "post"> 
+                <form method="post"> 
                   <input id="test_id" type="hidden" name="test_id" value={{$value.test_id}}>
                   <input id="test_name" type="hidden" name="test_name" value={{$value.test_name}}>
                   <input id="patient_id" type="hidden" name="patient_id" value={{patient_id}}>
