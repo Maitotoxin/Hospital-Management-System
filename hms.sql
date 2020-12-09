@@ -21,7 +21,6 @@ CREATE TABLE test_lab(
 
 CREATE TABLE test_appointment (
     appointment_id      INT NOT NULL AUTO_INCREMENT,
-    estimated_duration  INT NOT NULL,
     patient_no          INT NOT NULL,
     lab_id              INT NOT NULL,
     test_id             INT NOT NULL,
@@ -86,10 +85,10 @@ CREATE TABLE insurance_company (
 CREATE TABLE invoice (
     invoice_id                  INT NOT NULL AUTO_INCREMENT,
     patient_no                  INT NOT NULL,
+    price                       DECIMAL(8, 2) NOT NULL default 0,
+    price_paid                  INT NOT NULL default 0,
     doctor_appointment_id       INT,
     lab_appointment_id          INT,
-    price                       DECIMAL(8, 2) NOT NULL,
-    price_paid                  INT NOT NULL,
     due_date                    DATETIME NOT NULL default CURRENT_TIMESTAMP,
     last_update                 DATETIME NOT NULL default CURRENT_TIMESTAMP,
     PRIMARY KEY (invoice_id)
