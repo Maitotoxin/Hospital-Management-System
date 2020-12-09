@@ -1,5 +1,5 @@
 const express = require('express');
-const patientInvoice = require('../../controller/patientInvoiceAndReceiptController');
+const patientInvoice = require('../../controller/patientInfoController');
 
 const invoice = express.Router();
 
