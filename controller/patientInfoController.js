@@ -15,6 +15,63 @@ exports.getPatientLabAppointmentInfo = getPatientLabAppointmentInfo;
 exports.getPatientTestInfo = getPatientTestInfo;
 exports.getPatientTestInfoMakeAppointment = getPatientTestInfoMakeAppointment;
 exports.getPatientLabInfoIncludingTest = getPatientLabInfoIncludingTest;
+exports.getInvoiceInfo = getInvoiceInfo;
+
+function getInvoiceInfo(req, res, next){
+	const patient_id = xss(req.session.patient_id);
+	database.setUpDatabase(function (connection) {
+        connection.connect();
+        var sql = 'select * from patient where patient_id = ?';
+        connection.query(sql, [patient_id], function (err, result) {
+            if (err) {
+                console.log('[SELECT ERROR] - ', err.message);
+                res.send("SQL query error");
+                return;
+			}
+			patient_no = result[0].patient_no;
+			sql = 'select invoice_id, type, appointment_id, price, price_paid, due_date from invoice where patient_no = ?';
+			connection.query(sql, [patient_no], function (err, result){
+				if (err) {
+					console.log('[SELECT ERROR] - ', err.message);
+					res.send("SQL query error");
+					return;
+				}
+				getInvoiceInfo = result;
+				res.render('patient/invoiceDisplay', {
+					getInvoiceInfo: getInvoiceInfo
+				});
+			})
+		})
+	}) 
+}
+
+function getUnpaidInvoiceInfo(req, res, next){
+	const patient_id = xss(req.session.patient_id);
+	database.setUpDatabase(function (connection) {
+        connection.connect();
+        var sql = 'select * from patient where patient_id = ?';
+        connection.query(sql, [patient_id], function (err, result) {
+            if (err) {
+                console.log('[SELECT ERROR] - ', err.message);
+                res.send("SQL query error");
+                return;
+			}
+			patient_no = result[0].patient_no;
+			sql = 'select invoice_id, type, appointment_id, price, price_paid, due_date from invoice where patient_no=? and price>price_paid';
+			connection.query(sql, [patient_no], function (err, result){
+				if (err) {
+					console.log('[SELECT ERROR] - ', err.message);
+					res.send("SQL query error");
+					return;
+				}
+				getUnpaidInvoiceInfo = result;
+				res.render('patient/invoicePayDisplay', {
+					getUnpaidInvoiceInfo: getUnpaidInvoiceInfo
+				});
+			})
+		})
+	}) 
+}
 
 function getPatientLabInfoIncludingTest(req, res, next){
 	const test_id = xss(parseInt(req.body.test_id));

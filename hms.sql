@@ -87,8 +87,8 @@ CREATE TABLE invoice (
     patient_no                  INT NOT NULL,
     price                       DECIMAL(8, 2) NOT NULL default 0,
     price_paid                  INT NOT NULL default 0,
-    appointment_id       INT,
-    type          CHAR(1) NOT NULL,
+    appointment_id              INT,
+    type                        CHAR(1),
     due_date                    DATETIME NOT NULL default CURRENT_TIMESTAMP,
     last_update                 DATETIME NOT NULL default CURRENT_TIMESTAMP,
     PRIMARY KEY (invoice_id)
@@ -141,6 +141,7 @@ CREATE TABLE patient (
 CREATE TABLE receipt (
     receipt_id          INT NOT NULL AUTO_INCREMENT,
     invoice_id          INT NOT NULL,
+    patient_id          VARCHAR(30) NOT NULL,
     amount              DECIMAL(7, 2) NOT NULL,
     payment_method      VARCHAR(30) NOT NULL,
     last_update         DATETIME NOT NULL default CURRENT_TIMESTAMP,
@@ -389,7 +390,7 @@ CREATE TRIGGER test_appointment_invoice_trg AFTER
     INSERT ON test_appointment
     FOR EACH ROW
 BEGIN
-    insert into invoice (appointment_id,type,patient_no) values (NEW.appointment_id,"1",NEW.patient_no);
+    insert into invoice (appointment_id,patient_no) values (NEW.appointment_id, NEW.patient_no);
     
 END$$
 

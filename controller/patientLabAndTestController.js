@@ -103,7 +103,7 @@ function createLabAppointment(req, res, next){
                         return;
                     } 
                     console.log("aaaaa");
-                    sql = 'select a.invoice_id, a.lab_appointment_id from invoice a inner join test_appointment b on a.lab_appointment_id = b.appointment_id'
+                    sql = 'select a.invoice_id, a.appointment_id from invoice a inner join test_appointment b on a.appointment_id = b.appointment_id where a.type=NULL'
                     connection.query(sql, [test_id], function (err, result){
                         if (err) {
                             console.log('[INSERT ERROR] - ', err.message)
@@ -114,14 +114,14 @@ function createLabAppointment(req, res, next){
                         fuck_dead_lock = result[0];
                         console.log(fuck_dead_lock);
                         sql = 'update test_appointment set invoice_id = ? where appointment_id = ?';
-                        sqlParams = [fuck_dead_lock.invoice_id, fuck_dead_lock.lab_appointment_id];
+                        sqlParams = [fuck_dead_lock.invoice_id, fuck_dead_lock.appointment_id];
                         connection.query(sql, sqlParams, function (err, result){
                             if (err) {
                                 console.log('[INSERT ERROR] - ', err.message)
                                 res.send("SQL insert error");
                                 return;
                             }
-                            sql = 'update invoice set price=?, price_paid=0, due_date=? where invoice_id = ?';
+                            sql = 'update invoice set price=?, price_paid=0, due_date=?, type="L" where invoice_id = ?';
                             sqlParams = [price, appointment_time, fuck_dead_lock.invoice_id];
                             connection.query(sql, sqlParams, function (err, result){
                                 if (err) {

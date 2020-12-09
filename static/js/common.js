@@ -47,7 +47,6 @@ function validatePayment(input) {
         alert('Paid too much!')
         return false;
     }
-
     return true;
 }
 

@@ -1,5 +1,5 @@
 const express = require('express');
-const patientPay = require('../../controller/patientInvoiceAndReceiptController');
+const patientPay = require('../../controller/patientInfoController');
 
 const pay = express.Router();
 
