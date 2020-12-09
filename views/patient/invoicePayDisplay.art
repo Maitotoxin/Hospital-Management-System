@@ -90,8 +90,8 @@
             <tr>
               <th>Invoice ID</th>
               <th>Patient No</th>
-              <th>Doctor Appointment ID</th>
-              <th>Lab Appointment ID</th>
+              <th>Appointment ID</th>
+              <th>Invoice Type</th>
               <th>Payment Duedate</th>
               <th>Invoice Amount</th>
               <th>Paid Amount</th>
@@ -102,8 +102,8 @@
             <tr>
               <th>Invoice ID</th>
               <th>Patient No</th>
-              <th>Doctor Appointment ID</th>
-              <th>Lab Appointment ID</th>
+              <th>Appointment ID</th>
+              <th>Invoice Type</th>
               <th>Payment Duedate</th>
               <th>Invoice Amount</th>
               <th>Paid Amount</th>
@@ -116,8 +116,8 @@
             <tr>
               <td>{{$value.invoice_id}}</td>
               <td>{{$value.patient_no}}</td>
-              <td>{{$value.doctor_appointment_id}}</td>
-              <td>{{$value.lab_appointment_id}}</td>
+              <td>{{$value.appointment_id}}</td>
+              <td>{{$value.type}}</td>
               <td>{{$value.due_date}}</td>
               <td>${{$value.price}}</td>
               <td>${{$value.price_paid}}</td>
