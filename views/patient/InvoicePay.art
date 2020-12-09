@@ -116,7 +116,7 @@
                 
                     <script>
                         var s_no=getCookie("invoice_id");
-                        var p_no=getCookie("price_unapid");
+                        var p_no=getCookie("price_unpaid");
                        
                         //console.log("a"+s_no);
                         //console.log("b"+p_no);
