@@ -68,6 +68,7 @@ function createLabAppointment(req, res, next){
     const lab_id = xss(parseInt(req.body.lab_id));
     const patient_id = xss(req.body.patient_id);
     const appointment_time = xss(req.body.appointment_time);
+    const test_id = xss(req.body.test_id);
     
     //verify
     database.setUpDatabase(function (connection) {
@@ -79,11 +80,10 @@ function createLabAppointment(req, res, next){
                 res.send("SQL query error");
                 return;
             }
-            patient = result[0];
-          
-            var addSqlParams = [60, patient.patient_no, lab_id, appointment_time, "0"];
-            //console.log(addSqlParams);
-            var addSql = 'insert into lab_appointment (estimated_duration, patient_no, lab_id, appointment_time, valid) values (?, ?, ?, ?, ?)';
+            patient_no = result[0];
+            sql = 'select price from test where test_id = ?'
+            
+ 
             //var addSql = 'insert into user (userid, password) values (?, ?)';
             //var addSqlParams = [id, password];
             connection.query(addSql, addSqlParams, function (err, result) {
@@ -97,7 +97,10 @@ function createLabAppointment(req, res, next){
                 console.log('------------------------------------------------------------')
                 connection.end(); 
                 res.redirect(301, '/patient/dashboard');
-            })
+            })  
         })
     })
 }
+var addSqlParams = [60, patient.patient_no, lab_id, appointment_time, "0"];
+//console.log(addSqlParams);
+var addSql = 'insert into test_appointment (estimated_duration, patient_no, lab_id, appointment_time, valid) values (?, ?, ?, ?, ?)';
