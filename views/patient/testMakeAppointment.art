@@ -26,7 +26,7 @@
                     //var exp = new Date();
                     //exp.setTime(exp.getTime()+(1*24*60*60*1000));
                     //document.cookie = "staff=" + s_no+";expires=" + exp.toUTCString();
-                    setCookie("test",t_id,1);
+                    setCookie("test_id",t_id,1);
                     //document.cookie = "patient=" + p_no+";expires=" + exp.toUTCString();
 
                      setCookie("patient",p_no,1);
