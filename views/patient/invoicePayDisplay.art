@@ -3,7 +3,7 @@
 
 <head>
 
-  {{include '../../common/header.art'}}
+  {{include '../common/header.art'}}
   <title>HMS {{patient_id}} Invoice Display</title>
 
   <!-- Custom scripts for all pages-->
@@ -56,7 +56,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    {{include '../../common/sidebar.art'}}
+    {{include '../common/sidebar.art'}}
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -66,7 +66,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        {{include '../../common/topbar.art'}}
+        {{include '../common/topbar.art'}}
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -89,24 +89,22 @@
           <thead>
             <tr>
               <th>Invoice ID</th>
-              <th>Patient No</th>
               <th>Appointment ID</th>
               <th>Invoice Type</th>
               <th>Payment Duedate</th>
               <th>Invoice Amount</th>
-              <th>Paid Amount</th>
+              <th>Unpaid Amount</th>
               <th></th>
             </tr>
           </thead>
           <tfoot>
             <tr>
               <th>Invoice ID</th>
-              <th>Patient No</th>
               <th>Appointment ID</th>
               <th>Invoice Type</th>
               <th>Payment Duedate</th>
               <th>Invoice Amount</th>
-              <th>Paid Amount</th>
+              <th>Unpaid Amount</th>
               <th></th>
             </tr>
           </tfoot>
@@ -115,19 +113,18 @@
 
             <tr>
               <td>{{$value.invoice_id}}</td>
-              <td>{{$value.patient_no}}</td>
               <td>{{$value.appointment_id}}</td>
               <td>{{$value.type}}</td>
               <td>{{$value.due_date}}</td>
               <td>${{$value.price}}</td>
-              <td>${{$value.price_paid}}</td>
+              <td>${{$value.price_unpaid}}</td>
               <td>
                 <form> 
                   <input id="invoice_id" type="hidden" name="invoice_id" value={{$value.invoice_id}}>
-                  <input id="price_unpaid" type="hidden" name="price_unpaid" value={{$value.price-$value.price_paid}}>
+                  <input id="price_unpaid" type="hidden" name="price_unpaid" value={{$value.price_unpaid}}>
                   <!--input id="patient_id" type="hidden" name="patient_id" value={{patient_id}}-->
                   <!--input type="submit" value="appoint"-->
-                  <a  onclick="appointment()"> Pay </a>
+                  <a  type="submit" onclick="appointment()"> Pay </a>
                 </form>
               </td>
             </tr>
@@ -150,7 +147,7 @@
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      {{include '../../common/footer.art'}}
+      {{include '../common/footer.art'}}
       <!-- End of Footer -->
 
     </div>

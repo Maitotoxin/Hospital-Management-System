@@ -16,6 +16,7 @@ exports.getPatientTestInfo = getPatientTestInfo;
 exports.getPatientTestInfoMakeAppointment = getPatientTestInfoMakeAppointment;
 exports.getPatientLabInfoIncludingTest = getPatientLabInfoIncludingTest;
 exports.getInvoiceInfo = getInvoiceInfo;
+exports.getUnpaidInvoiceInfo = getUnpaidInvoiceInfo;
 
 function getInvoiceInfo(req, res, next){
 	const patient_id = xss(req.session.patient_id);
@@ -57,7 +58,7 @@ function getUnpaidInvoiceInfo(req, res, next){
                 return;
 			}
 			patient_no = result[0].patient_no;
-			sql = 'select invoice_id, type, appointment_id, price, price_paid, due_date from invoice where patient_no=? and price>price_paid';
+			sql = 'select invoice_id, type, appointment_id, price, price_paid, (price-price_paid) price_unpaid, due_date from invoice where patient_no=? and price>price_paid';
 			connection.query(sql, [patient_no], function (err, result){
 				if (err) {
 					console.log('[SELECT ERROR] - ', err.message);
