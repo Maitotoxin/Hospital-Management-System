@@ -152,8 +152,7 @@
         <div id="collapseMyInvoice" class="collapse" aria-labelledby="headingMyInvoice" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="homeInvoiceDisplay">Insurance Invoice</a>
-            <a class="collapse-item" href="autoInvoiceDisplay">Medical Invoice</a>
+            <a class="collapse-item" href="invoicePayDisplay">Pay Invoice</a>
           </div>
         </div>
       </li>
@@ -167,7 +166,6 @@
         <div id="collapseMyPayment" class="collapse" aria-labelledby="headingMyPayment" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="payDisplay">Payment History</a>
             <a class="collapse-item" href="invoiceDisplay">Invoice History</a>
             <a class="collapse-item" href="autoPayDisplay">Treatment History</a>
             <a class="collapse-item" href="autoPayDisplay">Appointment History</a>
