@@ -11,7 +11,7 @@
 
   <!-- Page level plugins -->
   <script src="/vendor/chart.js/Chart.min.js"></script>
-
+  <script src="/js/cookie.js"></script>
 
   <meta name="author" content="">
           <script>
@@ -124,7 +124,7 @@
                   <input id="price_unpaid" type="hidden" name="price_unpaid" value={{$value.price_unpaid}}>
                   <!--input id="patient_id" type="hidden" name="patient_id" value={{patient_id}}-->
                   <!--input type="submit" value="appoint"-->
-                  <a  type="submit" onclick="appointment()"> Pay </a>
+                  <a type="submit" onclick="appointment()"> Pay </a>
                 </form>
               </td>
             </tr>

@@ -19,8 +19,8 @@
            // getCookie("staff");
             //getCookie("patient");
             var res = formContentToJson($("#registerForm"));
-            delCookie("invoice_id");
-            delCookie("price_unpaid");
+           // delCookie("invoice_id");
+           // delCookie("price_unpaid");
             
             //if user did not enter userid or password
             return validatePayment(res);
@@ -161,4 +161,3 @@
 
 </body>
 
-</html>
