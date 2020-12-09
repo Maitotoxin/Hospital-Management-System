@@ -25,7 +25,7 @@ CREATE TABLE test_appointment (
     patient_no          INT NOT NULL,
     lab_id              INT NOT NULL,
     test_id             INT NOT NULL,
-    invoice_id          INT NOT NULL,
+    invoice_id          INT,
     appointment_time    DATETIME NOT NULL default CURRENT_TIMESTAMP,
     last_update         DATETIME NOT NULL default CURRENT_TIMESTAMP,
     valid               CHAR(1) NOT NULL,                                     
@@ -86,8 +86,10 @@ CREATE TABLE insurance_company (
 CREATE TABLE invoice (
     invoice_id                  INT NOT NULL AUTO_INCREMENT,
     patient_no                  INT NOT NULL,
-    price                       DECIMAL(8, 2) NOT NULL,
-    price_paid                  INT NOT NULL,
+    price                       DECIMAL(8, 2) NOT NULL default 0,
+    price_paid                  INT NOT NULL default 0,
+    doctor_appointment_id       INT,
+    lab_appointment_id          INT,
     due_date                    DATETIME NOT NULL default CURRENT_TIMESTAMP,
     last_update                 DATETIME NOT NULL default CURRENT_TIMESTAMP,
     PRIMARY KEY (invoice_id)
@@ -382,3 +384,15 @@ BEGIN
 END$$
 
  delimiter ;
+
+ delimiter $$
+CREATE TRIGGER test_appointment_invoice_trg AFTER
+    INSERT ON test_appointment
+    FOR EACH ROW
+BEGIN
+    insert into invoice (lab_appointment_id,patient_no) values (NEW.appointment_id,NEW.patient_no);
+    
+END$$
+
+ delimiter ;
+

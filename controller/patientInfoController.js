@@ -17,7 +17,7 @@ exports.getPatientTestInfoMakeAppointment = getPatientTestInfoMakeAppointment;
 exports.getPatientLabInfoIncludingTest = getPatientLabInfoIncludingTest;
 
 function getPatientLabInfoIncludingTest(req, res, next){
-	const test_id = xss(req.body.test_id);
+	const test_id = xss(parseInt(req.body.test_id));
 	console.log(test_id);
 	database.setUpDatabase(function (connection) {
 		connection.connect(); 
