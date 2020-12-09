@@ -47,9 +47,13 @@ const patientDoctorRearrangeAppointmentTime = require('./routes/patient/doctorRe
 const patientTestMakeAppointment = require('./routes/patient/testMakeAppointment');
 const patientLabMakeAppointment = require('./routes/patient/labMakeAppointment');
 const patientLabAppointmentTime = require('./routes/patient/labAppointmentTime');
-//const patientLabRearrangeAppointment = require('./routes/patient/labRearrangeAppointment');
+
 const patientLabListAppointment = require('./routes/patient/labListAppointment');
+const patientInvoiceDisplay = require('./routes/patient/invoiceDisplay');
+const patientInvoicePayDisplay = require('./routes/patient/invoicePayDisplay');
+const patientInvoicePay = require('./routes/patient/invoicePay');
 //const patientLabRearrangeAppointmentTime = require('./routes/patient/labRearrangeAppointmentTime');
+//app.use('',error)
 app.use('/patient/login', patientLogin);
 app.use('/patient/logout', patientLogout);
 app.use('/patient/register', patientRegister);
@@ -71,6 +75,9 @@ app.use('/patient/labAppointmentTime', patientLabAppointmentTime);
 //app.use('/patient/labRearrangeAppointment', patientLabRearrangeAppointment);
 ///app.use('/patient/labRearrangeAppointmentTime', patientLabRearrangeAppointmentTime);
 app.use('/patient/labListAppointment', patientLabListAppointment);
+app.use('/patient/invoiceDisplay',patientInvoiceDisplay);
+app.use('/patient/invoicePayDisplay',patientInvoicePayDisplay);
+app.use('/patient/invoicePay',patientInvoicePay);
 
  
 //listen port 3000 

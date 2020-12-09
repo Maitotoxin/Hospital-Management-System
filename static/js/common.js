@@ -42,6 +42,15 @@ function validateAppointmentRegisterInput(input) {
     return true;
 }
 
+function validatePayment(input) {
+    if(input.price_unpaid < input.amount){
+        alert('Paid too much!')
+        return false;
+    }
+
+    return true;
+}
+
 function validateAdminRegisterInput(input) {
     if(input.userid.trim().length == 0 || input.password1.trim().length == 0 
     || input.password2.trim().length == 0) {

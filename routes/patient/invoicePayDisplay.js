@@ -3,6 +3,6 @@ const patientInvoice = require('../../controller/patientInvoiceAndReceiptControl
 
 const invoice = express.Router();
 
-invoice.get('/', patientInvoice.getInvoiceInfo);
+invoice.get('/', patientInvoice.getUnpaidInvoiceInfo);
 
 module.exports = invoice;
