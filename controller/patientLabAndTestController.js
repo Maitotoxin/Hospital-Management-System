@@ -6,7 +6,7 @@ exports.updateLabAppointment = updateLabAppointment;
 exports.deleteLabAppointment = deleteLabAppointment;
 
 
-function deleteLabAppointment(req, res, next){
+function deleteLabAppointment(req, res, next){ 
     console.log('enter function deleteLabAppointment');
     console.log(req.body);
     const appointment_id = xss(parseInt(req.body.appointment_id));
@@ -103,7 +103,7 @@ function createLabAppointment(req, res, next){
                         return;
                     } 
                     console.log("aaaaa");
-                    sql = 'select a.invoice_id, a.appointment_id from invoice a inner join test_appointment b on a.appointment_id = b.appointment_id where a.type=NULL'
+                    sql = 'select a.invoice_id, a.appointment_id from invoice a inner join test_appointment b on a.appointment_id = b.appointment_id where a.type is NULL'
                     connection.query(sql, [test_id], function (err, result){
                         if (err) {
                             console.log('[INSERT ERROR] - ', err.message)

@@ -1,10 +1,10 @@
 const express = require('express');
-const patientPay = require('../../controller/patientInfoController');
+const patientPay = require('../../controller/patientInvoiceAndReceiptController');
 
 const pay = express.Router();
 
 pay.get('/',(req, res) =>{
     res.render('patient/invoicePay');
 });
-pay.post('/', patientPay.invoicePay);
+pay.post('/', patientPay.payInvoice);
 module.exports = pay;

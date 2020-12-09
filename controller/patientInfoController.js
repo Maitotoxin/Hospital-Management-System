@@ -16,6 +16,7 @@ exports.getPatientTestInfo = getPatientTestInfo;
 exports.getPatientTestInfoMakeAppointment = getPatientTestInfoMakeAppointment;
 exports.getPatientLabInfoIncludingTest = getPatientLabInfoIncludingTest;
 exports.getInvoiceInfo = getInvoiceInfo;
+exports.getUnpaidInvoiceInfo = getUnpaidInvoiceInfo;
 
 function getInvoiceInfo(req, res, next){
 	const patient_id = xss(req.session.patient_id);
@@ -57,7 +58,7 @@ function getUnpaidInvoiceInfo(req, res, next){
                 return;
 			}
 			patient_no = result[0].patient_no;
-			sql = 'select invoice_id, type, appointment_id, price, price_paid, due_date from invoice where patient_no=? and price>price_paid';
+			sql = 'select invoice_id, type, appointment_id, price, price_paid, (price-price_paid) price_unpaid, due_date from invoice where patient_no=? and price>price_paid';
 			connection.query(sql, [patient_no], function (err, result){
 				if (err) {
 					console.log('[SELECT ERROR] - ', err.message);
@@ -323,7 +324,7 @@ function getPatientLabAppointmentInfo(req, res, next) {
 	const patient_id = xss(req.session.patient_id);
 	database.setUpDatabase(function (connection) {
 		connection.connect();
-		var sql = 'select a.appointment_id, a.lab_id, b.lab_name, a.appointment_time, a.estimated_duration, a.valid from lab_appointment a inner join lab b on a.lab_id = b.lab_id where a.patient_no = (select patient_no from patient where patient_id = ?)';
+		var sql = 'select a.appointment_id, a.lab_id, b.lab_name, a.test_id, c.test_name, a.appointment_time, a.valid from test_appointment a inner join lab b on a.lab_id = b.lab_id inner join test c on a.test_id=c.test_id where a.patient_no = (select patient_no from patient where patient_id = ?)';
 		connection.query(sql, [patient_id], function (err, result) {
 			if (err) {
 				console.log('[SELECT ERROR] - ', err.message);
