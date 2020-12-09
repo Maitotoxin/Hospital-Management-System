@@ -86,17 +86,10 @@ CREATE TABLE insurance_company (
 CREATE TABLE invoice (
     invoice_id                  INT NOT NULL AUTO_INCREMENT,
     patient_no                  INT NOT NULL,
-<<<<<<< HEAD
     doctor_appointment_id       INT,
     lab_appointment_id          INT,
     price                       DECIMAL(8, 2) NOT NULL,
     price_paid                  INT NOT NULL,
-=======
-    price                       DECIMAL(8, 2) NOT NULL default 0,
-    price_paid                  INT NOT NULL default 0,
-    doctor_appointment_id       INT,
-    lab_appointment_id          INT,
->>>>>>> refs/remotes/origin/main
     due_date                    DATETIME NOT NULL default CURRENT_TIMESTAMP,
     last_update                 DATETIME NOT NULL default CURRENT_TIMESTAMP,
     PRIMARY KEY (invoice_id)
