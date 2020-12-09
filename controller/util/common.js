@@ -46,10 +46,10 @@ function correctAppointmentInfo(appointmentInfo){
 function correctStaffInfo(staffInfo) {
     switch (staffInfo.gender) {
         case 'M':
-            patientInfo.gender = 'Male';
+            staffInfo.gender = 'Male';
             break;
         case 'F':
-            patientInfo.gender = 'Female';
+            staffInfo.gender = 'Female';
             break;
         default:
             break;

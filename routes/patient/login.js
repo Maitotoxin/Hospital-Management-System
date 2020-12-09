@@ -9,4 +9,4 @@ login.get('/',(req, res) =>{
 
 login.post('/', patientController.loginPatient);
 
-module.exports = login;
+module.exports = login; 

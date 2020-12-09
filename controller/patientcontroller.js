@@ -62,7 +62,7 @@ function createPatient(req, res, next) {
                 return;
             }
             if (result.length > 0) {
-                console.log('Already exists patient id', id);
+                console.log('Already exists patient id', patient_id);
                 res.send("Patient already exists");
                 return;
             }

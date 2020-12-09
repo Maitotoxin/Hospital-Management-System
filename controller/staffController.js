@@ -63,7 +63,7 @@ function createStaff(req, res, next) {
                 return;
             }
             if (result.length > 0) {
-                console.log('Already exists staff id', id);
+                console.log('Already exists staff id', staff_id);
                 res.send("Staff already exists");
                 return;
             }
@@ -128,12 +128,12 @@ function loginStaff(req, res, next) {
                     return;
                 }
                 if (!success) {
-                    console.log('password error');
+                    console.log('password error'); 
                     res.send('password error');
                     return;
                 }
                 connection.end();
-                req.session.pstaff_id = id;
+                req.session.staff_id = id;
                 req.app.locals.staff_id = id;
                 res.redirect(301, '/staff/dashboard');
             });
