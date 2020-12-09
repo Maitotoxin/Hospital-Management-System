@@ -47,12 +47,12 @@ const patientDoctorRearrangeAppointmentTime = require('./routes/patient/doctorRe
 const patientTestMakeAppointment = require('./routes/patient/testMakeAppointment');
 const patientLabMakeAppointment = require('./routes/patient/labMakeAppointment');
 const patientLabAppointmentTime = require('./routes/patient/labAppointmentTime');
+
 const patientLabListAppointment = require('./routes/patient/labListAppointment');
 const patientInvoiceDisplay = require('./routes/patient/invoiceDisplay');
 const patientInvoicePayDisplay = require('./routes/patient/invoicePayDisplay');
 const patientInvoicePay = require('./routes/patient/invoicePay');
 //const patientLabRearrangeAppointmentTime = require('./routes/patient/labRearrangeAppointmentTime');
-
 const staffLogin = require('./routes/staff/login');
 const staffLogout = require('./routes/staff/logout');
 const staffRegister = require('./routes/staff/register');
@@ -61,11 +61,11 @@ const staffProfileUpdate = require('./routes/staff/profileUpdate');
 //app.use('',error)
 app.use('/patient/login', patientLogin);
 app.use('/patient/logout', patientLogout);
-app.use('/patient/register', patientRegister);
+app.use('/patient/register', patientRegister); 
 app.use('/patient/dashboard', patientDashboard);
 app.use('/patient/profileUpdate', patientProfileUpdate);
 app.use('/patient/doctorInfoDisplay', patientDoctorInfoDisplay);
-app.use('/patient/labInfoDisplay', patientLabInfoDisplay);
+app.use('/patient/labInfoDisplay', patientLabInfoDisplay); 
 app.use('/patient/testInfoDisplay', patientTestInfoDisplay);
 app.use('/patient/hospitalInfoDisplay', patientHospitalInfoDisplay);
 app.use('/patient/insuranceCompanyInfoDisplay', patientInsuranceCompanyInfoDisplay);
@@ -81,16 +81,14 @@ app.use('/patient/labAppointmentTime', patientLabAppointmentTime);
 ///app.use('/patient/labRearrangeAppointmentTime', patientLabRearrangeAppointmentTime);
 app.use('/patient/labListAppointment', patientLabListAppointment);
 app.use('/patient/invoiceDisplay',patientInvoiceDisplay);
-app.use('/patient/invoicePayDisplay',patientInvoicePayDisplay);
+app.use('/patient/invoicePayDisplay',patientInvoicePayDisplay); 
 app.use('/patient/invoicePay',patientInvoicePay);
-///////////////////////////////////////////////
+
 app.use('/staff/login', staffLogin);
 app.use('/staff/logout', staffLogout);
 app.use('/staff/register', staffRegister);
 app.use('/staff/dashboard', staffDashboard);
 app.use('/staff/profileUpdate', staffProfileUpdate);
-
- 
 //listen port 3000 
 app.listen(3000);
 console.log('Server started'); 
