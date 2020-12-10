@@ -33,7 +33,6 @@ CREATE TABLE test_appointment (
 
 CREATE TABLE doctor_appointment (
     appointment_id      INT NOT NULL AUTO_INCREMENT,
-    estimated_duration  INT NOT NULL,
     patient_no          INT NOT NULL,
     staff_no            INT NOT NULL,
     appointment_time    DATETIME NOT NULL default CURRENT_TIMESTAMP,

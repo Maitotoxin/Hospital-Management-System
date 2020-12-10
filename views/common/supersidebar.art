@@ -110,7 +110,7 @@
         <div id="collapsePolicy" class="collapse" aria-labelledby="headingPolicy" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="doctorMakeAppointment">Accept Appointment</a>
+            <a class="collapse-item" href="manageAppointment">Manage Appointment</a>
             <a class="collapse-item" href="doctorRearrangeAppointment">Begin Appointment</a>
             <a class="collapse-item" href="doctorListAppointment">Check Appointment</a>
           </div>
