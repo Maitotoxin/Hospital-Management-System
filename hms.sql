@@ -60,6 +60,7 @@ CREATE TABLE hospital (
 CREATE TABLE icd (
     icd_id        INT NOT NULL AUTO_INCREMENT,
     disease_name  VARCHAR(30) NOT NULL,
+    description    VARCHAR(200),
     last_update   DATETIME NOT NULL default CURRENT_TIMESTAMP,
     PRIMARY KEY (icd_id)
 );
@@ -176,6 +177,7 @@ CREATE TABLE medicine (
     medicine_id   INT NOT NULL AUTO_INCREMENT,
     description    VARCHAR(200),
     medicine_name  VARCHAR(30) NOT NULL,
+    dose           VARCHAR(30) NOT NULL,
     price          DECIMAL(7, 2) NOT NULL,
     last_update    DATETIME NOT NULL default CURRENT_TIMESTAMP,
     PRIMARY KEY (medicine_id)
@@ -186,7 +188,7 @@ CREATE TABLE patient_medicine(
    patient_no          INT NOT NULL,
    medicine_id              INT NOT NULL,
    medicine_name        VARCHAR(30) NOT NULL,
-   dose           VARCHAR(30) NOT NULL,
+   amount           VARCHAR(30) NOT NULL,
    last_update   DATETIME NOT NULL default CURRENT_TIMESTAMP
 );
 

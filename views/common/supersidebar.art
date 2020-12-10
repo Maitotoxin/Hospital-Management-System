@@ -20,106 +20,157 @@
       <hr class="sidebar-divider">
 
       <!-- Heading -->
-      <div class="sidebar-heading">
-        Manage HMS Database
+     <div class="sidebar-heading">  
+        Information Checking
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdminUsers" aria-expanded="true"
-          aria-controls="collapseAdminUsers">
-          <i class="fas fa-fw fa-user"></i>
-          <span>User Management</span>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseHospitals" aria-expanded="true"
+          aria-controls="collapseHospitals">
+          <i class="fas fa-fw fa-home"></i>
+          <span>About Disease Knowledge Information</span>
         </a>
-        <div id="collapseAdminUsers" class="collapse" aria-labelledby="headingAdminUsers" data-parent="#accordionSidebar">
+        <div id="collapseHospitals" class="collapse" aria-labelledby="headingHospitals" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="adminUserDisplay">List and delete users </a>
-          </div>
+            <a class="collapse-item" href="treatmentInfoDisplay">See Treatment </a>
+            <a class="collapse-item" href="medicineInfoDisplay">See Medicine </a>
+            <a class="collapse-item" href="icdInfoDisplay">See Disease Name </a>
         </div>
       </li>
-
-
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdiminPolicy" aria-expanded="true"
-          aria-controls="collapseAdiminPolicy">
-          <i class="fas fa-fw fa-list-alt"></i>
-          <span>Insurance Policy Management</span>
-        </a>
-        <div id="collapseAdiminPolicy" class="collapse" aria-labelledby="headingAdiminPolicy" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="adminPolicyDisplay">List and delete policy </a>
-            <a class="collapse-item" href="adminPolicyRegister">Add new policy </a>
-          </div>
-        </div>
-      </li>
-
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdiminHomes" aria-expanded="true"
-          aria-controls="collapseAdiminHomes">
-          <i class="fas fa-fw fa-home"></i>
-          <span>Home Management</span>
-        </a>
-        <div id="collapseAdiminHomes" class="collapse" aria-labelledby="headingAdiminHomes" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="adminHomeDisplay">List and delete homes </a>
-          </div>
-        </div>
-      </li>
-
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdiminAutos" aria-expanded="true"
-          aria-controls="collapseAdiminAutos">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDoctors" aria-expanded="true"
+          aria-controls="collapseDoctors">
           <i class="fas fa-fw fa-car"></i>
-          <span>Auto Management</span>
+          <span>Doctor Information</span>
         </a>
-        <div id="collapseAdiminAutos" class="collapse" aria-labelledby="headingAdiminAutos" data-parent="#accordionSidebar">
+        <div id="collapseDoctors" class="collapse" aria-labelledby="headingDoctors" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="adminAutoDisplay">List  and delete autos </a>
-            <a class="collapse-item" href="adminDriverDisplay">List drivers </a>
-          </div>
+            <a class="collapse-item" href="doctorInfoDisplay">See Doctors </a>
         </div>
       </li>
 
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdiminInvoice" aria-expanded="true"
-          aria-controls="collapseAdiminInvoice">
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLabs" aria-expanded="true"
+          aria-controls="collapseLabs">
+          <i class="fas fa-fw fa-user"></i>
+          <span>Lab Information</span>
+        </a>
+        <div id="collapseLabs" class="collapse" aria-labelledby="headingLabs" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Option:</h6>
+            <a class="collapse-item" href="labInfoDisplay">See Labs </a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTests" aria-expanded="true"
+          aria-controls="collapseTests">
+          <i class="fas fa-fw fa-user"></i>
+          <span>Test Information</span>
+        </a>
+        <div id="collapseTests" class="collapse" aria-labelledby="headingTests" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Option:</h6>
+            <a class="collapse-item" href="testInfoDisplay">See Tests </a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInsuranceCompanys" aria-expanded="true"
+          aria-controls="collapseInsuranceCompanys">
+          <i class="fas fa-fw fa-user"></i>
+          <span>Insurance Company Information</span>
+        </a>
+        <div id="collapseInsuranceCompanys" class="collapse" aria-labelledby="headingInsuranceCompanys" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Option:</h6>
+            <a class="collapse-item" href="insuranceCompanyInfoDisplay">See Insurance Company </a>
+        </div>
+      </li>
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Appointment Manangement
+      </div>
+
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePolicy" aria-expanded="true"
+          aria-controls="collapsePolicy">
           <i class="fas fa-fw fa-file-invoice-dollar"></i>
-          <span>Invoice Management</span>
+          <span>Doctor Appointment</span>
         </a>
-        <div id="collapseAdiminInvoice" class="collapse" aria-labelledby="headingAdiminInvoice" data-parent="#accordionSidebar">
+        <div id="collapsePolicy" class="collapse" aria-labelledby="headingPolicy" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="adminHomeInvoiceDisplay">List home invoices </a>
-            <a class="collapse-item" href="adminAutoInvoiceDisplay">List auto invoices </a>
+            <a class="collapse-item" href="doctorMakeAppointment">Accept Appointment</a>
+            <a class="collapse-item" href="doctorRearrangeAppointment">Begin Appointment</a>
+            <a class="collapse-item" href="doctorListAppointment">Check Appointment</a>
           </div>
         </div>
       </li>
 
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdiminPay" aria-expanded="true"
-          aria-controls="collapseAdiminPay">
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInsurance" aria-expanded="true"
+          aria-controls="collapseInsurance">
+          <i class="fas fa-fw fa-file-invoice-dollar"></i>
+          <span>Test Appointment</span>
+        </a>
+        <div id="collapseInsurance" class="collapse" aria-labelledby="headingInsurance" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Option:</h6>
+            <a class="collapse-item" href="testMakeAppointment">Make Appointment</a>
+            <a class="collapse-item" href="labListAppointment">My Appointment</a>
+          </div>
+        </div>
+      </li>
+
+      
+
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        My Service
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMyInvoice" aria-expanded="true"
+          aria-controls="collapseMyInvoice">
+          <i class="fas fa-fw fa-file-invoice-dollar"></i>
+          <span>My Invoice</span>
+        </a>
+        <div id="collapseMyInvoice" class="collapse" aria-labelledby="headingMyInvoice" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Option:</h6>
+            <a class="collapse-item" href="invoicePayDisplay">Pay Invoice</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMyPayment" aria-expanded="true"
+          aria-controls="collapseMyPayment">
           <i class="fas fa-fw fa-wallet"></i>
-          <span>Payment Management</span>
+          <span>My History</span>
         </a>
-        <div id="collapseAdiminPay" class="collapse" aria-labelledby="headingAdiminPay" data-parent="#accordionSidebar">
+        <div id="collapseMyPayment" class="collapse" aria-labelledby="headingMyPayment" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="adminHomePayDisplay">List home payments </a>
-            <a class="collapse-item" href="adminAutoPayDisplay">List auto payments </a>
+            <a class="collapse-item" href="invoiceDisplay">Invoice History</a>
+            <a class="collapse-item" href="autoPayDisplay">Treatment History</a>
+            <a class="collapse-item" href="autoPayDisplay">Appointment History</a>
           </div>
         </div>
       </li>
-
-
-
-
-
-
 
      
     </ul>
