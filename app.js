@@ -61,6 +61,8 @@ const staffProfileUpdate = require('./routes/staff/profileUpdate');
 const staffMedicineInfoDisplay = require('./routes/staff/medicineInfoDisplay');
 const staffICDInfoDisplay = require('./routes/staff/icdInfoDisplay');
 const staffTreatmentInfoDisplay = require('./routes/staff/treatmentInfoDisplay');
+const staffTestInfoDisplay = require('./routes/staff/testInfoDisplay');
+
 const staffCurePatientMedicine = require('./routes/staff/curePatientMedicine');
 //app.use('',error)
 app.use('/patient/login', patientLogin);
@@ -94,9 +96,11 @@ app.use('/staff/register', staffRegister);
 app.use('/staff/dashboard', staffDashboard);
 app.use('/staff/profileUpdate', staffProfileUpdate);
 app.use('/staff/icdInfoDisplay', staffICDInfoDisplay);
-app.use('/staff/icdInfoDisplay', staffICDInfoDisplay);
-app.use('/staff/icdInfoDisplay', staffICDInfoDisplay);
-app.use('/staff/icdInfoDisplay', staffICDInfoDisplay);
+app.use('/staff/medicineInfoDisplay', staffMedicineInfoDisplay);
+app.use('/staff/treatmentInfoDisplay', staffTreatmentInfoDisplay);
+app.use('/staff/testInfoDisplay', staffTestInfoDisplay);
+
+app.use('staff/curePatientMedicine',staffCurePatientMedicine);
 //listen port 3000 
 app.listen(3000);
 console.log('Server started'); 

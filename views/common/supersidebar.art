@@ -37,6 +37,7 @@
             <a class="collapse-item" href="treatmentInfoDisplay">See Treatment </a>
             <a class="collapse-item" href="medicineInfoDisplay">See Medicine </a>
             <a class="collapse-item" href="icdInfoDisplay">See Disease Name </a>
+            <a class="collapse-item" href="testInfoDisplay">See Test </a>
         </div>
       </li>
 
