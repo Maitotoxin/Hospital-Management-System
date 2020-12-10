@@ -82,7 +82,7 @@
             <tr>
               <td>{{$value.treatment_id}}</td>
               <td>{{$value.treatment_name}}</td>
-              <td>{{$value.price}}</td>
+              <td>${{$value.price}}</td>
               <td>{{$value.description}}</td>
               
             </tr>

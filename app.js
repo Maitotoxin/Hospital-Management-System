@@ -100,7 +100,7 @@ app.use('/staff/icdInfoDisplay', staffICDInfoDisplay);
 app.use('/staff/medicineInfoDisplay', staffMedicineInfoDisplay);
 app.use('/staff/treatmentInfoDisplay', staffTreatmentInfoDisplay);
 app.use('/staff/testInfoDisplay', staffTestInfoDisplay);
-app.use('/staff/staffInfoDisplay', staffLabInfoDisplay);
+app.use('/staff/labInfoDisplay', staffLabInfoDisplay);
 
 app.use('staff/curePatientMedicine',staffCurePatientMedicine);
 //listen port 3000 
