@@ -101,7 +101,7 @@
             </tr>
           </tfoot>
           <tbody>
-            {{each staffMedicineInfo}}
+            {{each medicineInfoCure}}
             <tr>
               <td>
                 <input type="checkbox" id="medicine_id" name="medicine_id" value={{$value.medicine_id}}>

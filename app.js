@@ -59,7 +59,7 @@ const staffRegister = require('./routes/staff/register');
 const staffDashboard = require('./routes/staff/dashboard');
 const staffProfileUpdate = require('./routes/staff/profileUpdate');
 
-const staffCurePatientMedicine = require('/routes/staff/curePatientMedicine');
+const staffCurePatientMedicine = require('./routes/staff/curePatientMedicine');
 //app.use('',error)
 app.use('/patient/login', patientLogin);
 app.use('/patient/logout', patientLogout);
