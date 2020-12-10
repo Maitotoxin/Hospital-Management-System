@@ -1,8 +1,8 @@
 const express = require('express');
-const patientDoctorInfo = require('../../controller/patientInfoController');
+const staffICDInfo = require('../../controller/staffInfoController');
 
-const doctor = express.Router();
+const policy = express.Router();
 
-doctor.get('/', patientDoctorInfo.getPatientDoctorInfo);
+policy.get('/', staffICDInfo.getIcdInfo);
 
-module.exports = doctor;
+module.exports = policy;

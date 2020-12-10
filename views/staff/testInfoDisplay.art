@@ -53,7 +53,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    {{include '../common/sidebar.art'}}
+    {{include '../common/supersidebar.art'}}
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -63,7 +63,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        {{include '../common/topbar.art'}}
+        {{include '../common/supertopbar.art'}}
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -101,7 +101,7 @@
             </tr>
           </tfoot>
           <tbody>
-            {{each staffTestInfo}}
+            {{each testInfo}}
 
             <tr>
               <td>{{$value.test_id}}</td>

@@ -1,8 +1,8 @@
 const express = require('express');
-const staffMedicineInfo = require('../../controller/staffInfoController');
+const staffTestInfo = require('../../controller/staffInfoController');
 
 const policy = express.Router();
 
-policy.get('/', staffMedicineInfo.getTestInfo);
+policy.get('/', staffTestInfo.getTestInfo);
 
 module.exports = policy;
