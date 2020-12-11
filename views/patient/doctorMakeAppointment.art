@@ -5,49 +5,52 @@
 
   {{include '../common/header.art'}}
   <title>HMS {{patient_id}} Doctor Appointment</title>
-
+<meta name="author" content="">
   <!-- Custom scripts for all pages-->
   <script src="/js/sb-admin-2.min.js"></script>
 
   <!-- Page level plugins -->
   <script src="/vendor/chart.js/Chart.min.js"></script>
   <script src="/js/cookie.js"></script>
-  <meta name="author" content="">
-            <script>
-            /*
+  <!--script type="text/javascript" src="/jquery/jquery.js"></script-->
+  <script type="text/javascript">
+           //console.log("aa");
+           $(document).ready(function(){
+           $(".use-address").click(function() {
+             console.log("aa");
+             var $row = $(this).closest("tr");    // Find the row
+             var $text = $row.find(".nr").text(); // Find the text
+    
+    // Let's test it out
+             console.log($text);
+            });
+            });/*
                   function appointment(){
-                    console.log(document.getElementsByName("staff_no"));
-                    var s_no=document.getElementsByName("staff_no").value;
+                    var $row = $(this).closest("tr");    // Find the row
+                    var $text = $row.find(".nr");
+                    console.log($row);
+                    //var s_no=document.getElementById("staff_no").value;
                     //var s_no = $value.staff_no; 
                     //console.log(s_no);
                     //s_no.toString();
-                    var p_no=document.getElementsByName("patient_id").value;
-                    var l_name=document.getElementsByName("last_name").value;
-                    var f_name=document.getElementsByName("first_name").value;
-                    //console.log("qw"+s_no);
-                    //console.log("qw"+p_no);
-                    var exp = new Date();
-                    exp.setTime(exp.getTime()+(1*24*60*60*1000));
+                    //var p_no=document.getElementById("patient_id").value;
+                    //var l_name=document.getElementById("last_name").value;
+                    //var f_name=document.getElementById("first_name").value;
+                   // console.log("qw"+s_no);
+                   // console.log("qw"+p_no);
+                    //var exp = new Date();
+                   // exp.setTime(exp.getTime()+(1*24*60*60*1000));
                     //document.cookie = "staff=" + s_no+";expires=" + exp.toUTCString();
-                    setCookie("staff",s_no,1);
+                    //setCookie("res",res,1);
+                   // setCookie("staff",s_no,1);
                     //document.cookie = "patient=" + p_no+";expires=" + exp.toUTCString();
 
-                     setCookie("patient",p_no,1);
-                     setCookie("last_name",l_name,1);
-                     setCookie("first_name",f_name,1);
+                     //setCookie("patient",p_no,1);
+                     //setCookie("last_name",l_name,1);
+                     //setCookie("first_name",f_name,1);
                    // document.cookie = "patient=" + escape(p_no.value)+ ";path=/doctorAppointmentTime/;expires=" + exp.toUTCString();
                     //location.href = 'doctorAppointmentTime';
-                  }
-                  */
-                  console.log("fuxxxxxxxxxxxk");
-                  $(".use-address").click(function() {
-                    console.log("fuxxxxxxxxxxxk");
-                    var $row = $(this).closest("tr");    // Find the row
-                    var $text = $row.find(".staff_no").text(); // Find the text
-                    console.log($text);
-                    // Let's test it out
-                    alert($text);
-                  });
+                  }*/
          </script>
 
          
@@ -123,29 +126,35 @@
           <tbody>
             {{each patientDoctorInfo}}
             <tr>
-              <td class="staff_no">{{$value.staff_no}}</td>
-              <td>{{$value.first_name}}</td>
+              <td class="nr">{{$value.staff_no}}</td>
+              <td >{{$value.first_name}}</td>
               <td>{{$value.last_name}}</td>
               <td>{{$value.gender}}</td>
               <td>{{$value.phone}}</td>
               <td>{{$value.description}}</td>
               <td>
-                  <!--input type="hidden" name="staff_no" value={{$value.staff_no}}>
-                  <input type="hidden" name="first_name" value={{$value.first_name}}>
-                  <input type="hidden" name="last_name" value={{$value.last_name}}>
-                  <input type="hidden" name="patient_id" value={{patient_id}}>
-                  
-                  <a type="submit"  onclick="appointment()"> Appointment </a-->
-                  <button type="button" class="use-address" />
+                <button   class="use-address">Appointment </button>
+                <!--a type="button" class="use-address" -->
               </td>
+              <!--td>
+              
+                <form id={{$value.staff_no}}>
+                  <input id="staff_no" type="hidden"  value={{$value.staff_no}}>
+                  <input id="first_name" type="hidden" name="first_name" value={{$value.first_name}}>
+                  <input id="last_name" type="hidden" name="last_name" value={{$value.last_name}}>
+                  <input id="patient_id" type="hidden" name="patient_id" value={{patient_id}}>
+                  <!--input type="submit" value="appoint"-->
+                 
+                <!--/form>
+                <input type="radio"  id ="select" name = "select" value={{$value.staff_no}}> 
+              </td-->
             </tr>
             {{/each}}
           </tbody>
         </table>
-        <table id="test" data>
-
-
-        </table>
+         <!--button onclick="appointment()"  >Appointment-->
+         <!--input type="submit" href="error" class="btn btn-primary btn-user btn-block"
+                     value="Rearrange Appointment" onclick="return appointment()"-->
         </div>
         </div>
 
