@@ -72,7 +72,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        {{include '../common/topbar.art'}}
+        {{include '../common/supertopbar.art'}}
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
