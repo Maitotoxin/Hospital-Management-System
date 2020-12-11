@@ -11,41 +11,30 @@
 
   <!-- Page level plugins -->
   <script src="/vendor/chart.js/Chart.min.js"></script>
-  <script src="/js/cookie.js"></script>
+  <script src="/js/cookie.js"> </script>
   <meta name="author" content="">
             <script>
-                  function appointment(){
-                    var t_id=document.getElementById("test_id").value;
-                    //var s_no = $value.staff_no; 
-                    //console.log(s_no);
-                    //s_no.toString();
-                    var p_no=document.getElementById("patient_id").value;
-                    var t_name=document.getElementById("test_name").value;
-                    //console.log("qw"+s_no);
-                    //console.log("qw"+p_no);
+                   $(document).ready(function(){
+           $(".use-address").click(function() {
+                    var row = $(this).closest("tr");    // Find the row
+                    var t_id = row.find(".test_id").text(); // Find the text
+                    var t_name = row.find(".test_name").text();
                     //var exp = new Date();
                     //exp.setTime(exp.getTime()+(1*24*60*60*1000));
                     //document.cookie = "staff=" + s_no+";expires=" + exp.toUTCString();
                     setCookie("test_id",t_id,1);
                     //document.cookie = "patient=" + p_no+";expires=" + exp.toUTCString();
 
-                     setCookie("patient",p_no,1);
+                     //setCookie("patient",p_no,1);
                      setCookie("test_name",t_name,1);
                      //setCookie("first_name",f_name,1);
                    // document.cookie = "patient=" + escape(p_no.value)+ ";path=/doctorAppointmentTime/;expires=" + exp.toUTCString();
                     location.href = 'labMakeAppointment';
-                  }
+                  });
+                   });
          </script>
 
-  <!--
-  <script>
-    function registerHome() {
-      var res = formContentToJson($("#registerForm"));
-      //if user did not enter userid or password
-      return validateHomeInput(res);
-    }
-  </script>
-  -->
+  
 
 </head>
 
@@ -106,18 +95,12 @@
             {{each patientTestInfo}}
 
             <tr>
-              <td>{{$value.test_id}}</td>
-              <td>{{$value.test_name}}</td>
+              <td class ="test_id">{{$value.test_id}}</td>
+              <td class="test_name">{{$value.test_name}}</td>
               <td>{{$value.description}}</td>
               <td>${{$value.price}}</td>
               <td>
-                <form method="post"> 
-                  <input id="test_id" type="hidden" name="test_id" value={{$value.test_id}}>
-                  <input id="test_name" type="hidden" name="test_name" value={{$value.test_name}}>
-                  <input id="patient_id" type="hidden" name="patient_id" value={{patient_id}}>
-                  <!--input type="submit" value="appoint"-->
-                  <input type="submit" value="Choose this test" onclick="appointment()">  </a>
-                </form>
+                 <button class="use-address"> Choose this test</button>
               </td>
             </tr>
             {{/each}}
@@ -154,3 +137,4 @@
 
 
 </body>
+</html>

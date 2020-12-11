@@ -85,8 +85,8 @@ app.use('/patient/doctorRearrangeAppointmentTime', patientDoctorRearrangeAppoint
 app.use('/patient/testMakeAppointment', patientTestMakeAppointment);
 app.use('/patient/labMakeAppointment', patientLabMakeAppointment);
 app.use('/patient/labAppointmentTime', patientLabAppointmentTime);
-//app.use('/patient/labRearrangeAppointment', patientLabRearrangeAppointment);
-///app.use('/patient/labRearrangeAppointmentTime', patientLabRearrangeAppointmentTime);
+///app.use('/patient/labRearrangeAppointment', patientLabRearrangeAppointment);
+//app.use('/patient/labRearrangeAppointmentTime', patientLabRearrangeAppointmentTime);
 app.use('/patient/labListAppointment', patientLabListAppointment);
 app.use('/patient/invoiceDisplay',patientInvoiceDisplay);
 app.use('/patient/invoicePayDisplay',patientInvoicePayDisplay); 

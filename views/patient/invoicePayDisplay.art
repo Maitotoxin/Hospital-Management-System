@@ -14,14 +14,14 @@
   <script src="/js/cookie.js"></script>
 
   <meta name="author" content="">
-          <script>
-                  function appointment(){
-                    var v_id=document.getElementById("invoice_id").value;
-                    //var s_no = $value.staff_no; 
-                    //console.log(s_no);
-                    //s_no.toString();
-                    //var p_no=document.getElementById("patient_id").value;
-                    var unpaid=document.getElementById("price_unpaid").value;
+          
+        <script type="text/javascript">
+
+                   $(document).ready(function(){
+                       $(".use-address").click(function() {
+                    var row = $(this).closest("tr"); 
+                    var v_id = row.find(".invoice_id").text(); // Find the text
+                    var unpaid = row.find(".price_unpaid").text();
                     //var f_name=document.getElementById("first_name").value;
                     //console.log("qw"+s_no);
                     //console.log("qw"+p_no);
@@ -36,7 +36,8 @@
                      //setCookie("first_name",f_name,1);
                    // document.cookie = "patient=" + escape(p_no.value)+ ";path=/doctorAppointmentTime/;expires=" + exp.toUTCString();
                     location.href = 'invoicePay';
-                  }
+                  });
+                });
          </script>
   <!--
   <script>
@@ -112,20 +113,14 @@
             {{each getUnpaidInvoiceInfo}}
 
             <tr>
-              <td>{{$value.invoice_id}}</td>
+              <td class="invoice_id">{{$value.invoice_id}}</td>
               <td>{{$value.appointment_id}}</td>
               <td>{{$value.type}}</td>
               <td>{{$value.due_date}}</td>
               <td>${{$value.price}}</td>
-              <td>${{$value.price_unpaid}}</td>
+              <td class="price_unpaid">${{$value.price_unpaid}}</td>
               <td>
-                <form> 
-                  <input id="invoice_id" type="hidden" name="invoice_id" value={{$value.invoice_id}}>
-                  <input id="price_unpaid" type="hidden" name="price_unpaid" value={{$value.price_unpaid}}>
-                  <!--input id="patient_id" type="hidden" name="patient_id" value={{patient_id}}-->
-                  <!--input type="submit" value="appoint"-->
-                  <a type="submit" onclick="appointment()"> Pay </a>
-                </form>
+                <button class="use-address"> Pay </a>
               </td>
             </tr>
             {{/each}}

@@ -13,32 +13,22 @@
   <script src="/vendor/chart.js/Chart.min.js"></script>
   <script src="/js/cookie.js"></script>
   <meta name="author" content="">
-            <script>
-                  function appointment(){
-                    var s_no=document.getElementById("lab_id").value;
-                    //var s_no = $value.staff_no; 
-                    //console.log(s_no);
-                    //s_no.toString();
-                    var p_no=document.getElementById("patient_id").value;
-                    var l_name=document.getElementById("lab_name").value;
-                    //var t_id=document.getElementById("test_id").value;
-                    //var f_name=document.getElementById("test_name").value;
-                    //console.log("qw"+s_no);
-                    //console.log("qw"+p_no);
-                    //var exp = new Date();
-                    //exp.setTime(exp.getTime()+(1*24*60*60*1000));
-                    //document.cookie = "staff=" + s_no+";expires=" + exp.toUTCString();
-                    setCookie("lab",s_no,1);
+            <script type="text/javascript">
+
+                  $(document).ready(function(){
+                     $(".use-address").click(function() {
+                    var row = $(this).closest("tr");    // Find the row
+                    var lab_id = row.find(".lab_id").text(); // Find the text
+                    var lab_name = row.find(".lab_name").text();
+                    setCookie("lab",lab_id,1);
                     //document.cookie = "patient=" + p_no+";expires=" + exp.toUTCString();
 
-                     setCookie("patient",p_no,1);
-                     setCookie("lab_name",l_name,1);
+                     
+                     setCookie("lab_name",lab_name,1);
                      //setCookie("test_id",t_id,1);
-                     //setCookie("test_name",f_name,1);
-                     //setCookie("first_name",f_name,1);
-                   // document.cookie = "patient=" + escape(p_no.value)+ ";path=/doctorAppointmentTime/;expires=" + exp.toUTCString();
-                    location.href = 'labAppointmentTime';
-                  }
+                      location.href = 'labAppointmentTime';
+                  });
+               });
          </script>
 
   <!--
@@ -108,17 +98,13 @@
             {{each labIncludingTestInfo}}
 
             <tr>
-              <td>{{$value.lab_id}}</td>
-              <td>{{$value.lab_name}}</td>
+              <td class="lab_id"> {{$value.lab_id}}</td>
+              <td class="lab_name">{{$value.lab_name}}</td>
               <td>{{$value.description}}</td>
               <td>
-                <form> 
-                  <input id="lab_id" type="hidden" name="lab_id" value={{$value.lab_id}}>
-                  <input id="lab_name" type="hidden" name="lab_name" value={{$value.lab_name}}>
-                  <input id="patient_id" type="hidden" name="patient_id" value={{patient_id}}>
-                  <!--input type="submit" value="appoint"-->
-                  <a  onclick="appointment()"> Appointment </a>
-                </form>
+                
+                  <button class="use-address">Appointment </button>
+               
               </td>
             </tr>
             {{/each}}
