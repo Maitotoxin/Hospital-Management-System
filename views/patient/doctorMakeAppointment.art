@@ -20,7 +20,7 @@
              console.log("aa");
              var $row = $(this).closest("tr");    // Find the row
              var $text = $row.find(".nr").text(); // Find the text
-    
+             setCookie("patient",p_no,1);
     // Let's test it out
              console.log($text);
             });
@@ -45,7 +45,7 @@
                    // setCookie("staff",s_no,1);
                     //document.cookie = "patient=" + p_no+";expires=" + exp.toUTCString();
 
-                     //setCookie("patient",p_no,1);
+                     setCookie("patient",p_no,1);
                      //setCookie("last_name",l_name,1);
                      //setCookie("first_name",f_name,1);
                    // document.cookie = "patient=" + escape(p_no.value)+ ";path=/doctorAppointmentTime/;expires=" + exp.toUTCString();
