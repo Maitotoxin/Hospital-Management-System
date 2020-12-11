@@ -27,7 +27,7 @@ CREATE TABLE test_appointment (
     invoice_id          INT,
     appointment_time    DATETIME NOT NULL default CURRENT_TIMESTAMP,
     last_update         DATETIME NOT NULL default CURRENT_TIMESTAMP,
-    valid               CHAR(1) NOT NULL,                                     
+    valid               CHAR(1) NOT NULL,                
     PRIMARY KEY (appointment_id)
 );
 
