@@ -94,6 +94,7 @@
               <td>
               <form method="post">
                   <input type="hidden" name="invoice_id" id="invoice_id" value="">
+                  <input type="hidden" name="icd_id" id="icd_id" value={{$value.icd_id}}>
                   <i class="fas fa-trash"></i>
                   <input type="submit" value="Delete">
                 </form>
@@ -136,6 +137,7 @@
               <td>
               <form method="post">
                   <input type="hidden" name="invoice_id" id="invoice_id" value="">
+                  <input type="hidden" name="icd_id" id="icd_id" value={{$value.treatment_id}}>
                   <i class="fas fa-trash"></i>
                   <input type="submit" value="Delete">
                 </form>
@@ -176,6 +178,7 @@
               <td>
                  <form method="post">
                   <input type="hidden" name="invoice_id" id="invoice_id" value="">
+                  <input type="hidden" name="icd_id" id="icd_id" value={{$value.medicine_id}}>
                   <i class="fas fa-trash"></i>
                   <input type="submit" value="Delete">
                 </form>
