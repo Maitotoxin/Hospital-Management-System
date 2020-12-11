@@ -20,7 +20,6 @@
             //getCookie("patient");
             var res = formContentToJson($("#registerForm"));
             delCookie("staff");
-            delCookie("patient");
             delCookie("last_name");
             delCookie("first_name");
             //if user did not enter userid or password
@@ -97,7 +96,6 @@
                     </div>
                 </div>    
                 <input type="hidden" name="staff_no" id="staff_no" value="">
-                <input type="hidden" name="patient_id" id="patient_id" value="">
                 <div class="form-group row">
                     <div class="col-sm-3 mb-3 mb-sm-0">
                         <label class=""> <b>Appointment Time</b> </label>
@@ -119,7 +117,6 @@
                         //console.log("b"+p_no);
                         document.getElementById('staff_no').value = s_no;
                         //alert(document.getElementById('staff_no').value);
-                        document.getElementById('patient_id').value = p_no;
                         document.getElementById("last_name").value=l_name;
                         document.getElementById("first_name").value=f_name;
                         //alert(document.getElementById('patient_id').value);

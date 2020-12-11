@@ -8,9 +8,9 @@ exports.deleteDoctorAppointment = deleteDoctorAppointment;
 
 function createDoctorAppointment(req, res, next){
     console.log('enter function createDoctorAppontment');
-    console.log(req.body);
+    console.log(req.body); 
     const staff_no = xss(parseInt(req.body.staff_no));
-    const patient_id = xss(req.body.patient_id);
+    const patient_id = xss(req.session.patient_id);
     const appointment_time = xss(req.body.appointment_time); 
     
     //verify
