@@ -21,7 +21,7 @@
            // getCookie("staff");
             //getCookie("patient");
             var res = formContentToJson($("#registerForm"));
-            delCookie("invoice_id");
+            
             return validateAppointmentRegisterInput(res);
             //return true;
         }
@@ -68,13 +68,13 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Make Prescription</h1>
+            <h1 class="h3 mb-0 text-gray-800">Make Treatment</h1>
           </div>
           <form action="/staff/curePatientMedicine" method="post" id="registerForm">
             <div class="container-fluid">
         <table class="table table-striped table-bordered table-hover custom-table">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-2 text-gray-800">Medical Record Display</h1>
+            <h1 class="h3 mb-2 text-gray-800">Treatment Record Display</h1>
           </div>
           <!-- DataTales Example -->
 
@@ -85,19 +85,19 @@
 
           <thead>
             <tr>
-              <th>Medicine ID</th>
-              <th>Medicine Name</th>
-              <th>Amount</th>
+              <th>Treatment ID</th>
+              <th>Treatment Name</th>
+              <th>Times</th>
               <th>Time</th>
             </tr>
           </thead>
          
           <tbody>
-            {{each patientMedicineRecordInfo}}
+            {{each patientTreatmentRecordInfo}}
             <tr>
-              <td>{{$value.medicine_id}}</td>
-              <td>{{$value.medicine_name}}</td>
-              <td>{{$value.amount}}</td>
+              <td>{{$value.treatment_id}}</td>
+              <td>{{$value.treatment_name}}</td>
+              <td>{{$value.times}}</td>
               <td>{{$value.last_update}}</td>
               
             </tr>
@@ -107,9 +107,7 @@
 
         </table>
           </div>
-
-          <input type="hidden" id="invoice_id" value="">
-
+           <input type="hidden" id="invoice_id" value="">
           <div class="container-fluid">
               <table class="table table-striped table-bordered table-hover custom-table">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -125,11 +123,11 @@
           <thead>
             <tr>
               <th> </th>
-              <th>Medicine ID</th>
-              <th>Medicine Name</th>
+              <th>Treatment ID</th>
+              <th>Treatment Name</th>
               <th>Description</th>
               <th>Price</th>
-              <th>Input Dose</th>
+              <th>Input Amount</th>
               
             </tr>
           </thead>
@@ -140,22 +138,22 @@
               <th>Medicine Name</th>
               <th>Description</th>
               <th>Price</th>
-              <th>Input Dose</th>
+              <th>Input Amount</th>
             </tr>
           </tfoot>
           <tbody>
             {{each medicineInfoCure}}
             <tr>
               <td>
-                <input type="checkbox" id="medicine_id" name="medicine_id" value={{$value.medicine_id}}>
+                <input type="checkbox" id="treatment_id" name="treatment_id" value={{$value.treatment_id}}>
               </td>
-              <td>{{$value.medicine_id}}</td>
-              <td>{{$value.medicine_name}}</td>
+              <td>{{$value.treatment_id}}</td>
+              <td>{{$value.treatment_name}}</td>
               <td>{{$value.description}}</td>
               <td>{{$value.price}}</td>
               <td>
                 
-                  <input id="dose" type="text" name="dose" value="">
+                  <input id="amount" type="text" name="amount" value="">
                 
               </td>
             </tr>
@@ -170,13 +168,13 @@
                         //console.log("b"+p_no);
                         document.getElementById("invoice_id").value = s_no;
                         //alert(document.getElementById('staff_no').value);
-                       
+                        
                         //alert(document.getElementById('patient_id').value);
-                    </script>
+                </script>
                <input type="reset" href="error" class="btn btn-primary btn-user btn-block"
                                     value="Use this Medicine" onclick="return registerUser()">
                 <hr>
-                <input type="submit" href="curePatientEnsure" class="btn btn-primary btn-user btn-block"
+                <input type="submit" href="curePatientMedicine" class="btn btn-primary btn-user btn-block"
                                     value="Finish">
                 <hr>
           </form>

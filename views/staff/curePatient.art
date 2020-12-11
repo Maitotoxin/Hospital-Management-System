@@ -118,14 +118,21 @@
               <td>
                 <form method="post"> 
                   <input id="patient_no" type="hidden" name="patient_no" value={{$value.patient_no}}>
-                  <input id="appointment_id" type="hidden" name="appointment_id" value={{$value.appointment_id}}>
+                  
                   <input type="submit" href="checkMedicalRecord" value="Check Medical Record"> 
                   <!--<i class="fas fa-edit"></i>
                   <i class="fas fa-trash"></i>  -->
-                
-                  
-                 <input type="submit" href="curePatientMedicine" value="Begin Treatment">
                 </form>
+                  <form method="post"> 
+                  <input id="patient_no" type="hidden" name="patient_no" value={{$value.patient_no}}>
+                  <input id="appointment_id" type="hidden" name="appointment_id" value={{$value.appointment_id}}>
+                  
+                  
+                  <input type="submit" href="curePatientIcd" value="Begin Treatment">
+                  
+                </form>
+                 
+                
               </td>
             </tr>
             {{/each}}
