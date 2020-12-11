@@ -15,16 +15,21 @@
   <!--script type="text/javascript" src="/jquery/jquery.js"></script-->
   <script type="text/javascript">
            //console.log("aa");
-           $(document).ready(function(){
+        $(document).ready(function(){
            $(".use-address").click(function() {
-             console.log("aa");
-             var $row = $(this).closest("tr");    // Find the row
-             var $text = $row.find(".nr").text(); // Find the text
-             setCookie("patient",p_no,1);
+              var row = $(this).closest("tr");    // Find the row
+              var staff_no = row.find(".staff_no").text(); // Find the text
+              var first_name = row.find(".first_name").text();
+              var last_name = row.find(".last_name").text();
     // Let's test it out
-             console.log($text);
+              //console.log(text);
+              //alert(text);
+              setCookie("staff",staff_no,1);
+              setCookie("last_name",last_name,1);
+              setCookie("first_name",first_name,1);
+              location.href = 'doctorAppointmentTime';
             });
-            });/*
+        });/*
                   function appointment(){
                     var $row = $(this).closest("tr");    // Find the row
                     var $text = $row.find(".nr");
@@ -52,6 +57,8 @@
                     //location.href = 'doctorAppointmentTime';
                   }*/
          </script>
+
+         
 
   <!--
   <script>
@@ -92,7 +99,7 @@
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-2 text-gray-800">Doctor Information Display</h1>
           </div>
-          <!-- DataTales Example -->
+          
 
           <div class="card-body">
             <div class="table-responsive">
@@ -124,14 +131,14 @@
           <tbody>
             {{each patientDoctorInfo}}
             <tr>
-              <td class="nr">{{$value.staff_no}}</td>
-              <td >{{$value.first_name}}</td>
-              <td>{{$value.last_name}}</td>
+              <td class="staff_no">{{$value.staff_no}}</td>
+              <td class="first_name">{{$value.first_name}}</td>
+              <td class="last_name">{{$value.last_name}}</td>
               <td>{{$value.gender}}</td>
               <td>{{$value.phone}}</td>
               <td>{{$value.description}}</td>
               <td>
-                <button   class="use-address">Appointment </button>
+                <button class="use-address">Appointment </button>
                 <!--a type="button" class="use-address" -->
               </td>
               <!--td>
