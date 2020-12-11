@@ -113,7 +113,6 @@
               <td>{{$value.lab_id}}</td>
               <td>{{$value.lab_name}}</td>
               <td>{{$value.appointment_time}}</td>
-              <td>{{$value.estimated_duration}} minutes</td>
               <td>{{$value.valid}}</td>
               <td>
                 <form> 

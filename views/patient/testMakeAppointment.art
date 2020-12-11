@@ -100,7 +100,12 @@
               <td>{{$value.description}}</td>
               <td>${{$value.price}}</td>
               <td>
+<<<<<<< HEAD
                 <form method="post">
+=======
+                 <form method="post">      
+                 <input type="hidden" name="test_id" id="test_id" value={{$value.test_id}}>       
+>>>>>>> 45486c0879bbbfe9ddda5b1759b78c2b48e41c8d
                  <button class="use-address"> Choose this test</button>
                  </form>
               </td>
