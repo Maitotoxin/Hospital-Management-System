@@ -145,6 +145,9 @@
                <input type="reset" href="error" class="btn btn-primary btn-user btn-block"
                                     value="Finish Diagnosis" onclick="return registerUser()">
                 <hr>
+                <input type="submit" href="curePatientIcd" class="btn btn-primary btn-user btn-block"
+                                    value="Go Back To Diagnosis">
+                <hr>
                <input type="submit" href="curePatientTreatment" class="btn btn-primary btn-user btn-block"
                                     value="Go To Treatment">
                 <hr>

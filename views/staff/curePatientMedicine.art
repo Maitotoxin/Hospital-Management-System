@@ -17,7 +17,7 @@
             //if user did not enter userid or password
             
         }*/
-        function registerAppointment() {
+        function registerUser() {
            // getCookie("staff");
             //getCookie("patient");
             var res = formContentToJson($("#registerForm"));
@@ -175,6 +175,9 @@
                     </script>
                <input type="reset" href="error" class="btn btn-primary btn-user btn-block"
                                     value="Use this Medicine" onclick="return registerUser()">
+                <hr>
+                <input type="submit" href="curePatientTreatment" class="btn btn-primary btn-user btn-block"
+                                    value="Go Back To Treatment">
                 <hr>
                 <input type="submit" href="curePatientEnsure" class="btn btn-primary btn-user btn-block"
                                     value="Finish">
