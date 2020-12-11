@@ -198,6 +198,9 @@
                        
                         //alert(document.getElementById('patient_id').value);
         </script>
+        <input type="submit" href="curePatientMedicine" class="btn btn-primary btn-user btn-block"
+                                    value="Go Back To Medicine">
+                <hr>
          <input type="submit" href="error" class="btn btn-primary btn-user btn-block"
                                     value="Finish" onclick="return registerUser()">
         <hr>
