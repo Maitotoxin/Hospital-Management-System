@@ -98,7 +98,6 @@ CREATE TABLE patient_icd(
    invoice_id          INT NOT NULL,
    patient_no          INT NOT NULL,
    icd_id              INT NOT NULL,
-   disease_name        VARCHAR(30) NOT NULL,
    last_update         DATETIME NOT NULL default CURRENT_TIMESTAMP
 );
 
@@ -186,7 +185,6 @@ CREATE TABLE patient_medicine(
    invoice_id          INT NOT NULL,
    patient_no          INT NOT NULL,
    medicine_id              INT NOT NULL,
-   medicine_name        VARCHAR(30) NOT NULL,
    amount           INT NOT NULL,
    last_update   DATETIME NOT NULL default CURRENT_TIMESTAMP
 );
@@ -205,7 +203,6 @@ CREATE TABLE patient_treatment(
    invoice_id          INT NOT NULL,
    patient_no          INT NOT NULL,
    treatment_id              INT NOT NULL,
-   treatment_name        VARCHAR(30) NOT NULL,
    times           INT NOT NULL,
    last_update   DATETIME NOT NULL default CURRENT_TIMESTAMP
 );
