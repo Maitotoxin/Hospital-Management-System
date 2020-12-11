@@ -1,6 +1,8 @@
 const database = require('../config/databaseConfig');
 const xss = require('xss');
-exports.createCurePatientMedicine = createCurePatientMedicine
+exports.createCurePatientMedicine = createCurePatientMedicine;
+
+
 function createCurePatientMedicine(req, res, next){
     console.log("enter function createCurePatientMedicine")
     console.log(req.body);
@@ -18,7 +20,8 @@ function createCurePatientMedicine(req, res, next){
         var arr=[];
         arr.push(parseInt(req.body.medicine_id[i]));
         arr.push(parseInt(dose[i]));
-        arr_medicine_id_dose.push(arr);
+        arr_medicine_id_dose.push(arr); 
     }
     console.log(arr_medicine_id_dose);
 } 
+
