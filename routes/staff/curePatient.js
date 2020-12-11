@@ -4,12 +4,10 @@ const PatientMedicineInfo = require('../../controller/staffInfoController')
 //const curePatientMedicine = require('../../controller/staffCureController')
 
 
-const curePatientMedicine1 = express.Router();
+const curePatient = express.Router();
 
-curePatientMedicine1.get('/', PatientMedicineInfo.getDoctorAppointmentInfoAccept);
+curePatient.get('/', PatientMedicineInfo.getDoctorAppointmentInfoAccept);
 
-curePatientMedicine1.post('/', PatientMedicineInfo.getPatientIcdRecordInfo);
-curePatientMedicine1.post('/', PatientMedicineInfo.getPatientMedicineRecordInfo);
-curePatientMedicine1.post('/', PatientMedicineInfo.getPatientTreatmentRecordInfo);
+curePatient.post('/', PatientMedicineInfo.getPatientMedicalRecordInfo);
 
-module.exports = curePatientMedicine1;
+module.exports = curePatient;

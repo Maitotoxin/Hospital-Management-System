@@ -13,9 +13,52 @@ exports.getDoctorAppointmentInfoAccept = getDoctorAppointmentInfoAccept;
 exports.getPatientIcdRecordInfo = getPatientIcdRecordInfo;
 exports.getPatientMedicineRecordInfo = getPatientMedicineRecordInfo;
 exports.getPatientTreatmentRecordInfo = getPatientTreatmentRecordInfo;
+exports.getPatientMedicalRecordInfo = getPatientMedicalRecordInfo;
+
+function getPatientMedicalRecordInfo(req, res, next){
+	console.log("enter getPatientTreatmentRecordInfo");
+	console.log(req.body);
+	const patient_no = xss(req.body.patient_no);
+	database.setUpDatabase(function (connection) {
+		var sql = 'select last_update, treatment_id, treatment_name, times from patient_treatment where patient_no=?'
+		connection.query(sql, [patient_no], function (err, result) {
+			if (err) {
+                console.log('[SELECT ERROR] - ', err.message);
+                res.send("SQL query error");
+                return;
+			}
+			patientTreatmentRecordInfo = result;
+			sql = 'select last_update, medicine_id, medicine_name, amount from patient_medicine where patient_no=?'
+			connection.query(sql, [patient_no], function (err, result) {
+				if (err) {
+                	console.log('[SELECT ERROR] - ', err.message);
+                	res.send("SQL query error");
+                	return;
+				}
+				patientMedicineRecordInfo = result;
+				sql = 'select last_update, icd_id, disease_name from patient_icd where patient_no=?'
+				connection.query(sql, [patient_no], function (err, result) {
+					if (err) {
+                		console.log('[SELECT ERROR] - ', err.message);
+                		res.send("SQL query error");
+                		return;
+					}
+					patientIcdRecordInfo = result;
+					res.render('staff/checkMedicalRecord', {
+						patientTreatmentRecordInfo: patientTreatmentRecordInfo,
+						patientMedicineRecordInfo: patientMedicineRecordInfo,
+						patientIcdRecordInfo: patientIcdRecordInfo
+					});
+				})
+			})
+		})
+	})
+}
 
 function getPatientTreatmentRecordInfo(req, res, next){
-	const patient_no = xss(req.session.patient_no);
+	console.log("enter getPatientTreatmentRecordInfo");
+	console.log(req.body);
+	const patient_no = xss(req.body.patient_no);
 	database.setUpDatabase(function (connection) {
 		var sql = 'select last_update, treatment_id, treatment_name, times from patient_treatment where patient_no=?'
 		connection.query(sql, [patient_no], function (err, result) {
@@ -33,7 +76,9 @@ function getPatientTreatmentRecordInfo(req, res, next){
 }
 
 function getPatientMedicineRecordInfo(req, res, next){
-	const patient_no = xss(req.session.patient_no);
+	console.log("enter getPatientMedicineRecordInfo");
+	console.log(req.body);
+	const patient_no = xss(req.body.patient_no);
 	database.setUpDatabase(function (connection) {
 		var sql = 'select last_update, medicine_id, medicine_name, amount from patient_medicine where patient_no=?'
 		connection.query(sql, [patient_no], function (err, result) {
@@ -51,7 +96,9 @@ function getPatientMedicineRecordInfo(req, res, next){
 }
 
 function getPatientIcdRecordInfo(req, res, next){
-	const patient_no = xss(req.session.patient_no);
+	console.log("enter getPatientIcdRecordInfo");
+	console.log(req.body);
+	const patient_no = xss(req.body.patient_no);
 	database.setUpDatabase(function (connection) {
 		var sql = 'select last_update, icd_id, disease_name from patient_icd where patient_no=?'
 		connection.query(sql, [patient_no], function (err, result) {
@@ -71,7 +118,7 @@ function getPatientIcdRecordInfo(req, res, next){
 function getDoctorAppointmentInfoAccept(req, res, next){ 
 	const staff_id = xss(req.session.staff_id);
 	database.setUpDatabase(function (connection) {
-		var sql = 'select staff_no from staff where staff_id = ?'
+		var sql = 'select * from staff where staff_id = ?'
 		connection.query(sql, [staff_id], function (err, result) {
 			if (err) {
                 console.log('[SELECT ERROR] - ', err.message);
@@ -86,9 +133,9 @@ function getDoctorAppointmentInfoAccept(req, res, next){
 					res.send('SQL query error');
 					return;
 				}
-				doctorAppointmentInfoWaiting = result;
-				res.render('staff/manageAppointment', {
-					doctorAppointmentInfoWaiting: doctorAppointmentInfoWaiting
+				doctorAppointmentInfoAccept = result;
+				res.render('staff/curePatient', {
+					doctorAppointmentInfoAccept: doctorAppointmentInfoAccept
 				});
 			})
 		})
