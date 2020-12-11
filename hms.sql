@@ -187,7 +187,7 @@ CREATE TABLE patient_medicine(
    patient_no          INT NOT NULL,
    medicine_id              INT NOT NULL,
    medicine_name        VARCHAR(30) NOT NULL,
-   amount           VARCHAR(30) NOT NULL,
+   amount           INT NOT NULL,
    last_update   DATETIME NOT NULL default CURRENT_TIMESTAMP
 );
 
@@ -206,7 +206,7 @@ CREATE TABLE patient_treatment(
    patient_no          INT NOT NULL,
    treatment_id              INT NOT NULL,
    treatment_name        VARCHAR(30) NOT NULL,
-   time           VARCHAR(30) NOT NULL,
+   times           INT NOT NULL,
    last_update   DATETIME NOT NULL default CURRENT_TIMESTAMP
 );
 
