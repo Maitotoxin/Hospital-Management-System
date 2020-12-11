@@ -66,7 +66,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        {{include '../common/supertopbar.art'}}
+        {{include '../common/topbar.art'}}
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -75,7 +75,7 @@
           <div class="container-fluid">
         <table class="table table-striped table-bordered table-hover custom-table">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-2 text-gray-800">Doctor Appointment Display</h1>
+            <h1 class="h3 mb-2 text-gray-800">Medical Record Display</h1>
           </div>
           <!-- DataTales Example -->
 
@@ -86,47 +86,83 @@
 
           <thead>
             <tr>
-              <th>Appointment ID</th>
-              <th>Patient No.</th>
-              <th>Patient First Name</th>
-              <th>Patient Last Name</th>
-              <th>Appointment Time</th>
-              <th>Appointment Status</th>
-              <th> </th>
+              <th>Medicine ID</th>
+              <th>Medicine Name</th>
+              <th>Amount</th>
+              <th>Last Update</th>
             </tr>
           </thead>
-          <tfoot>
-            <tr>
-              <th>Appointment ID</th>
-              <th>Patient No.</th>
-              <th>Patient First Name</th>
-              <th>Patient Last Name</th>
-              <th>Appointment Time</th>
-              <th>Appointment Status</th>
-              <th> </th>
-            </tr>
-          </tfoot>
+         
           <tbody>
-            {{each doctorAppointmentInfoAccept}}
+            {{each patientMedicineRecordInfo}}
             <tr>
-              <td>{{$value.appointment_id}}</td>
-              <td>{{$value.patient_no}}</td>
-              <td>{{$value.first_name}}</td>
-              <td>{{$value.last_name}}</td>
-              <td>{{$value.appointment_time}}</td>
-              <td>{{$value.valid}}</td>
-              <td>
-                <form method="post"> 
-                  <input id="patient_no" type="hidden" name="patient_no" value={{$value.patient_no}}>
-                  <input id="appointment_id" type="hidden" name="appointment_id" value={{$value.appointment_id}}>
-                  <input type="submit" href="checkMedicalRecord" value="Check Medical Record"> 
-                  <!--<i class="fas fa-edit"></i>
-                  <i class="fas fa-trash"></i>  -->
-                
-                  
-                 <input type="submit" href="curePatientMedicine" value="Begin Treatment">
-                </form>
-              </td>
+              <td>{{$value.medicine_id}}</td>
+              <td>{{$value.medicine_name}}</td>
+              <td>{{$value.amount}}</td>
+              <td>{{$value.last_update}}</td>
+              
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+           <table class="table table-striped table-bordered table-hover custom-table">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-2 text-gray-800">Treatment Record Display</h1>
+          </div>
+          <!-- DataTales Example -->
+
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+
+          <thead>
+            <tr>
+              <th>Treatment ID</th>
+              <th>Treatment Name</th>
+              <th>Times</th>
+              <th>Last Update</th>
+            </tr>
+          </thead>
+         
+          <tbody>
+            {{each patientTreatmentRecordInfo}}
+            <tr>
+              <td>{{$value.treatment_id}}</td>
+              <td>{{$value.treatment_name}}</td>
+              <td>{{$value.times}}</td>
+              <td>{{$value.last_update}}</td>
+              
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+           <table class="table table-striped table-bordered table-hover custom-table">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-2 text-gray-800">Disease Record Display</h1>
+          </div>
+          <!-- DataTales Example -->
+
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+
+          <thead>
+            <tr>
+              <th>ICD ID</th>
+              <th>Disease Name</th>
+              <th>Last Update</th>
+            </tr>
+          </thead>
+         
+          <tbody>
+            {{each patientIcdRecordInfo}}
+            <tr>
+              <td>{{$value.icd_id}}</td>
+              <td>{{$value.disease_name}}</td>
+              <td>{{$value.last_update}}</td>
+              
             </tr>
             {{/each}}
           </tbody>
