@@ -8,6 +8,26 @@ exports.getIcdInfo = getIcdInfo;
 exports.getTreatmentInfo = getTreatmentInfo;
 exports.getLabInfo = getLabInfo;
 exports.getTestInfo = getTestInfo;
+exports.getDoctorAppointmentInfoWaiting = getDoctorAppointmentInfoWaiting;
+
+
+function getDoctorAppointmentInfoWaiting(req, res, next){
+	const staff_id = xss(req.session.staff_id);
+	database.setUpDatabase(function (connection) {
+		var sql = 'select a.appointment_id, a.patient_no, a.appointment_time, a.valid, b.first_name, b.last_name from doctor_appointment a inner join patient b on a.patient_no = b.patient_no where a.staff_no=? and a.valid="0"';
+		connection.query(sql, [staff_id], function (err, result) {
+			if (err) {
+				console.log('[SELECT ERROR] - ', err.message);
+				res.send('SQL query error');
+				return;
+			}
+			doctorAppointmentInfoWaiting = result;
+			res.render('staff/manageAppointment', {
+				doctorAppointmentInfoWaiting: doctorAppointmentInfoWaiting
+			});
+		})
+	})
+}
 
 function getTestInfo(req, res, next){
 	const staff_id = xss(req.session.staff_id);

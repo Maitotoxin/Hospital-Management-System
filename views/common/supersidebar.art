@@ -42,55 +42,7 @@
         </div>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDoctors" aria-expanded="true"
-          aria-controls="collapseDoctors">
-          <i class="fas fa-fw fa-car"></i>
-          <span>Doctor Information</span>
-        </a>
-        <div id="collapseDoctors" class="collapse" aria-labelledby="headingDoctors" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="doctorInfoDisplay">See Doctors </a>
-        </div>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLabs" aria-expanded="true"
-          aria-controls="collapseLabs">
-          <i class="fas fa-fw fa-user"></i>
-          <span>Lab Information</span>
-        </a>
-        <div id="collapseLabs" class="collapse" aria-labelledby="headingLabs" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="labInfoDisplay">See Labs </a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTests" aria-expanded="true"
-          aria-controls="collapseTests">
-          <i class="fas fa-fw fa-user"></i>
-          <span>Test Information</span>
-        </a>
-        <div id="collapseTests" class="collapse" aria-labelledby="headingTests" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="testInfoDisplay">See Tests </a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInsuranceCompanys" aria-expanded="true"
-          aria-controls="collapseInsuranceCompanys">
-          <i class="fas fa-fw fa-user"></i>
-          <span>Insurance Company Information</span>
-        </a>
-        <div id="collapseInsuranceCompanys" class="collapse" aria-labelledby="headingInsuranceCompanys" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="insuranceCompanyInfoDisplay">See Insurance Company </a>
-        </div>
-      </li>
+     
       <!-- Divider -->
       <hr class="sidebar-divider">
 
