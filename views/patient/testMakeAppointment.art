@@ -100,7 +100,9 @@
               <td>{{$value.description}}</td>
               <td>${{$value.price}}</td>
               <td>
+                <form method="post">
                  <button class="use-address"> Choose this test</button>
+                 </form>
               </td>
             </tr>
             {{/each}}
