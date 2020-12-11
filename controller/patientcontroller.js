@@ -171,8 +171,8 @@ function updatePatientProfile(req, res, next) {
                 res.send("SQL update error");
                 return; 
             }
-            console.log('--------------------------INSERT----------------------------')
-            console.log('INSERT ID:', result)
+            console.log('--------------------------Update----------------------------')
+            console.log(result)
             console.log('------------------------------------------------------------')
             //issue 01: 注册成功alert
             connection.end();

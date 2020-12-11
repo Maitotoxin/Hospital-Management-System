@@ -84,7 +84,7 @@
                         <label class=""> <b>Unpaid Price</b> </label>
                     </div>
                     <div class="col-sm-7">
-                        $<input type="text" name="price_unpaid" id="price_unpaid" value="" disabled>
+                        <input type="text" name="price_unpaid" id="price_unpaid" value="" disabled>
                     </div>
                 </div>       
                   

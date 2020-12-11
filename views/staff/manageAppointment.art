@@ -119,14 +119,12 @@
                 <form method="post"> 
                   <input id="appointment_id" type="hidden" name="appointment_id" value={{$value.appointment_id}}>
         
-                  <i class="fas fa-edit"></i>
-                  <button type="submit" id="valid" name="valid" class="fas fa-edit"  value="1"> Accept
+                  <button type="submit" id="valid" name="valid" class="fas fa-edit"  value="1"> Accept</button>
                   <!--<i class="fas fa-edit"></i>
                   <i class="fas fa-trash"></i>  -->
                 
                   
-                  <i class="fas fa-trash"></i>
-                  <button type="submit" id="valid" name="valid" class="fas fa-trash" value="3"> Deny
+                  <button type="submit" id="valid" name="valid" class="fas fa-trash" value="3"> Deny</button>
                 </form>
               </td>
             </tr>
