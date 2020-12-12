@@ -1,4 +1,4 @@
-const database = require('../../config/databaseConfig');
+const database = require('../config/databaseConfig');
 const xss = require('xss');
 exports.createPatientInvoice = createPatientInvoice;
 
@@ -62,7 +62,7 @@ function createPatientInvoice(req, res, next){
                                 }
                                 invoiceInfo = result;
                                 console.log(invoiceInfo);
-                                res.render('staff/curePatientIcd', {
+                                res.render('patient/doctorListAppointment', {
                                     invoiceInfo: invoiceInfo
                                 });
                             });
