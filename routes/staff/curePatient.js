@@ -8,6 +8,6 @@ const curePatient = express.Router();
 
 curePatient.get('/', PatientMedicineInfo.getDoctorAppointmentInfoAccept);
 
-curePatient.post('/getPatientMedicalRecordInfo', PatientMedicineInfo.getPatientMedicalRecordInfo);
-curePatient.post('/createPatientInvoice', curePatientMedicine.createPatientInvoice);
+curePatient.post('/', PatientMedicineInfo.getPatientMedicalRecordInfo);
+curePatient.post('/', curePatientMedicine.createPatientInvoice);
 module.exports = curePatient;

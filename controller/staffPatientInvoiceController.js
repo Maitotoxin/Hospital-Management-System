@@ -1,4 +1,4 @@
-const database = require('../config/databaseConfig');
+const database = require('../../config/databaseConfig');
 const xss = require('xss');
 exports.createPatientInvoice = createPatientInvoice;
 
