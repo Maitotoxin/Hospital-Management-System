@@ -1,7 +1,6 @@
 const database = require('../config/databaseConfig');
 const common = require('./util/common');
 const xss = require('xss');
-exports.getWaitingAppointment = getWaitingAppointment;
 exports.getMedicineInfoCure = getMedicineInfoCure;
 exports.getMedicineInfo = getMedicineInfo;
 exports.getIcdInfo = getIcdInfo;
@@ -14,13 +13,17 @@ exports.getPatientIcdRecordInfo = getPatientIcdRecordInfo;
 exports.getPatientMedicineRecordInfo = getPatientMedicineRecordInfo;
 exports.getPatientTreatmentRecordInfo = getPatientTreatmentRecordInfo;
 exports.getPatientMedicalRecordInfo = getPatientMedicalRecordInfo;
+exports.getTreatmentInfoCure = getTreatmentInfoCure;
+exports.getIcdInfoCure = getIcdInfoCure;
+exports.getMedicineInfoCure = getMedicineInfoCure;
+exports.getPatientNewMedicalRecordInfo = getPatientNewMedicalRecordInfo;
 
-function getPatientMedicalRecordInfo(req, res, next){
-	console.log("enter getPatientTreatmentRecordInfo");
+function getPatientNewMedicalRecordInfo(req, res, next){
+	console.log("enter getPatientNewMedicalRecordInfo");
 	console.log(req.body);
-	const patient_no = xss(req.body.patient_no);
+	const invoice_no = xss(req.body.invoice_no);
 	database.setUpDatabase(function (connection) {
-		var sql = 'select last_update, treatment_id, treatment_name, times from patient_treatment where patient_no=?'
+		var sql = 'select a.last_update, a.treatment_id, b.treatment_name, a.times from patient_treatment a inner join treatment b on a.treatment_id = b.treatment_id where a.invoice_no=?'
 		connection.query(sql, [patient_no], function (err, result) {
 			if (err) {
                 console.log('[SELECT ERROR] - ', err.message);
@@ -28,7 +31,7 @@ function getPatientMedicalRecordInfo(req, res, next){
                 return;
 			}
 			patientTreatmentRecordInfo = result;
-			sql = 'select last_update, medicine_id, medicine_name, amount from patient_medicine where patient_no=?'
+			sql = 'select a.last_update, a.medicine_id, b.medicine_name, a.amount from patient_medicine a inner join medicine b on a.medicine_id = b.medicine_id where a.invoice_no=?'
 			connection.query(sql, [patient_no], function (err, result) {
 				if (err) {
                 	console.log('[SELECT ERROR] - ', err.message);
@@ -36,7 +39,107 @@ function getPatientMedicalRecordInfo(req, res, next){
                 	return;
 				}
 				patientMedicineRecordInfo = result;
-				sql = 'select last_update, icd_id, disease_name from patient_icd where patient_no=?'
+				sql = 'select a.last_update, a.icd_id, b.disease_name from patient_icd a inner join icd b on a.icd_id=b.icd_id where a.invoice_no=?'
+				connection.query(sql, [patient_no], function (err, result) {
+					if (err) {
+                		console.log('[SELECT ERROR] - ', err.message);
+                		res.send("SQL query error");
+                		return;
+					}
+					patientIcdRecordInfo = result;
+					res.render('staff/checkMedicalRecord', {
+						patientTreatmentRecordInfo: patientTreatmentRecordInfo,
+						patientMedicineRecordInfo: patientMedicineRecordInfo,
+						patientIcdRecordInfo: patientIcdRecordInfo
+					});
+				})
+			})
+		})
+	})
+}
+
+function getTreatmentInfoCure(req, res, next){
+	const staff_id = xss(req.session.staff_id);
+	database.setUpDatabase(function (connection) {
+		connection.connect(); 
+		var sql = 'select treatment_id, treatment_name, description, price from treatment';
+		connection.query(sql, [staff_id], function (err, result) {
+			if (err) {
+				console.log('[SELECT ERROR] - ', err.message);
+				res.send('SQL query error');
+				return;
+			}
+			treatmentInfo = result;
+			//console.log(labIncludingTestInfo);
+			res.render('staff/curePatientTreatment', {
+				treatmentInfo: treatmentInfo
+			});
+		})
+	})
+}
+
+function getIcdInfoCure(req, res, next){
+	const staff_id = xss(req.session.staff_id);
+	database.setUpDatabase(function (connection) {
+		connection.connect(); 
+		var sql = 'select icd_id, disease_name from icd';
+		connection.query(sql, [staff_id], function (err, result) {
+			if (err) {
+				console.log('[SELECT ERROR] - ', err.message);
+				res.send('SQL query error');
+				return;
+			}
+			icdInfo = result;
+			//console.log(labIncludingTestInfo);
+			res.render('staff/curePatientIcd', {
+				icdInfo: icdInfo
+			});
+		})
+	})
+}
+
+function getMedicineInfoCure(req, res, next){
+	const staff_id = xss(req.session.staff_id);
+	database.setUpDatabase(function (connection) {
+		connection.connect(); 
+		var sql = 'select medicine_id, medicine_name, dose, price, description from medicine';
+		connection.query(sql, [staff_id], function (err, result) {
+			if (err) {
+				console.log('[SELECT ERROR] - ', err.message);
+				res.send('SQL query error');
+				return;
+			}
+			medicineInfo = result;
+			//console.log(labIncludingTestInfo);
+			res.render('staff/curePatientMedicine', {
+				medicineInfo: medicineInfo
+			});
+		})
+	})
+}
+
+function getPatientMedicalRecordInfo(req, res, next){
+	console.log("enter getPatientMedicalRecordInfo");
+	console.log(req.body);
+	const patient_no = xss(req.body.patient_no);
+	database.setUpDatabase(function (connection) {
+		var sql = 'select a.last_update, a.treatment_id, b.treatment_name, a.times from patient_treatment a inner join treatment b on a.treatment_id = b.treatment_id where a.patient_no=?'
+		connection.query(sql, [patient_no], function (err, result) {
+			if (err) {
+                console.log('[SELECT ERROR] - ', err.message);
+                res.send("SQL query error");
+                return;
+			}
+			patientTreatmentRecordInfo = result;
+			sql = 'select a.last_update, a.medicine_id, b.medicine_name, a.amount from patient_medicine a inner join medicine b on a.medicine_id = b.medicine_id where a.patient_no=?'
+			connection.query(sql, [patient_no], function (err, result) {
+				if (err) {
+                	console.log('[SELECT ERROR] - ', err.message);
+                	res.send("SQL query error");
+                	return;
+				}
+				patientMedicineRecordInfo = result;
+				sql = 'select a.last_update, a.icd_id, b.disease_name from patient_icd a inner join icd b on a.icd_id=b.icd_id where a.patient_no=?'
 				connection.query(sql, [patient_no], function (err, result) {
 					if (err) {
                 		console.log('[SELECT ERROR] - ', err.message);
@@ -68,7 +171,7 @@ function getPatientTreatmentRecordInfo(req, res, next){
                 return;
 			}
 			patientTreatmentRecordInfo = result;
-			res.render('staff/checkMedicalRecord', {
+			res.render('staff/curePatientTreatment', {
 				patientTreatmentRecordInfo: patientTreatmentRecordInfo
 			});
 		})
@@ -88,7 +191,7 @@ function getPatientMedicineRecordInfo(req, res, next){
                 return;
 			}
 			patientMedicineRecordInfo = result;
-			res.render('staff/checkMedicalRecord', {
+			res.render('staff/curePatientMedicine', {
 				patientMedicineRecordInfo: patientMedicineRecordInfo
 			});
 		})
@@ -108,7 +211,7 @@ function getPatientIcdRecordInfo(req, res, next){
                 return;
 			}
 			patientIcdRecordInfo = result;
-			res.render('staff/checkMedicalRecord', {
+			res.render('staff/curePatientIcd', {
 				patientIcdRecordInfo: patientIcdRecordInfo
 			});
 		})
@@ -271,10 +374,6 @@ function getMedicineInfo(req, res, next){
 			});
 		})
 	})
-}
-
-function getWaitingAppointment(req, res, next){
-	const staff_id = xss(req.session.staff_id);
 }
 
 function getMedicineInfoCure(req, res, next){

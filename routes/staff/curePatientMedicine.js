@@ -8,5 +8,4 @@ curePatientMedicine1.get('/', PatientMedicineInfo.getPatientMedicalRecordInfo);
 curePatientMedicine1.get('/', PatientMedicineInfo.getMedicineInfoCure);
 
 curePatientMedicine1.post('/', curePatientMedicine.createCurePatientMedicine);
-
 module.exports = curePatientMedicine1;
