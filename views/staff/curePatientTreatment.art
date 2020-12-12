@@ -70,7 +70,7 @@
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Make Treatment</h1>
           </div>
-          <form action="/staff/curePatientMedicine" method="post" id="registerForm">
+          <form action="/staff/curePatientTreatment" method="post" id="registerForm">
             <div class="container-fluid">
         <table class="table table-striped table-bordered table-hover custom-table">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
