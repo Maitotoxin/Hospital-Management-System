@@ -1,13 +1,13 @@
 const express = require('express');
 
 const PatientMedicineInfo = require('../../controller/staffInfoController')
-const curePatientMedicine = require('../../controller/staffCureController')
+const curePatientMedicine = require('../../controller/staffPatientInvoiceController')
 
 
 const curePatient = express.Router();
 
 curePatient.get('/', PatientMedicineInfo.getDoctorAppointmentInfoAccept);
 
-curePatient.post('/getPatientMedicalRecordInfo', PatientMedicineInfo.getPatientMedicalRecordInfo);
-curePatient.post('/createPatientInvoice', curePatientMedicine.createPatientInvoice);
-module.exports = curePatient;
+curePatient.post('views/staff/curePatient', PatientMedicineInfo.getPatientMedicalRecordInfo);
+curePatient.post('/staff/createPatientInvoice', curePatientMedicine.createPatientInvoice);
+module.exports = curePatient;   
