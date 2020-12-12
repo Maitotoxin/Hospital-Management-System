@@ -24,7 +24,7 @@ function getPatientNewMedicalRecordInfo(req, res, next){
 	const invoice_no = xss(req.body.invoice_no);
 	database.setUpDatabase(function (connection) {
 		var sql = 'select a.last_update, a.treatment_id, b.treatment_name, a.times from patient_treatment a inner join treatment b on a.treatment_id = b.treatment_id where a.invoice_no=?'
-		connection.query(sql, [patient_no], function (err, result) {
+		connection.query(sql, [invoice_no], function (err, result) {
 			if (err) {
                 console.log('[SELECT ERROR] - ', err.message);
                 res.send("SQL query error");
@@ -32,7 +32,7 @@ function getPatientNewMedicalRecordInfo(req, res, next){
 			}
 			patientTreatmentRecordInfo = result;
 			sql = 'select a.last_update, a.medicine_id, b.medicine_name, a.amount from patient_medicine a inner join medicine b on a.medicine_id = b.medicine_id where a.invoice_no=?'
-			connection.query(sql, [patient_no], function (err, result) {
+			connection.query(sql, [invoice_no], function (err, result) {
 				if (err) {
                 	console.log('[SELECT ERROR] - ', err.message);
                 	res.send("SQL query error");
@@ -40,7 +40,7 @@ function getPatientNewMedicalRecordInfo(req, res, next){
 				}
 				patientMedicineRecordInfo = result;
 				sql = 'select a.last_update, a.icd_id, b.disease_name from patient_icd a inner join icd b on a.icd_id=b.icd_id where a.invoice_no=?'
-				connection.query(sql, [patient_no], function (err, result) {
+				connection.query(sql, [invoice_no], function (err, result) {
 					if (err) {
                 		console.log('[SELECT ERROR] - ', err.message);
                 		res.send("SQL query error");
@@ -116,46 +116,119 @@ function getMedicineInfoCure(req, res, next){
 			});
 		})
 	})
-}
+} 
 
 function getPatientMedicalRecordInfo(req, res, next){
 	console.log("enter getPatientMedicalRecordInfo");
 	console.log(req.body);
-	const patient_no = xss(req.body.patient_no);
-	database.setUpDatabase(function (connection) {
-		var sql = 'select a.last_update, a.treatment_id, b.treatment_name, a.times from patient_treatment a inner join treatment b on a.treatment_id = b.treatment_id where a.patient_no=?'
-		connection.query(sql, [patient_no], function (err, result) {
-			if (err) {
-                console.log('[SELECT ERROR] - ', err.message);
-                res.send("SQL query error");
-                return;
-			}
-			patientTreatmentRecordInfo = result;
-			sql = 'select a.last_update, a.medicine_id, b.medicine_name, a.amount from patient_medicine a inner join medicine b on a.medicine_id = b.medicine_id where a.patient_no=?'
+	const patient_no = xss(parseInt(req.body.patient_no));
+	const function_switch = xss(parseInt(req.body.function_switch));
+	const appointment_id = xss(req.body.appointment_id);
+	if(function_switch == 1){
+		database.setUpDatabase(function (connection) {
+			var sql = 'select a.last_update, a.treatment_id, b.treatment_name, a.times from patient_treatment a inner join treatment b on a.treatment_id = b.treatment_id where a.patient_no=?'
 			connection.query(sql, [patient_no], function (err, result) {
 				if (err) {
-                	console.log('[SELECT ERROR] - ', err.message);
-                	res.send("SQL query error");
-                	return;
+					console.log('[SELECT ERROR] - ', err.message);
+					res.send("SQL query error");
+					return;
 				}
-				patientMedicineRecordInfo = result;
-				sql = 'select a.last_update, a.icd_id, b.disease_name from patient_icd a inner join icd b on a.icd_id=b.icd_id where a.patient_no=?'
+				patientTreatmentRecordInfo = result;
+				sql = 'select a.last_update, a.medicine_id, b.medicine_name, a.amount from patient_medicine a inner join medicine b on a.medicine_id = b.medicine_id where a.patient_no=?'
 				connection.query(sql, [patient_no], function (err, result) {
 					if (err) {
-                		console.log('[SELECT ERROR] - ', err.message);
-                		res.send("SQL query error");
-                		return;
+						console.log('[SELECT ERROR] - ', err.message);
+						res.send("SQL query error");
+						return;
 					}
-					patientIcdRecordInfo = result;
-					res.render('staff/checkMedicalRecord', {
-						patientTreatmentRecordInfo: patientTreatmentRecordInfo,
-						patientMedicineRecordInfo: patientMedicineRecordInfo,
-						patientIcdRecordInfo: patientIcdRecordInfo
-					});
+					patientMedicineRecordInfo = result;
+					sql = 'select a.last_update, a.icd_id, b.disease_name from patient_icd a inner join icd b on a.icd_id=b.icd_id where a.patient_no=?'
+					connection.query(sql, [patient_no], function (err, result) {
+						if (err) {
+							console.log('[SELECT ERROR] - ', err.message);
+							res.send("SQL query error");
+							return;
+						}
+						patientIcdRecordInfo = result;
+						res.render('staff/checkMedicalRecord', {
+							patientTreatmentRecordInfo: patientTreatmentRecordInfo,
+							patientMedicineRecordInfo: patientMedicineRecordInfo,
+							patientIcdRecordInfo: patientIcdRecordInfo
+						});
+					})
 				})
 			})
 		})
-	})
+	}
+	else{
+		database.setUpDatabase(function (connection) {
+			connection.connect();
+			var sql = 'select * from invoice where appointment_id = ? and type = "D"';
+			connection.query(sql, [appointment_id], function (err, result) {
+				if (err) {
+					console.log('[SELECT ERROR] - ', err.message);
+					res.send("SQL query error");
+					return;
+				}
+				if (result.length > 0) {
+					console.log('Already exists invoice with doctor appointment_id', appointment_id);
+					invoiceInfo = result;
+					console.log(invoiceInfo);
+					res.render('staff/curePatientIcd', {
+						invoiceInfo: invoiceInfo
+					});
+				}
+				else{
+					sql = 'select * from doctor_appointment where appointment_id = ?';
+					connection.query(sql, [appointment_id], function (err, result) {
+						if (err) {
+							console.log('[SELECT ERROR] - ', err.message);
+							res.send("SQL query error");
+							return;
+						}
+						appointment = result[0];
+						sql = 'select addtime(?, "14 0:0:0")';
+						connection.query(sql, [appointment.appointment_time], function (err, result) {
+							if (err) {
+								console.log('[SELECT ERROR] - ', err.message);
+								res.send("SQL query error");
+								return;
+							}
+							console.log(appointment.appointment_time);
+							sql = 'insert into invoice (patient_no, price_paid, appointment_id, type, due_date) value (?,?,?,?,?)'
+							var sqlParams = [patient_no, 0, appointment_id, "D", appointment.appointment_time];
+							connection.query(sql, sqlParams, function (err, result) {
+								if (err) {
+									console.log('[SELECT ERROR] - ', err.message);
+									res.send("SQL query error");
+									return;
+								}
+								sql = 'select * from invoice where appointment_id = ? and type = "D"';
+								console.log('--------------------------INSERT----------------------------')
+								console.log('INSERT ID:', result)
+								console.log('------------------------------------------------------------')
+								connection.query(sql, [appointment_id], function (err, result) {
+									if (err) {
+										console.log('[SELECT ERROR] - ', err.message);
+										res.send("SQL query error");
+										return;
+									}
+									invoiceInfo = result;
+									console.log(invoiceInfo);
+									res.render('staff/curePatientIcd', {
+										invoiceInfo: invoiceInfo
+									});
+								});
+							});
+						});
+						
+					});
+				}
+	
+			});
+		});
+	}
+	
 }
 
 function getPatientTreatmentRecordInfo(req, res, next){
