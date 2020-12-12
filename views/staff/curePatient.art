@@ -116,7 +116,7 @@
               <td>{{$value.appointment_time}}</td>
               <td>{{$value.valid}}</td>
               <td>
-                <form  method="post"> 
+                <form method="post"> 
                   <input id="patient_no" type="hidden" name="patient_no" value={{$value.patient_no}}>
                   
                   <input type="submit"  value="Check Medical Record"> 

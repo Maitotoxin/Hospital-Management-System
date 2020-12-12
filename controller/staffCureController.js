@@ -4,7 +4,6 @@ exports.createCurePatientMedicine = createCurePatientMedicine;
 exports.createCurePatientIcd = createCurePatientIcd;
 exports.createCurePatientTreatment = createCurePatientTreatment;
 
-
 function createCurePatientTreatment(req, res, next){
     console.log("enter function createCurePatientTreatment")
     console.log(req.body);

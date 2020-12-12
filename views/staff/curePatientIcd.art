@@ -71,7 +71,7 @@
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Make Diagnosis</h1>
           </div>
-          <form action="/staff/curePatientMedicine" method="post" id="registerForm">
+          <form action="/staff/curePatientIcd" method="post" id="registerForm">
              <div class="container-fluid">
            <table class="table table-striped table-bordered table-hover custom-table">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -140,14 +140,12 @@
           </tbody>
         </table>
         
-          <input type="hidden" id="invoice_id" value={{invoiceInfo.invoice_id}}>
+               <input type="hidden" id="invoice_id" value={{invoiceInfo.invoice_id}}>
                
                <input type="reset" href="error" class="btn btn-primary btn-user btn-block"
                                     value="Finish Diagnosis" onclick="return registerUser()">
                 <hr>
-                <input type="submit" href="curePatientIcd" class="btn btn-primary btn-user btn-block"
-                                    value="Go Back To Diagnosis">
-                <hr>
+                
                <input type="submit" href="curePatientTreatment" class="btn btn-primary btn-user btn-block"
                                     value="Go To Treatment">
                 <hr>

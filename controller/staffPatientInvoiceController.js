@@ -62,7 +62,7 @@ function createPatientInvoice(req, res, next){
                                 }
                                 invoiceInfo = result;
                                 console.log(invoiceInfo);
-                                res.render('patient/doctorListAppointment', {
+                                res.render('staff/curePatientIcd', {
                                     invoiceInfo: invoiceInfo
                                 });
                             });
