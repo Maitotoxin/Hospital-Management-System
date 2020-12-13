@@ -7,6 +7,8 @@ const app = express();
 
 //use body-parser handle all get/post rquest
 app.use(bodyparser.urlencoded({extended: false}));
+var cookieParser = require('cookie-parser');
+app.use(cookieParser());
 
 app.use(session({
     secret: 'Dymatize Accelerate Wallet',

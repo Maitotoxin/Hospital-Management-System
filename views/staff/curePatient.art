@@ -13,16 +13,49 @@
   <script src="/vendor/chart.js/Chart.min.js"></script>
   <script src="/js/cookie.js"></script>
   <meta name="author" content="">
-            <script type="text/javascript">
+            <script>
            //$(document).ready(function() {
-                  function change(){
-                    console.log("aaa");
-                       if(document.form.function_switch.value == 1)
-                             location.href='checkMedicalRecord';
-                        else
-                             location.href='curePatientIcd';
-                        return true;
-                  }
+
+                $(document).ready(function(){
+                  $(".use-address1").click(function() {
+                    var row = $(this).closest("tr");    // Find the row
+                    var patient_no = row.find(".patient_no").text(); // Find the text
+                    //var appointment_id = row.find(".appointment_id").text();
+                    //alert("here 1");
+                    //var exp = new Date();
+                    //exp.setTime(exp.getTime()+(1*24*60*60*1000));
+                    //document.cookie = "staff=" + s_no+";expires=" + exp.toUTCString();
+                    setCookie("patient_no",patient_no,1);
+                    //document.cookie = "patient=" + p_no+";expires=" + exp.toUTCString();
+                     //setCookie("patient",p_no,1);
+                     //alert("here 2");
+                     //setCookie("first_name",f_name,1);
+                   // document.cookie = "patient=" + escape(p_no.value)+ ";path=/doctorAppointmentTime/;expires=" + exp.toUTCString();
+                    location.href = 'checkMedicalRecord';
+                  });
+                });
+              </script>
+              <script>
+                $(document).ready(function(){
+                  $(".use-address2").click(function() {
+                    var row = $(this).closest("tr");    // Find the row
+                    var patient_no = row.find(".patient_no").text(); // Find the text
+                    var appointment_id = row.find(".appointment_id").text();
+                    //alert("here 1");
+                    //var exp = new Date();
+                    //exp.setTime(exp.getTime()+(1*24*60*60*1000));
+                    //document.cookie = "staff=" + s_no+";expires=" + exp.toUTCString();
+                    setCookie("patient_no",patient_no,1);
+                    //document.cookie = "patient=" + p_no+";expires=" + exp.toUTCString();
+
+                     //setCookie("patient",p_no,1);
+                     setCookie("appointment_id",appointment_id,1);
+                     //alert("here 2");
+                     //setCookie("first_name",f_name,1);
+                   // document.cookie = "patient=" + escape(p_no.value)+ ";path=/doctorAppointmentTime/;expires=" + exp.toUTCString();
+                    location.href = 'curePatientIcd';
+                  });
+                });
          //  });  
          </script>
 
@@ -97,23 +130,25 @@
           <tbody>
             {{each doctorAppointmentInfoAccept}}
             <tr>
-              <td>{{$value.appointment_id}}</td>
-              <td>{{$value.patient_no}}</td>
+              <td class="appointment_id">{{$value.appointment_id}}</td>
+              <td class="patient_no">{{$value.patient_no}}</td>
               <td>{{$value.first_name}}</td>
               <td>{{$value.last_name}}</td>
-              <td>{{$value.appointment_time}}</td>
+              <td class="appointment_time">{{$value.appointment_time}}</td>
               <td>{{$value.valid}}</td>
               <td>
-                <form action="" method="post"> 
-                  <input id="patient_no" type="hidden" name="patient_no" value={{$value.patient_no}} >
-                  <input id="appointment_id" type="hidden" name="appointment_id" value={{$value.appointment_id}}>
-                  <input type="submit" id="function_switch" class="use-address" name="function_switch" onclick="change()" value="1">Check Medical Record 
-                  <button  id="function_switch" name="function_switch"  value="2"> Begin</button>
-                </form>
-                  
-                
-                  
-                
+                  <a href="#" class="btn btn-info btn-icon-split use-address1" >
+                    <span class="icon text-white-50">
+                      <i class="fas fa-info-circle"></i>
+                    </span>
+                    <span class="text">Check Medical Record</span>
+                  </a>
+                  <a href="#" class="btn btn-primary btn-icon-split use-address2" >
+                    <span class="icon text-white-50">
+                      <i class="fas fa-arrow-right"></i>
+                    </span>
+                    <span class="text">Start Diagnosis</span>
+                  </a>
               </td>
             </tr>
             {{/each}}

@@ -7,6 +7,5 @@ const curePatientMedicine = require('../../controller/staffPatientInvoiceControl
 const curePatient = express.Router();
 
 curePatient.get('/', PatientMedicineInfo.getDoctorAppointmentInfoAccept);
-curePatient.post('/', PatientMedicineInfo.getPatientMedicalRecordInfo);
 //curePatient.post('/', curePatientMedicine.createPatientInvoice);
 module.exports = curePatient;    

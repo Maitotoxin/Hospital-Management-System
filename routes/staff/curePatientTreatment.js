@@ -4,8 +4,7 @@ const PatientMedicineInfo = require('../../controller/staffInfoController')
 const curePatientMedicine = require('../../controller/staffCureController')
 
 const curePatientMedicine1 = express.Router();
-curePatientMedicine1.get('/', PatientMedicineInfo.getPatientTreatmentRecordInfo);
-curePatientMedicine1.get('/', PatientMedicineInfo.getTreatmentInfoCure);
+curePatientMedicine1.get('/', PatientMedicineInfo.getTreatmentInfoAndPatientTreatmentRecordInfo);
 
 curePatientMedicine1.post('/', curePatientMedicine.createCurePatientTreatment);
 

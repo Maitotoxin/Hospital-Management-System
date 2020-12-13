@@ -17,14 +17,7 @@
             //if user did not enter userid or password
             
         }*/
-        function registerUser() {
-           // getCookie("staff");
-            //getCookie("patient");
-            var res = formContentToJson($("#registerForm"));
-            
-            return validateAppointmentRegisterInput(res);
-            //return true;
-        }
+
 
         //cookie.delCookie("patient");
     </script>
@@ -107,7 +100,6 @@
 
         </table>
           </div>
-           <input type="hidden" id="invoice_id" value="">
           <div class="container-fluid">
               <table class="table table-striped table-bordered table-hover custom-table">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -127,7 +119,7 @@
               <th>Treatment Name</th>
               <th>Description</th>
               <th>Price</th>
-              <th>Input Amount</th>
+              <th>Input Times</th>
               
             </tr>
           </thead>
@@ -138,11 +130,11 @@
               <th>Medicine Name</th>
               <th>Description</th>
               <th>Price</th>
-              <th>Input Amount</th>
+              <th>Input Times</th>
             </tr>
           </tfoot>
           <tbody>
-            {{each medicineInfoCure}}
+            {{each treatmentInfoCure}}
             <tr>
               <td>
                 <input type="checkbox" id="treatment_id" name="treatment_id" value={{$value.treatment_id}}>
@@ -171,14 +163,26 @@
                         
                         //alert(document.getElementById('patient_id').value);
                 </script>
-               <input type="reset" href="error" class="btn btn-primary btn-user btn-block"
-                                    value="Use this Medicine" onclick="return registerUser()">
+               <input type="submit" href="error" class="btn btn-primary btn-user btn-block"
+                                    value="Submit Treatment Selection" onclick="return registerUser()">
                 <hr>
-                <input type="submit" href="curePatientIcd" class="btn btn-primary btn-user btn-block"
-                                    value="Go Back To Diagnosis">
-                <hr>
-                <input type="submit" href="curePatientMedicine" class="btn btn-primary btn-user btn-block"
-                                    value="Finish">
+                <div align="left" style="float:left">
+                  <a href="curePatientIcd" class="btn btn-primary btn-icon-split btn-sm use-address2" >
+                    <span class="icon text-white-50">
+                      <i class="fas fa-arrow-left"></i>
+                    </span>
+                    <span class="text">Back to Disease Selection</span>
+                  </a>
+                </div>                  
+                <div align="right">
+                  <a href="curePatientMedicine" class="btn btn-primary btn-icon-split btn-sm use-address2" >
+                    <span class="icon text-white-50">
+                      <i class="fas fa-arrow-right"></i>
+                    </span>
+                    <span class="text">Go to Medicine Selection</span>
+                  </a>
+                </div>
+                </div>
                 <hr>
           </form>
           <!-- Content Row -->

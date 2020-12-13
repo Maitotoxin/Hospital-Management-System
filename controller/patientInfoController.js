@@ -2,6 +2,7 @@ const database = require('../config/databaseConfig');
 const common = require('./util/common');
 const xss = require('xss');
 
+
 exports.getPatientHospitalInfo = getPatientHospitalInfo;
 exports.getPatientDoctorInfo = getPatientDoctorInfo;
 exports.getPatientLabInfo = getPatientLabInfo;
@@ -75,8 +76,9 @@ function getUnpaidInvoiceInfo(req, res, next){
 }
 
 function getPatientLabInfoIncludingTest(req, res, next){
-	const test_id = xss(parseInt(req.body.test_id));
-	console.log(test_id);
+	const test_id = xss(parseInt(req.cookies["test_id"]));
+	//console.log("test back cookie");
+	//console.log(req.cookies["test_id"]);
 	database.setUpDatabase(function (connection) {
 		connection.connect(); 
 		var sql = 'select a.lab_id, a.lab_name, a.description from lab a inner join test_lab b on a.lab_id = b.lab_id where b.test_id = ?';

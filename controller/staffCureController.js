@@ -3,6 +3,11 @@ const xss = require('xss');
 exports.createCurePatientMedicine = createCurePatientMedicine;
 exports.createCurePatientIcd = createCurePatientIcd;
 exports.createCurePatientTreatment = createCurePatientTreatment;
+exports.deleteCurePatient = deleteCurePatient;
+
+function deleteCurePatient(req, res, next){
+    
+}
 
 function createCurePatientTreatment(req, res, next){
     console.log("enter function createCurePatientTreatment")
@@ -11,11 +16,11 @@ function createCurePatientTreatment(req, res, next){
     //dose = xss(req.body.dose);
     //console.log(medicine_id);
     //console.log(dose);
-    const invoice_id = xss(parseInt(req.body.invoice_id));
+    const invoice_id = xss(req.session.invoice_id);
     database.setUpDatabase(function (connection) {
         connection.connect();
         var sql = 'select * from invoice where invoice_id = ?';
-        connection.query(sql, [patient_id], function (err, result) {
+        connection.query(sql, [invoice_id], function (err, result) {
             if (err) {
                 console.log('[SELECT ERROR] - ', err.message);
                 res.send("SQL query error");
@@ -58,11 +63,14 @@ function createCurePatientTreatment(req, res, next){
 
 function createCurePatientIcd(req, res, next){
     console.log("enter function createCurePatientICD");
-    const invoice_id = xss(parseInt(req.body.invoice_id));
+    console.log(req.body);
+    console.log(req.session);
+    const invoice_id = xss(req.session.invoice_id);
+    //console.log(invoice_id);
     database.setUpDatabase(function (connection) {
         connection.connect();
         var sql = 'select * from invoice where invoice_id = ?';
-        connection.query(sql, [patient_id], function (err, result) {
+        connection.query(sql, [invoice_id], function (err, result) {
             if (err) {
                 console.log('[SELECT ERROR] - ', err.message);
                 res.send("SQL query error");
@@ -74,7 +82,7 @@ function createCurePatientIcd(req, res, next){
             for(var i in req.body.icd_id){
                 console.log(i);
                 var arr=[];
-                arr.push(invoice_id);
+                arr.push(invoice_id); 
                 arr.push(patient_no);
                 arr.push(parseInt(req.body.icd_id[i]));
                 arr_patient_icd.push(arr); 
@@ -104,14 +112,14 @@ function createCurePatientMedicine(req, res, next){
     //dose = xss(req.body.dose);
     //console.log(medicine_id);
     //console.log(dose);
-    const invoice_id = xss(parseInt(req.body.invoice_id));
+    const invoice_id = xss(req.session.invoice_id);
     database.setUpDatabase(function (connection) {
         connection.connect();
         var sql = 'select * from invoice where invoice_id = ?';
-        connection.query(sql, [patient_id], function (err, result) {
+        connection.query(sql, [invoice_id], function (err, result) {
             if (err) {
                 console.log('[SELECT ERROR] - ', err.message);
-                res.send("SQL query error");
+                res.send("SQL query error"); 
                 return;
             }
             patient_no = result[0].patient_no;

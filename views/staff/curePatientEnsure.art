@@ -86,14 +86,14 @@
           </thead>
          
           <tbody>
-            {{each patientIcdInfo}}
+            {{each patientIcdRecordInfo}}
             <tr>
               <td>{{$value.icd_id}}</td>
               <td>{{$value.disease_name}}</td>
               <td>{{$value.last_update}}</td>
               <td>
               <form method="post">
-                  <input type="hidden" name="invoice_id" id="invoice_id" value="">
+                  <input type="hidden" name="switch" id="switch" value="1.">
                   <input type="hidden" name="icd_id" id="icd_id" value={{$value.icd_id}}>
                   <i class="fas fa-trash"></i>
                   <input type="submit" value="Delete">
@@ -128,7 +128,7 @@
           </thead>
          
           <tbody>
-            {{each patientTreatmentInfo}}
+            {{each patientTreatmentRecordInfo}}
             <tr>
               <td>{{$value.treatment_id}}</td>
               <td>{{$value.treatment_name}}</td>
@@ -136,8 +136,8 @@
               <td>{{$value.last_update}}</td>
               <td>
               <form method="post">
-                  <input type="hidden" name="invoice_id" id="invoice_id" value="">
-                  <input type="hidden" name="icd_id" id="icd_id" value={{$value.treatment_id}}>
+                  <input type="hidden" name="switch" id="switch" value="2">
+                  <input type="hidden" name="treatment_id" id="treatment_id" value={{$value.treatment_id}}>
                   <i class="fas fa-trash"></i>
                   <input type="submit" value="Delete">
                 </form>
@@ -169,7 +169,7 @@
           </thead>
          
           <tbody>
-            {{each patientMedicineInfo}}
+            {{each patientMedicineRecordInfo}}
             <tr>
               <td>{{$value.medicine_id}}</td>
               <td>{{$value.medicine_name}}</td>
@@ -177,7 +177,7 @@
               <td>{{$value.last_update}}</td>
               <td>
                  <form method="post">
-                  <input type="hidden" name="invoice_id" id="invoice_id" value="">
+                  <input type="hidden" name="switch" id="switch" value="3">
                   <input type="hidden" name="icd_id" id="icd_id" value={{$value.medicine_id}}>
                   <i class="fas fa-trash"></i>
                   <input type="submit" value="Delete">
