@@ -27,7 +27,8 @@ CREATE TABLE test_appointment (
     invoice_id          INT,
     appointment_time    DATETIME NOT NULL default CURRENT_TIMESTAMP,
     last_update         DATETIME NOT NULL default CURRENT_TIMESTAMP,
-    valid               CHAR(1) NOT NULL,                
+    valid               CHAR(1) NOT NULL,
+    result              CHAR(1),            
     PRIMARY KEY (appointment_id)
 );
 
@@ -72,8 +73,6 @@ CREATE TABLE in_patient (
 );
 
 
-
-
 CREATE TABLE insurance_company (
     provider_id   INT NOT NULL,
     company_name  VARCHAR(30) NOT NULL,
@@ -106,6 +105,10 @@ CREATE TABLE lab (
     lab_id                      INT NOT NULL AUTO_INCREMENT,
     lab_name                    VARCHAR(30) NOT NULL,
     description                 VARCHAR(200),
+    st_address                  VARCHAR(30),
+    city                        VARCHAR(30),
+    state                       VARCHAR(2),
+    zipcode                     VARCHAR(5),
     last_update                 DATETIME NOT NULL default CURRENT_TIMESTAMP,
     PRIMARY KEY (lab_id)
 );
@@ -209,9 +212,17 @@ CREATE TABLE patient_treatment(
 
 CREATE TABLE ward (
     ward_id                INT NOT NULL AUTO_INCREMENT,
-    status                 TINYINT NOT NULL,
+    status                 CHAR(1) NOT NULL,
     last_update            DATETIME NOT NULL default CURRENT_TIMESTAMP,
+    hospital_id            INT NOT NULL,
     PRIMARY KEY (ward_id)
+);
+
+CREATE TABLE patient_ward(
+   invoice_id          INT NOT NULL,
+   patient_no          INT NOT NULL,
+   ward_id              INT NOT NULL,
+   last_update         DATETIME NOT NULL default CURRENT_TIMESTAMP
 );
 
 

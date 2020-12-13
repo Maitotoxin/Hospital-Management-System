@@ -81,7 +81,6 @@
             <tr>
               <th>ICD ID</th>
               <th>Disease Name</th>
-              <th>Time</th>
             </tr>
           </thead>
          
@@ -90,10 +89,9 @@
             <tr>
               <td>{{$value.icd_id}}</td>
               <td>{{$value.disease_name}}</td>
-              <td>{{$value.last_update}}</td>
               <td>
               <form method="post">
-                  <input type="hidden" name="switch" id="switch" value="1.">
+                  <input type="hidden" name="switch" id="switch" value="1">
                   <input type="hidden" name="icd_id" id="icd_id" value={{$value.icd_id}}>
                   <i class="fas fa-trash"></i>
                   <input type="submit" value="Delete">
@@ -123,7 +121,6 @@
               <th>Treatment ID</th>
               <th>Treatment Name</th>
               <th>Times</th>
-              <th>Time</th>
             </tr>
           </thead>
          
@@ -133,7 +130,6 @@
               <td>{{$value.treatment_id}}</td>
               <td>{{$value.treatment_name}}</td>
               <td>{{$value.times}}</td>
-              <td>{{$value.last_update}}</td>
               <td>
               <form method="post">
                   <input type="hidden" name="switch" id="switch" value="2">
@@ -164,7 +160,6 @@
               <th>Medicine ID</th>
               <th>Medicine Name</th>
               <th>Amount</th>
-              <th>Time</th>
             </tr>
           </thead>
          
@@ -174,11 +169,10 @@
               <td>{{$value.medicine_id}}</td>
               <td>{{$value.medicine_name}}</td>
               <td>{{$value.amount}}</td>
-              <td>{{$value.last_update}}</td>
               <td>
                  <form method="post">
                   <input type="hidden" name="switch" id="switch" value="3">
-                  <input type="hidden" name="icd_id" id="icd_id" value={{$value.medicine_id}}>
+                  <input type="hidden" name="medicine_id" id="medicine_id" value={{$value.medicine_id}}>
                   <i class="fas fa-trash"></i>
                   <input type="submit" value="Delete">
                 </form>
@@ -191,24 +185,27 @@
         </table>
           </div>
 
-         <script>
-                        var s_no=getCookie("invoice_id");
-                        //var p_no=getCookie("patient");
-                        
-                        //console.log("b"+p_no);
-                        document.getElementById("invoice_id").value = s_no;
-                        //alert(document.getElementById('staff_no').value);
-                       
-                        //alert(document.getElementById('patient_id').value);
-        </script>
-        <input type="submit" href="curePatientMedicine" class="btn btn-primary btn-user btn-block"
-                                    value="Go Back To Medicine">
-                <hr>
-         <input type="submit" href="error" class="btn btn-primary btn-user btn-block"
-                                    value="Finish" onclick="return registerUser()">
         <hr>
+                <div align="left" style="float:left">
+                  <a href="curePatientMedicine" class="btn btn-primary btn-icon-split btn-sm use-address2" >
+                    <span class="icon text-white-50">
+                      <i class="fas fa-arrow-left"></i>
+                    </span>
+                    <span class="text">Back to Medicine Selection</span>
+                  </a>
+                </div>
+                <form method="post"> 
+                  <input type="hidden" name="switch" id="switch" value="5">                 
+                    <div align="right">
+                      <a href="#" class="btn btn-success btn-icon-split btn-sm use-address2" >
+                        <span class="icon text-white-50">
+                        <i class="fas fa-check"></i>
+                        </span>
+                        <span><input type="submit"  value="Finish the Diagnosis"></span>
+                      </a>
+                </form>
+                <hr>
        
-        </div>
 
         <!-- /.container-fluid -->
       </div>

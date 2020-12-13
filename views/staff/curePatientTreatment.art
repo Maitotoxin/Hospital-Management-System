@@ -103,7 +103,7 @@
           <div class="container-fluid">
               <table class="table table-striped table-bordered table-hover custom-table">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-2 text-gray-800">Medicine List</h1>
+            <h1 class="h3 mb-2 text-gray-800">Treatment List</h1>
           </div>
           <!-- DataTales Example -->
 
@@ -153,16 +153,6 @@
           </tbody>
         </table>
           </div>
-               <script>
-                        var s_no=getCookie("invoice_id");
-                        //var p_no=getCookie("patient");
-                        
-                        //console.log("b"+p_no);
-                        document.getElementById("invoice_id").value = s_no;
-                        //alert(document.getElementById('staff_no').value);
-                        
-                        //alert(document.getElementById('patient_id').value);
-                </script>
                <input type="submit" href="error" class="btn btn-primary btn-user btn-block"
                                     value="Submit Treatment Selection" onclick="return registerUser()">
                 <hr>

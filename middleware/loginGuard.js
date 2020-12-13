@@ -18,8 +18,8 @@ const guard = (req, res, next) => {
             next();
         }
     } else if(didUserLogin && !didAdminLogin) {
-        if(url == '/admin/dashboard' || url == '/admin/logout' ||url == '/admin/adminUserDisplay' ||url == '/admin/adminPolicyDisplay' ||url == '/admin/adminPolicyRegister' ||url == '/admin/adminHomeDisplay' ||url == '/admin/adminAutoDisplay' ||url == '/admin/adminHomeInvoiceDisplay' ||url == '/admin/adminAutoInvoiceDisplay' ||url == '/admin/adminHomePayDisplay' ||url == '/admin/adminAutoPayDisplay' ||url == '/admin/adminDriverDisplay') {
-            res.redirect('/admin/login');
+        if(url == '/staff/dashboard' || url == '/staff/logout' ||url == '/admin/adminUserDisplay' ||url == '/admin/adminPolicyDisplay' ||url == '/admin/adminPolicyRegister' ||url == '/admin/adminHomeDisplay' ||url == '/admin/adminAutoDisplay' ||url == '/admin/adminHomeInvoiceDisplay' ||url == '/admin/adminAutoInvoiceDisplay' ||url == '/admin/adminHomePayDisplay' ||url == '/admin/adminAutoPayDisplay' ||url == '/admin/adminDriverDisplay') {
+            res.redirect('/staff/login');
         } else if (url == 'patient/login' || url == 'patient/register'){
             res.redirect('patient/dashboard');
         } else {

@@ -67,7 +67,7 @@
              <div class="container-fluid">
            <table class="table table-striped table-bordered table-hover custom-table">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-2 text-gray-800">Treatment Record Display</h1>
+            <h1 class="h3 mb-2 text-gray-800">Disease Record Display</h1>
           </div>
           <!-- DataTales Example -->
 
@@ -99,7 +99,7 @@
           <div class="container-fluid">
            <table class="table table-striped table-bordered table-hover custom-table">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-2 text-gray-800">Select Treatment</h1>
+            <h1 class="h3 mb-2 text-gray-800">Select Disease</h1>
           </div>
           <!-- DataTales Example -->
 

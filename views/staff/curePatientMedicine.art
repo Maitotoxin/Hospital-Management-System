@@ -153,16 +153,6 @@
           </tbody>
         </table>
           </div>
-               <script>
-                        var s_no=getCookie("invoice_id");
-                        //var p_no=getCookie("patient");
-                        
-                        //console.log("b"+p_no);
-                        document.getElementById("invoice_id").value = s_no;
-                        //alert(document.getElementById('staff_no').value);
-                       
-                        //alert(document.getElementById('patient_id').value);
-                    </script>
                <input type="submit" href="error" class="btn btn-primary btn-user btn-block"
                                     value="Submit Medicine Selection">
                <hr>

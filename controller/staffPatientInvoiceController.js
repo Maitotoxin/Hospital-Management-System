@@ -60,8 +60,10 @@ function createPatientInvoiceAndIcd(req, res, next){
                                 return;
                             }
                             appointment = result;
-                            sql = 'select addtime(?, "14 0:0:0")';
-                            connection.query(sql, [appointment.appointment_time], function (err, result) {
+                            console.log(appointment);
+                            sql = 'insert into invoice (patient_no, price_paid, appointment_id, type, due_date) values (?,?,?,?,?)';
+                            var sqlParams = [patient_no, 0, appointment_id, "D", appointment[0].appointment_time]; 
+                            connection.query(sql, sqlParams, function (err, result) {
                                 if (err) {
                                     console.log('[SELECT ERROR] - ', err.message);
                                     res.send("SQL query error");
@@ -69,12 +71,12 @@ function createPatientInvoiceAndIcd(req, res, next){
                                 }
                                 due_date = result;
                                 console.log(due_date);
-                                sql = 'insert into invoice (patient_no, price_paid, appointment_id, type, due_date) value ?'
-                                var sqlParams = [patient_no, 0, appointment_id, "D", due_date];
+                                sql = 'update invoice SET due_date = ADDTIME(due_date, "14 00:00:00")where appointment_id = ? and type = "D"';
+                                sqlParams = [appointment_id]; 
                                 connection.query(sql, sqlParams, function (err, result) {
                                     if (err) {
                                         console.log('[SELECT ERROR] - ', err.message);
-                                        res.send("SQL query error");
+                                        res.send("SQL query error"); 
                                         return;
                                     }
                                     sql = 'select * from invoice where appointment_id = ? and type = "D"';
