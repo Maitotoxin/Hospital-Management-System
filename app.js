@@ -73,6 +73,8 @@ const staffCurePatientTreatment = require('./routes/staff/curePatientTreatment')
 const staffCurePatientIcd = require('./routes/staff/curePatientIcd');
 const staffCurePatientEnsure = require('./routes/staff/curePatientEnsure');
 const staffPatientWardInChoosePatient = require('./routes/staff/patientWardInChoosePatient');
+const staffPatientWardInChooseHospital = require('./routes/staff/patientWardInChooseHospital');
+const staffPatientWardInChooseWard = require('./routes/staff/patientWardInChooseWard');
 //app.use('',error)
 app.use('/patient/login', patientLogin);
 app.use('/patient/logout', patientLogout);
@@ -117,6 +119,8 @@ app.use('/staff/curePatientTreatment',staffCurePatientTreatment);
 app.use('/staff/curePatientIcd',staffCurePatientIcd);
 app.use('/staff/curePatientEnsure',staffCurePatientEnsure);
 app.use('/staff/patientWardInChoosePatient', staffPatientWardInChoosePatient);
+app.use('/staff/patientWardInChooseHospital', staffPatientWardInChooseHospital);
+app.use('/staff/patientWardInChooseWard', staffPatientWardInChooseWard);
 //listen port 3000 
 app.listen(3000);
 console.log('Server started'); 

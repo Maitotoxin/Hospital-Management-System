@@ -49,6 +49,8 @@ function getPatientInfoForWardOut(req, res, next){
 
 
 function getWardInfoForWardIn(req, res, next){
+	console.log("enter function getWardInfoForWardIn");
+	console.log(req.cookies)
 	const hospital_id = xss(parseInt(req.cookies["hospital_id"]));
 	database.setUpDatabase(function (connection) {
 		connection.connect();
@@ -64,22 +66,25 @@ function getWardInfoForWardIn(req, res, next){
 			res.render('staff/patientWardInChooseWard', {
 				wardInfoForWardIn: wardInfoForWardIn
 			});
-		}); 
+		});  
 	});
 }
 
 function getHospitalInfoForWardIn(req, res, next){
+	console.log("enter function getHospitalInfoForWardIn");
+	console.log(req.cookies)
 	const staff_id = xss(req.session.staff_id);
 	database.setUpDatabase(function (connection) {
 		connection.connect();
 		var sql = 'select hospital_id, hospital_name, st_address, city, state, zipcode, phone from hospital';
-		connection.query(sql, [], function (err, result) {
+		connection.query(sql, [staff_id], function (err, result) {
 			if (err) {
 				console.log('[SELECT ERROR] - ', err.message);
 				res.send('SQL query error');
 				return;
 			}
 			hospitalInfoForWardIn = result;
+			console.log(result);
 			//console.log(userInfo);
 			res.render('staff/patientWardInChooseHospital', {
 				hospitalInfoForWardIn: hospitalInfoForWardIn
