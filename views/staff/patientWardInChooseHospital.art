@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  {{include '../common/header.art'}}
+  <title>HMS Doctor Appointment</title>
+
+  <!-- Custom scripts for all pages-->
+  <script src="/js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="/vendor/chart.js/Chart.min.js"></script>
+  <script src="/js/cookie.js"></script>
+  <meta name="author" content="">
+            <script>
+                $(document).ready(function(){
+                  $(".use-address1").click(function() {
+                    var row = $(this).closest("tr");    // Find the row
+                    var patient_no = row.find(".hospital_id").text(); // Find the text
+                    //var invoice_id = row.find(".invoice_id").text();
+                    //alert("here 1");
+                    //var exp = new Date();
+                    //exp.setTime(exp.getTime()+(1*24*60*60*1000));
+                    //document.cookie = "staff=" + s_no+";expires=" + exp.toUTCString();
+                    setCookie("hospital_id",hospital_id,1);
+                    //document.cookie = "patient=" + p_no+";expires=" + exp.toUTCString();
+                    setCookie("invoice_id",invoice_id,1);
+                     //alert("here 2");
+                     //setCookie("first_name",f_name,1);
+                   // document.cookie = "patient=" + escape(p_no.value)+ ";path=/doctorAppointmentTime/;expires=" + exp.toUTCString();
+                    location.href = 'patientWardInChooseWard';
+                  });
+                });
+         </script>
+
+  <!--
+  <script>
+    function registerHome() {
+      var res = formContentToJson($("#registerForm"));
+      //if user did not enter userid or password
+      return validateHomeInput(res);
+    }
+  </script>
+  -->
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    {{include '../common/supersidebar.art'}}
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        {{include '../common/supertopbar.art'}}
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+
+        <!-- Page Heading -->
+          <div class="container-fluid">
+        <table class="table table-striped table-bordered table-hover custom-table">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-2 text-gray-800">Your Out-Patient List</h1>
+          </div>
+          <!-- DataTales Example -->
+
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+
+          <thead>
+            <tr>
+              <th>Hospital ID</th>
+              <th>Hospital Name</th>
+              <th>Street</th>
+              <th>City</th>
+              <th>State</th>
+              <th> </th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <th>Hospital ID</th>
+              <th>Hospital Name</th>
+              <th>Street</th>
+              <th>City</th>
+              <th>State</th>
+              <th> </th>
+            </tr>
+          </tfoot>
+          <tbody>
+            {{each hospitalInfoForWardIn}}
+            <tr>
+              <td class="hospital_id">{{$value.hospital_id}}</td>
+              <td>{{$value.hospital_name}}</td>
+              <td>{{$value.st_address}}</td>
+              <td>{{$value.city}}</td>
+              <td>{{$value.state}}</td>
+              <td>
+                  <a href="#" class="btn btn-primary btn-icon-split use-address1" >
+                    <span class="icon text-white-50">
+                      <i class="fas fa-arrow-right"></i>
+                    </span>
+                    <span class="text">Choose This Patient</span>
+                  </a>
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+        </div>
+        </div>
+
+        <!-- /.container-fluid -->
+      </div>
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      {{include '../common/footer.art'}}
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+
+</body>

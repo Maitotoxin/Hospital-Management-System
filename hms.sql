@@ -221,7 +221,8 @@ CREATE TABLE ward (
 CREATE TABLE patient_ward(
    invoice_id          INT NOT NULL,
    patient_no          INT NOT NULL,
-   ward_id              INT NOT NULL,
+   ward_id             INT NOT NULL,
+   hospital_id         INT NOT NULL,
    last_update         DATETIME NOT NULL default CURRENT_TIMESTAMP
 );
 

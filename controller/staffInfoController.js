@@ -15,6 +15,105 @@ exports.getTreatmentInfoCure = getTreatmentInfoCure;
 exports.getIcdInfo = getIcdInfo;
 exports.getMedicineInfoCure = getMedicineInfoCure;
 exports.getPatientNewMedicalRecordInfo = getPatientNewMedicalRecordInfo;
+exports.getPatientInfoForWardIn = getPatientInfoForWardIn;
+exports.getHospitalInfoForWardIn = getHospitalInfoForWardIn;
+exports.getWardInfoForWardIn = getWardInfoForWardIn;
+exports.getPatientInfoForWardOut = getPatientInfoForWardOut;
+
+function getPatientInfoForWardOut(req, res, next){
+	const staff_id = xss(req.session.staff_id);
+	database.setUpDatabase(function (connection) {
+		var sql = 'select staff_no from staff where staff_id = ?'
+		connection.query(sql, [staff_id], function (err, result) {
+			if (err) {
+                console.log('[SELECT ERROR] - ', err.message);
+                res.send("SQL query error");
+                return;
+			}
+			staff_no = result[0].staff_no;
+			sql = 'select a.appointment_id, a.patient_no, b.first_name, b.last_name, c.invoice_id, d.ward_id from doctor_appointment a inner join patient b on a.patient_no=b.patient_no inner join invoice c on a.appointment_id=c.appointment_id inner join patient_ward d on c.invoice_id=d.invoice_id where a.staff_no=? and b.patient_class="1"  and a.valid="2" and c.type="D"';
+			connection.query(sql, [staff_no], function (err, result) {
+				if (err) {
+					console.log('[SELECT ERROR] - ', err.message);
+					res.send("SQL query error");
+					return;
+				}
+				patientInfoForWardOut = result;
+				res.render('staff/patientWardOutChoosePatient', {
+					patientInfoForWardOut: patientInfoForWardOut
+				});
+			});
+		});
+	});
+}
+
+
+function getWardInfoForWardIn(req, res, next){
+	const hospital_id = xss(parseInt(req.cookies["hospital_id"]));
+	database.setUpDatabase(function (connection) {
+		connection.connect();
+		var sql = 'select ward_id from ward where hospital_id=? and status="0"';
+		connection.query(sql, [hospital_id], function (err, result) {
+			if (err) {
+				console.log('[SELECT ERROR] - ', err.message);
+				res.send('SQL query error');
+				return;
+			}
+			wardInfoForWardIn = result;
+			//console.log(userInfo);
+			res.render('staff/patientWardInChooseWard', {
+				wardInfoForWardIn: wardInfoForWardIn
+			});
+		}); 
+	});
+}
+
+function getHospitalInfoForWardIn(req, res, next){
+	const staff_id = xss(req.session.staff_id);
+	database.setUpDatabase(function (connection) {
+		connection.connect();
+		var sql = 'select hospital_id, hospital_name, st_address, city, state, zipcode, phone from hospital';
+		connection.query(sql, [], function (err, result) {
+			if (err) {
+				console.log('[SELECT ERROR] - ', err.message);
+				res.send('SQL query error');
+				return;
+			}
+			hospitalInfoForWardIn = result;
+			//console.log(userInfo);
+			res.render('staff/patientWardInChooseHospital', {
+				hospitalInfoForWardIn: hospitalInfoForWardIn
+			});
+		}); 
+	});
+}
+
+function getPatientInfoForWardIn(req, res, next){
+	const staff_id = xss(req.session.staff_id);
+	database.setUpDatabase(function (connection) {
+		var sql = 'select staff_no from staff where staff_id = ?'
+		connection.query(sql, [staff_id], function (err, result) {
+			if (err) {
+                console.log('[SELECT ERROR] - ', err.message);
+                res.send("SQL query error");
+                return;
+			}
+			staff_no = result[0].staff_no;
+			sql = 'select a.appointment_id, a.patient_no, b.first_name, b.last_name, c.invoice_id from doctor_appointment a inner join patient b on a.patient_no=b.patient_no inner join invoice c on a.appointment_id=c.appointment_id where a.staff_no=? and b.patient_class="0" and a.valid="2" and c.type="D"';
+			connection.query(sql, [staff_no], function (err, result) {
+				if (err) {
+					console.log('[SELECT ERROR] - ', err.message);
+					res.send("SQL query error");
+					return;
+				}
+				patientInfoForWardIn = result;
+				res.render('staff/patientWardInChoosePatient', {
+					patientInfoForWardIn: patientInfoForWardIn
+				});
+			});
+		});
+	});
+}
 
 function getPatientNewMedicalRecordInfo(req, res, next){
 	console.log("enter getPatientNewMedicalRecordInfo");

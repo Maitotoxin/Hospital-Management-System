@@ -29,7 +29,7 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseHospitals" aria-expanded="true"
           aria-controls="collapseHospitals">
           <i class="fas fa-fw fa-home"></i>
-          <span>About Disease Knowledge Information</span>
+          <span>Information</span>
         </a>
         <div id="collapseHospitals" class="collapse" aria-labelledby="headingHospitals" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -48,7 +48,7 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Appointment Manangement
+        Patient Manangement
       </div>
 
 
@@ -57,14 +57,13 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePolicy" aria-expanded="true"
           aria-controls="collapsePolicy">
           <i class="fas fa-fw fa-file-invoice-dollar"></i>
-          <span>Doctor Appointment</span>
+          <span>Manage Appointment</span>
         </a>
         <div id="collapsePolicy" class="collapse" aria-labelledby="headingPolicy" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="manageAppointment">Manage Appointment</a>
-            <a class="collapse-item" href="curePatient">Begin Appointment</a>
-            <a class="collapse-item" href="doctorListAppointment">Check Appointment</a>
+            <a class="collapse-item" href="manageAppointment">Accept/Deny Appointment</a>
+            <a class="collapse-item" href="curePatient">Begin Diagnosis</a>
           </div>
         </div>
       </li>
@@ -75,56 +74,22 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInsurance" aria-expanded="true"
           aria-controls="collapseInsurance">
           <i class="fas fa-fw fa-file-invoice-dollar"></i>
-          <span>Test Appointment</span>
+          <span>Ward Assignment</span>
         </a>
         <div id="collapseInsurance" class="collapse" aria-labelledby="headingInsurance" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="testMakeAppointment">Make Appointment</a>
-            <a class="collapse-item" href="labListAppointment">My Appointment</a>
+            <a class="collapse-item" href="patientWardInChoosePatient">Patient In</a>
+            <a class="collapse-item" href="patientWardOutChoosePatient">Patient Out</a>
           </div>
         </div>
       </li>
 
       
 
-      <hr class="sidebar-divider">
 
       <!-- Heading -->
-      <div class="sidebar-heading">
-        My Service
-      </div>
 
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMyInvoice" aria-expanded="true"
-          aria-controls="collapseMyInvoice">
-          <i class="fas fa-fw fa-file-invoice-dollar"></i>
-          <span>My Invoice</span>
-        </a>
-        <div id="collapseMyInvoice" class="collapse" aria-labelledby="headingMyInvoice" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="invoicePayDisplay">Pay Invoice</a>
-          </div>
-        </div>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMyPayment" aria-expanded="true"
-          aria-controls="collapseMyPayment">
-          <i class="fas fa-fw fa-wallet"></i>
-          <span>My History</span>
-        </a>
-        <div id="collapseMyPayment" class="collapse" aria-labelledby="headingMyPayment" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="invoiceDisplay">Invoice History</a>
-            <a class="collapse-item" href="autoPayDisplay">Treatment History</a>
-            <a class="collapse-item" href="autoPayDisplay">Appointment History</a>
-          </div>
-        </div>
-      </li>
 
      
     </ul>
