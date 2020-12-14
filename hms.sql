@@ -99,7 +99,7 @@ CREATE TABLE patient_icd(
    icd_id              INT NOT NULL,
    last_update         DATETIME NOT NULL default CURRENT_TIMESTAMP
 );
-
+ 
 
 CREATE TABLE lab (
     lab_id                      INT NOT NULL AUTO_INCREMENT,
