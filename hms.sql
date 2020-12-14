@@ -223,6 +223,7 @@ CREATE TABLE patient_ward(
    patient_no          INT NOT NULL,
    ward_id             INT NOT NULL,
    hospital_id         INT NOT NULL,
+   status              CHAR(1) NOT NULL default '0',
    last_update         DATETIME NOT NULL default CURRENT_TIMESTAMP
 );
 
