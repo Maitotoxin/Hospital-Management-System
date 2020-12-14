@@ -28,7 +28,7 @@ function deleteCurePatient(req, res, next){
                     res.redirect(301, '/staff/curePatientEnsure');
                 });
                 break;
-            case '2':
+            case '2': 
                 const treatment_id = xss(req.body.treatment_id)
                 var sql = 'delete from patient_treatment where treatment_id=? and invoice_id=?';
                 connection.query(sql, [treatment_id, invoice_id], function (err, result) {

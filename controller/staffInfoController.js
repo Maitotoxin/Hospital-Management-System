@@ -31,7 +31,7 @@ function getPatientInfoForWardOut(req, res, next){
                 return;
 			}
 			staff_no = result[0].staff_no;
-			sql = 'select a.appointment_id, a.patient_no, b.first_name, b.last_name, c.invoice_id, d.ward_id from doctor_appointment a inner join patient b on a.patient_no=b.patient_no inner join invoice c on a.appointment_id=c.appointment_id inner join patient_ward d on c.invoice_id=d.invoice_id where a.staff_no=? and b.patient_class="1"  and a.valid="2" and c.type="D"';
+			sql = 'select a.appointment_id, a.patient_no, b.first_name, b.last_name, c.invoice_id, d.hospital_id, d.ward_id, e.hospital_name from doctor_appointment a inner join patient b on a.patient_no=b.patient_no inner join invoice c on a.appointment_id=c.appointment_id inner join patient_ward d on c.invoice_id=d.invoice_id inner join hospital e on d.hospital_id=e.hospital_id where a.staff_no=? and b.patient_class="1"  and a.valid="2" and c.type="D" and d.status="0"';
 			connection.query(sql, [staff_no], function (err, result) {
 				if (err) {
 					console.log('[SELECT ERROR] - ', err.message);

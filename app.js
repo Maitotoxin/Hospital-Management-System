@@ -77,6 +77,7 @@ const staffCurePatientEnsure = require('./routes/staff/curePatientEnsure');
 const staffPatientWardInChoosePatient = require('./routes/staff/patientWardInChoosePatient');
 const staffPatientWardInChooseHospital = require('./routes/staff/patientWardInChooseHospital');
 const staffPatientWardInChooseWard = require('./routes/staff/patientWardInChooseWard');
+const staffPatientWardOutChoosePatient = require('./routes/staff/patientWardOutChoosePatient');
 //app.use('',error)
 app.use('/patient/login', patientLogin);
 app.use('/patient/logout', patientLogout);
