@@ -1,7 +1,7 @@
 var mysql = require('mysql')
 
-exports.setUpDatabase = setUpDatabase
-
+exports.setUpDatabase = setUpDatabase;
+exports.setUpDeveloper = setUpDeveloper;
 const env = 'dev'
 
 const hostName = 'localhost'
@@ -17,6 +17,17 @@ function setUpDatabase(callback) {
         password: password,
         port: port,
         database: databaseName
+    })
+    callback(connection)
+}
+
+function setUpDeveloper(callback) {
+    var connection = mysql.createConnection({
+        host: 'localhost',
+        user: 'dws1',
+        password: 'dws',
+        port: '1521',
+        database: 'DWS_ORCL'
     })
     callback(connection)
 }

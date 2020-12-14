@@ -4,6 +4,7 @@ const session = require('express-session');
 // use body-parser module  to handle post
 const bodyparser = require('body-parser');
 const app = express();
+var oracledb = require('oracledb');
 
 //use body-parser handle all get/post rquest
 app.use(bodyparser.urlencoded({extended: false}));
@@ -18,6 +19,7 @@ app.use(session({
         maxAge: 24 * 60 * 60 * 1000
     }
 })); 
+
 
 //art directory
 app.set('views', path.join(__dirname, 'views'));
@@ -121,7 +123,62 @@ app.use('/staff/curePatientEnsure',staffCurePatientEnsure);
 app.use('/staff/patientWardInChoosePatient', staffPatientWardInChoosePatient);
 app.use('/staff/patientWardInChooseHospital', staffPatientWardInChooseHospital);
 app.use('/staff/patientWardInChooseWard', staffPatientWardInChooseWard);
+
+///////////////////////////
+try {
+    oracledb.initOracleClient({libDir: 'D:/oracle/instantclient_19_9'});
+  } catch (err) {
+    console.error('Whoops!');
+    console.error(err);
+    process.exit(1);
+  }
+var config = {
+    user:'dws1',　　//用户名
+    password:'dws',　　//密码
+    //IP:数据库IP地址，PORT:数据库端口，SCHEMA:数据库名称
+    connectString : "localhost:1521/ORCL"
+  };
+ // connection =await oracledb.getConnection(config);
+
+  oracledb.getConnection(
+    config,
+    function(err, connection)
+    {
+      if (err) {
+        console.error(err.message);
+        return;
+      }
+  　　//查询某表十条数据测试，注意替换你的表名
+      var sql ='SELECT * FROM TEST1'
+      connection.execute(sql, [], 
+        function(err, result)
+        {
+          if (err) {
+            console.error(err.message);
+            doRelease(connection);
+            return;
+          }
+          console.log("AA");
+          //打印返回的表结构
+          console.log(result);
+          //打印返回的行数据
+          //console.log(result.rows);
+        });
+    });
+  
+  function doRelease(connection)
+  {
+    connection.close(
+      function(err) {
+        if (err) {
+          console.error(err.message);
+        }
+      });
+  }
 //listen port 3000 
 app.listen(3000);
 console.log('Server started'); 
+
+
+
   
