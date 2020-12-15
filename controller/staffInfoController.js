@@ -104,7 +104,7 @@ function getPatientInfoForWardIn(req, res, next){
                 return;
 			}
 			staff_no = result[0].staff_no;
-			sql = 'select a.appointment_id, a.patient_no, b.first_name, b.last_name, c.invoice_id from doctor_appointment a inner join patient b on a.patient_no=b.patient_no inner join invoice c on a.appointment_id=c.appointment_id where a.staff_no=? and b.patient_class="0" and a.valid="2" and c.type="D"';
+			sql = 'select a.appointment_id, a.patient_no, b.first_name, b.last_name, c.invoice_id from doctor_appointment a inner join patient b on a.patient_no=b.patient_no inner join invoice c on a.appointment_id=c.appointment_id where a.staff_no=? and b.patient_class="0" and a.valid="4" and c.type="D"';
 			connection.query(sql, [staff_no], function (err, result) {
 				if (err) {
 					console.log('[SELECT ERROR] - ', err.message);

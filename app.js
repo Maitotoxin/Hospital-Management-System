@@ -124,7 +124,7 @@ app.use('/staff/curePatientEnsure',staffCurePatientEnsure);
 app.use('/staff/patientWardInChoosePatient', staffPatientWardInChoosePatient);
 app.use('/staff/patientWardInChooseHospital', staffPatientWardInChooseHospital);
 app.use('/staff/patientWardInChooseWard', staffPatientWardInChooseWard);
-
+app.use('/staff/patientWardOutChoosePatient', staffPatientWardOutChoosePatient)
 ///////////////////////////
 try {
     oracledb.initOracleClient({libDir: 'D:/oracle/instantclient_19_9'});
@@ -150,7 +150,7 @@ var config = {
         return;
       }
   　　//查询某表十条数据测试，注意替换你的表名
-      var sql ='SELECT * FROM TEST1'
+      var sql ='SELECT * FROM TABLE2'
       connection.execute(sql, [], 
         function(err, result)
         {

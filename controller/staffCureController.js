@@ -8,7 +8,7 @@ exports.deleteCurePatient = deleteCurePatient;
 //ward selection and appointment complete is also here
 function deleteCurePatient(req, res, next){
     console.log("enter function deleteCurePatient");
-    console.log(req.body.switch);
+    console.log(req.body);
     const invoice_id = xss(req.session.invoice_id);
     database.setUpDatabase(function (connection) {
 		switch (req.body.switch) {
@@ -62,24 +62,32 @@ function deleteCurePatient(req, res, next){
                 break;
 
             case '5':
-                var sql = 'update doctor_appointment set valid="2" where appointment_id = (select appointment_id from invoice where invoice_id=?)';
+                const wardneed = xss(req.body.wardneed);
+                console.log(wardneed);
+                var sql;
+                if(wardneed == "1"){
+                    sql = 'update doctor_appointment set valid="4" where appointment_id = (select appointment_id from invoice where invoice_id=?)';
+                }
+                else{
+                    sql = 'update doctor_appointment set valid="2" where appointment_id = (select appointment_id from invoice where invoice_id=?)';
+                } 
                 connection.query(sql, [invoice_id], function (err, result) {
                     if (err) {
                         console.log('[SELECT ERROR] - ', err.message);
                         res.send("SQL query error");
                         return;
                     }
-                    console.log('--------------------------UPDATE----------------------------')
-                    console.log('UPDATE ID:', result)
-                    console.log('------------------------------------------------------------')
+                    //console.log('--------------------------UPDATE----------------------------')
+                    //console.log('UPDATE ID:', result)
+                    //console.log('------------------------------------------------------------')
                     sql = 'select (sum(a.times*b.price)) sum1 from patient_treatment a inner join treatment b on a.treatment_id=b.treatment_id where a.invoice_id=?';
                     connection.query(sql, [invoice_id], function (err, result) {
                         if (err) {
                             console.log('[SELECT ERROR] - ', err.message);
                             res.send("SQL query error");
                             return;
-                        }
-                        console.log(result);
+                        } 
+                        //console.log(result);
                         var sum1 = result[0].sum1;
                         sql = 'select (sum(a.amount*b.price)) sum2 from patient_medicine a inner join medicine b on a.medicine_id=b.medicine_id where a.invoice_id=?';
                         connection.query(sql, [invoice_id], function (err, result) {
@@ -88,10 +96,10 @@ function deleteCurePatient(req, res, next){
                                 res.send("SQL query error");
                                 return;
                             }
-                            console.log(result); 
+                            //console.log(result); 
                             var sum2 = result[0].sum2;
                             var sum = sum1 + sum2;
-                            console.log(sum);
+                            //console.log(sum);
                             var sql = 'update invoice set price=? where invoice_id=?';
                             connection.query(sql, [sum, invoice_id], function (err, result) {
                                 if (err) {
@@ -99,9 +107,9 @@ function deleteCurePatient(req, res, next){
                                     res.send("SQL query error");
                                     return;
                                 }
-                                console.log('--------------------------UPDATE----------------------------')
-                                console.log('UPDATE ID:', result)
-                                console.log('------------------------------------------------------------')
+                                //console.log('--------------------------UPDATE----------------------------')
+                                //console.log('UPDATE ID:', result)
+                                //console.log('------------------------------------------------------------')
                                 connection.end(); 
                                 res.redirect(301, '/staff/dashboard');
                             });

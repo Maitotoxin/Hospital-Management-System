@@ -184,7 +184,6 @@
 
         </table>
           </div>
-
         <hr>
                 <div align="left" style="float:left">
                   <a href="curePatientMedicine" class="btn btn-primary btn-icon-split btn-sm use-address2" >
@@ -194,9 +193,11 @@
                     <span class="text">Back to Medicine Selection</span>
                   </a>
                 </div>
+                <div align="right">
                 <form method="post"> 
+                  <input type="checkbox" id="wardneed" name="wardneed" value="1"> Patient needs to be hospitalized
                   <input type="hidden" name="switch" id="switch" value="5">                 
-                    <div align="right">
+
                       <a href="#" class="btn btn-success btn-icon-split btn-sm use-address2" >
                         <span class="icon text-white-50">
                         <i class="fas fa-check"></i>

@@ -49,6 +49,7 @@ function createPatientWardIn(req, res, next){
     const hospital_id = xss(parseInt(req.cookies["hospital_id"]));
     const invoice_id = xss(parseInt(req.cookies["invoice_id"]));
     const patient_no = xss(parseInt(req.cookies["patient_no"]));
+    const appointment_id = xss(parseInt(req.cookies["appointment_id"]));
     const ward_id = xss(parseInt(req.body.ward_id));
     database.setUpDatabase(function (connection) {
 		var sql = 'insert into patient_ward (invoice_id, patient_no, ward_id, hospital_id) values (?,?,?,?)';
@@ -72,11 +73,20 @@ function createPatientWardIn(req, res, next){
                         res.send("SQL query error");
                         return;
                     }
-                    console.log('--------------------------UPDATE----------------------------')
-                    console.log('UPDATE ID:', result)
-                    console.log('------------------------------------------------------------')
-                    connection.end(); 
-                    res.redirect(301, '/staff/dashboard');
+                    sql = 'update doctor_appointment set valid="2" where appointment_id=?';
+                    connection.query(sql, [appointment_id], function (err, result) {
+                        if (err) {
+                            console.log('[SELECT ERROR] - ', err.message);
+                            res.send("SQL query error");
+                            return;
+                        }
+                        console.log('--------------------------UPDATE----------------------------')
+                        console.log('UPDATE ID:', result)
+                        console.log('------------------------------------------------------------')
+                        connection.end(); 
+                        res.redirect(301, '/staff/dashboard');
+                    });
+
                 });
             });
 

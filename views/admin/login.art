@@ -4,7 +4,7 @@
 <head>
     {{include '../common/header.art'}}
 
-    <title>Staff-Login</title>
+    <title>WDS-Admin-Login</title>
 
     <script>
         function loginUser() {
@@ -39,6 +39,7 @@
                                     <div class="text-center">
                                         <b>
                                             <h1 class="h2 text-gray-900 mb-4">Health Information Management System</h1>
+                                            <h1 class="h2 text-gray-900 mb-4">Admin Login</h1>
                                         </b>
                                     </div>
 
@@ -46,7 +47,7 @@
                                         <div class="input">
                                             <div class="form-group">
                                             </div>
-                                            <input name="staff_id" class="form-control" id="staff_id"
+                                            <input name="adminid" class="form-control" id="adminid"
                                                 placeholder="Enter Username..." type="text" required class="validate"
                                                 autocomplete="off">
                                         </div>

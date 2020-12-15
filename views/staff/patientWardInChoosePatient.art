@@ -19,6 +19,7 @@
                     var row = $(this).closest("tr");    // Find the row
                     var patient_no = row.find(".patient_no").text(); // Find the text
                     var invoice_id = row.find(".invoice_id").text();
+                    var appointment_id = row.find(".appointment_id").text();
                     //alert("here 1");
                     //var exp = new Date();
                     //exp.setTime(exp.getTime()+(1*24*60*60*1000));
@@ -26,6 +27,7 @@
                     setCookie("patient_no",patient_no,1);
                     //document.cookie = "patient=" + p_no+";expires=" + exp.toUTCString();
                     setCookie("invoice_id",invoice_id,1);
+                    setCookie("appointment_id",appointment_id,1);
                      //alert("here 2");
                      //setCookie("first_name",f_name,1);
                    // document.cookie = "patient=" + escape(p_no.value)+ ";path=/doctorAppointmentTime/;expires=" + exp.toUTCString();
@@ -103,7 +105,7 @@
           <tbody>
             {{each patientInfoForWardIn}}
             <tr>
-              <td>{{$value.appointment_id}}</td>
+              <td class="appointment_id">{{$value.appointment_id}}</td>
               <td class="patient_no">{{$value.patient_no}}</td>
               <td>{{$value.first_name}}</td>
               <td>{{$value.last_name}}</td>
