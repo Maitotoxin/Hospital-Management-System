@@ -126,6 +126,7 @@ app.use('/staff/patientWardInChooseHospital', staffPatientWardInChooseHospital);
 app.use('/staff/patientWardInChooseWard', staffPatientWardInChooseWard);
 app.use('/staff/patientWardOutChoosePatient', staffPatientWardOutChoosePatient)
 ///////////////////////////
+/*
 try {
     oracledb.initOracleClient({libDir: 'D:/oracle/instantclient_19_9'});
   } catch (err) {
@@ -175,7 +176,7 @@ var config = {
           console.error(err.message);
         }
       });
-  }
+  }*/
 //listen port 3000 
 app.listen(3000);
 console.log('Server started'); 
