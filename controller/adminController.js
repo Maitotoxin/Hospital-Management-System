@@ -60,7 +60,7 @@ function createAdmin(req, res, next) {
 }
 
 function loginAdmin(req, res, next) {
-    const id = xss(req.body.userid);
+    const id = xss(req.body.adminid);
     const plainTextPassword = xss(req.body.password);
     //verify
     if(id.trim().length == 0) {

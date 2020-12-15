@@ -119,7 +119,11 @@ CREATE TABLE out_patient (
     PRIMARY KEY (patient_id)
 );
 
-
+CREATE TABLE admin (
+    adminid     VARCHAR(30) NOT NULL,
+    password    VARCHAR(200),
+    PRIMARY KEY (adminid)
+);
 
 CREATE TABLE patient (
     patient_id                     VARCHAR(30) NOT NULL,
