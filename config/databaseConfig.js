@@ -53,9 +53,9 @@ function getConnected(sql, params, callback) {
                 //module.exports.rows  = result.rows;
                 rows = result.rows;
                 doRelease(connection);
-                callback(result); 
+                callback(rows); 
                 //console.log("aaa");
-                return;
+                return result;
             });
     });
 };

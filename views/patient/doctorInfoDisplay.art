@@ -12,6 +12,7 @@
   <!-- Page level plugins -->
   <script src="/vendor/chart.js/Chart.min.js"></script>
 
+
  
   <meta name="author" content="">
 
@@ -83,6 +84,7 @@
           </tfoot>
           <tbody>
             {{each patientDoctorInfo}}
+
             <tr>
               <td>{{$value.staff_no}}</td>
               <td>{{$value.first_name}}</td>
@@ -124,6 +126,9 @@
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
-
+   <script>
+    var a = {{patientDoctorInfo}};
+    console.log(a);
+  </script>
 
 </body>
