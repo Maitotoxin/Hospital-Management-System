@@ -28,7 +28,7 @@ CREATE TABLE test_appointment (
     appointment_time    DATETIME NOT NULL default CURRENT_TIMESTAMP,
     last_update         DATETIME NOT NULL default CURRENT_TIMESTAMP,
     valid               CHAR(1) NOT NULL,
-    result              CHAR(1),            
+    result              VARCHAR(200),            
     PRIMARY KEY (appointment_id)
 );
 
