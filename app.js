@@ -145,6 +145,7 @@ app.use('/admin/logout', adminLogout);
 app.use('/admin/hospitalAnalysis', test);
 /*
 ///////////////////////////
+/*
 try {
     oracledb.initOracleClient({libDir: 'D:/oracle/instantclient_19_9'});
   } catch (err) {
