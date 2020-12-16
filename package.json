@@ -21,6 +21,7 @@
     "art-template": "^4.13.2",
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
+    "chart.js": "^2.9.4",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
     "express-art-template": "^1.0.1",
@@ -29,6 +30,8 @@
     "js-cookie": "^2.2.1",
     "mysql": "^2.18.1",
     "oracledb": "^5.1.0",
+    "require.js": "^1.0.0",
+    "requirejs": "^2.3.6",
     "xss": "^1.0.6"
   }
 }

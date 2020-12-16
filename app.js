@@ -6,6 +6,7 @@ const bodyparser = require('body-parser');
 const app = express();
 var oracledb = require('oracledb');
 
+
 //use body-parser handle all get/post rquest
 app.use(bodyparser.urlencoded({extended: false}));
 var cookieParser = require('cookie-parser');
@@ -152,6 +153,7 @@ try {
     process.exit(1);
   }
     */
+   /*
 var config = {
     user:'dws1',　　//用户名
     password:'dws',　　//密码
@@ -195,6 +197,7 @@ var config = {
         }
       });
   }
+  */
 
 //listen port 3000 
 app.listen(3000);
