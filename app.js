@@ -19,7 +19,7 @@ app.use(session({
         maxAge: 24 * 60 * 60 * 1000
     }
 })); 
-
+oracledb.initOracleClient({libDir: 'D:/oracle/instantclient_19_9'});
 
 //art directory
 app.set('views', path.join(__dirname, 'views'));
@@ -56,6 +56,7 @@ const patientLabListAppointment = require('./routes/patient/labListAppointment')
 const patientInvoiceDisplay = require('./routes/patient/invoiceDisplay');
 const patientInvoicePayDisplay = require('./routes/patient/invoicePayDisplay');
 const patientInvoicePay = require('./routes/patient/invoicePay');
+
 //const patientLabRearrangeAppointmentTime = require('./routes/patient/labRearrangeAppointmentTime');
 const staffLogin = require('./routes/staff/login');
 const staffLogout = require('./routes/staff/logout');
@@ -78,6 +79,14 @@ const staffPatientWardInChoosePatient = require('./routes/staff/patientWardInCho
 const staffPatientWardInChooseHospital = require('./routes/staff/patientWardInChooseHospital');
 const staffPatientWardInChooseWard = require('./routes/staff/patientWardInChooseWard');
 const staffPatientWardOutChoosePatient = require('./routes/staff/patientWardOutChoosePatient');
+
+const adminLogin = require('./routes/admin/login');
+const adminRegister = require('./routes/admin/register');
+const adminLogout = require('./routes/admin/adminLogout');
+const adminDashboard = require('./routes/admin/dashboard');
+const test = require('./routes/admin/test');
+
+
 //app.use('',error)
 app.use('/patient/login', patientLogin);
 app.use('/patient/logout', patientLogout);
@@ -125,6 +134,15 @@ app.use('/staff/patientWardInChoosePatient', staffPatientWardInChoosePatient);
 app.use('/staff/patientWardInChooseHospital', staffPatientWardInChooseHospital);
 app.use('/staff/patientWardInChooseWard', staffPatientWardInChooseWard);
 app.use('/staff/patientWardOutChoosePatient', staffPatientWardOutChoosePatient)
+
+
+
+app.use('/admin/login', adminLogin);
+app.use('/admin/register', adminRegister);
+app.use('/admin/dashboard', adminDashboard);
+app.use('/admin/logout', adminLogout);
+app.use('/admin/hospitalAnalysis', test);
+/*
 ///////////////////////////
 /*
 try {
@@ -134,6 +152,7 @@ try {
     console.error(err);
     process.exit(1);
   }
+    
 var config = {
     user:'dws1',　　//用户名
     password:'dws',　　//密码
@@ -151,7 +170,7 @@ var config = {
         return;
       }
   　　//查询某表十条数据测试，注意替换你的表名
-      var sql ='SELECT * FROM TABLE2'
+      var sql ='SELECT * FROM TABLE3'
       connection.execute(sql, [], 
         function(err, result)
         {
@@ -173,10 +192,11 @@ var config = {
     connection.close(
       function(err) {
         if (err) {
-          console.error(err.message);
+          console.error(err.message); 
         }
       });
   }*/
+
 //listen port 3000 
 app.listen(3000);
 console.log('Server started'); 

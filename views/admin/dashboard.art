@@ -4,7 +4,7 @@
 <head>
 
   {{include '../common/header.art'}}
-  <title>WDS {{adminid}} Profile</title>
+  <title>HMS {{adminid}} Profile</title>
 
   <!-- Custom scripts for all pages-->
   <script src="/js/sb-admin-2.min.js"></script>
@@ -22,7 +22,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    {{include '../common/supersidebar.art'}}
+    {{include '../common/adminsidebar.art'}}
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -32,7 +32,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        {{include '../common/supertopbar.art'}}
+        {{include '../common/admintopbar.art'}}
         <!-- End of Topbar -->
         <div class="container-fluid">
 
