@@ -66,6 +66,10 @@
             <tr>
               <th>Lab ID</th>
               <th>Lab Name</th>
+              <th>Lab Street Address</th>
+              <th>City</th>
+              <th>State</th>
+              <th>Zip Code </th>
               <th>Description</th>
               
             </tr>
@@ -74,6 +78,10 @@
             <tr>
               <th>Lab ID</th>
               <th>Lab Name</th>
+              <th>Lab Street Address</th>
+              <th>City</th>
+              <th>State</th>
+              <th>Zip Code </th>
               <th>Description</th>
               
             </tr>
@@ -84,6 +92,10 @@
             <tr>
               <td>{{$value.lab_id}}</td>
               <td>{{$value.lab_name}}</td>
+              <td>{{$value.st_address}}</td>
+              <td>{{$value.city}}</td>
+              <td>{{$value.state}}</td>
+              <td>{{$value.zipcode}}</td>
               <td>{{$value.description}}</td>
               
             </tr>

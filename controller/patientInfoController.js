@@ -132,7 +132,7 @@ function getPatientLabInfoIncludingTest(req, res, next){
 	//console.log(req.cookies["test_id"]);
 	database.setUpDatabase(function (connection) {
 		connection.connect(); 
-		var sql = 'select a.lab_id, a.lab_name, a.description from lab a inner join test_lab b on a.lab_id = b.lab_id where b.test_id = ?';
+		var sql = 'select a.lab_id, a.lab_name, a.description, a.st_address, a.city, a.state, a.zipcode from lab a inner join test_lab b on a.lab_id = b.lab_id where b.test_id = ?';
 		connection.query(sql, [test_id], function (err, result) {
 			if (err) {
 				console.log('[SELECT ERROR] - ', err.message);
@@ -232,7 +232,7 @@ function getPatientLabInfo(req, res, next) {
 	const patient_id = xss(req.session.patient_id);
 	database.setUpDatabase(function (connection) {
 		connection.connect();
-		var sql = 'select lab_id, lab_name, description from lab';
+		var sql = 'select lab_id, lab_name, st_address, city, state, zipcode, description from lab';
 		connection.query(sql, [patient_id], function (err, result) {
 			if (err) {
 				console.log('[SELECT ERROR] - ', err.message);
@@ -292,7 +292,7 @@ function getPatientLabInfoMakeAppointment(req, res, next) {
 	const patient_id = xss(req.session.patient_id);
 	database.setUpDatabase(function (connection) {
 		connection.connect();
-		var sql = 'select lab_id, lab_name, description from lab';
+		var sql = 'select lab_id, lab_name, st_address, city, state, zipcode, description from lab';
 		connection.query(sql, [patient_id], function (err, result) {
 			if (err) {
 				console.log('[SELECT ERROR] - ', err.message);
