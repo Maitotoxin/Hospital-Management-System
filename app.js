@@ -57,7 +57,7 @@ const patientLabListAppointment = require('./routes/patient/labListAppointment')
 const patientInvoiceDisplay = require('./routes/patient/invoiceDisplay');
 const patientInvoicePayDisplay = require('./routes/patient/invoicePayDisplay');
 const patientInvoicePay = require('./routes/patient/invoicePay');
-
+const patientMedicalRecord=require('./routes/patient/medicalRecord');
 //const patientLabRearrangeAppointmentTime = require('./routes/patient/labRearrangeAppointmentTime');
 const staffLogin = require('./routes/staff/login');
 const staffLogout = require('./routes/staff/logout');
@@ -113,6 +113,7 @@ app.use('/patient/labListAppointment', patientLabListAppointment);
 app.use('/patient/invoiceDisplay',patientInvoiceDisplay);
 app.use('/patient/invoicePayDisplay',patientInvoicePayDisplay); 
 app.use('/patient/invoicePay',patientInvoicePay);
+app.use('/patient/medicalRecord', patientMedicalRecord);
 
 app.use('/staff/login', staffLogin);
 app.use('/staff/logout', staffLogout);
