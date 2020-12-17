@@ -40,17 +40,10 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
+        <form method="post">
+           <table class="table table-striped table-bordered table-hover custom-table">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">My Profile</h1>
-          </div>
-
-         <div class="row">
-
-            <!-- Earnings (Monthly) Card Example -->
-  <div class="container-fluid">
-        <table class="table table-striped table-bordered table-hover custom-table">
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-2 text-gray-800">Doctor Information Display</h1>
+            <h1 class="h3 mb-2 text-gray-800">Select Disease</h1>
           </div>
           <!-- DataTales Example -->
 
@@ -61,32 +54,40 @@
 
           <thead>
             <tr>
-              <th>Doctor ID</th>
-              <th>Doctor First Name</th>
+              <th></th>
+              <th>ICD ID</th>
+              <th>Disease Name</th>
+              <th>Description</th>
             </tr>
           </thead>
-          <tfoot>
-            <tr>
-              <th>Doctor ID</th>
-              <th>Doctor First Name</th>
-            </tr>
-          </tfoot>
+         
           <tbody>
-
+            {{each icdInfo}}
             <tr>
-              <td>{{testInfo}}</td>
-              <th>Doctor First Name</th>
+              <td>
+                <input type="radio" id="icd_id" name="icd_id" value={{$value.icd_id}}>
+              </td>
+              <td>{{$value.icd_id}}</td>
+              <td>{{$value.disease_name}}</td>
+              <td>{{$value.description}}</td>
               
             </tr>
+            {{/each}}
           </tbody>
         </table>
+            <input type="submit" href="error" class="btn btn-primary btn-user btn-block"
+                                    value="Submit Disease Selection">
+        </form>
+            <!-- Earnings (Monthly) Card Example -->
+
+
 
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Area Chart</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
                 </div>
                 <div class="card-body">
-                  <div class="chart-area">
+                  <div class="chart-bar">
                     <canvas id="testarea"></canvas>
                   </div>
                   <hr>
@@ -135,7 +136,7 @@
       </div>
     </div>
   </div>
-  <script src="../../js/demo/test.js"></script>
+  <script src="../../js/demo/hospitalIcdAnalysis.js"></script>
 
 
 </body>

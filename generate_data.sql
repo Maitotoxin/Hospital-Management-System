@@ -497,7 +497,7 @@ values
 ('Prothrombin Time', 'Also known as PT and Pro Time, this test measures how long it takes blood to clot. This coagulation test measures the presence and activity of five different blood clotting factors.', 29);
 insert into test (test_name, description, price)
 values 
-('Basic Metabolic Panel', 'This test measures glucose, sodium, potassium, calcium, chloride, carbon dioxide, blood urea nitrogen and creatinine which can help determine blood sugar level, electrolyte and fluid balance as well as kidney function.', 70);
+('Basic Metabolic Panel', 'This test measures glucose, sodium, potassium and creatinine which can help determine blood sugar level, electrolyte and fluid balance as well as kidney function.', 70);
 insert into test (test_name, description, price)
 values 
 ('Comprehensive Metabolic Panel', 'This test combines the Basic Metabolic Panel with six more tests for a more comprehensive evaluation of metabolic functions, with a focus on organ systems.', 55);
@@ -658,6 +658,7 @@ values
 insert into icd(disease_name, description)
 values
 ('Otosclerosis', 'Otosclerosis (H80)');
+
 
 
 
