@@ -124,7 +124,7 @@
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="/login">Already has account? Login</a>
+                                <a class="small" href="/patient/login">Already has account? Login</a>
                             </div>
 
                         </div>

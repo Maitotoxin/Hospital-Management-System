@@ -65,12 +65,15 @@
             <tr>
               <th>ICD ID</th>
               <th>Disease Name</th>
+              <th>Description</th>
             </tr>
           </thead>
           <tfoot>
             <tr>
               <th>ICD ID</th>
               <th>Disease Name</th>
+              
+              <th>Description</th>
             </tr>
           </tfoot>
           <tbody>
@@ -78,7 +81,7 @@
             <tr>
               <td>{{$value.icd_id}}</td>
               <td>{{$value.disease_name}}</td>
-              
+               <td>{{$value.description}}</td>
             </tr>
             {{/each}}
           </tbody>

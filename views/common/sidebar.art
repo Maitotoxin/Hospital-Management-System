@@ -78,19 +78,7 @@
             <a class="collapse-item" href="testInfoDisplay">See Tests </a>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInsuranceCompanys" aria-expanded="true"
-          aria-controls="collapseInsuranceCompanys">
-          <i class="fas fa-fw fa-user"></i>
-          <span>Insurance Company Information</span>
-        </a>
-        <div id="collapseInsuranceCompanys" class="collapse" aria-labelledby="headingInsuranceCompanys" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="insuranceCompanyInfoDisplay">See Insurance Company </a>
-        </div>
-      </li>
-      <!-- Divider -->
+
       <hr class="sidebar-divider">
 
       <!-- Heading -->

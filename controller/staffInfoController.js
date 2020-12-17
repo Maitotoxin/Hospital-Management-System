@@ -183,7 +183,7 @@ function getIcdInfoCure(req, res, next){
 	const staff_id = xss(req.session.staff_id);
 	database.setUpDatabase(function (connection) {
 		connection.connect(); 
-		var sql = 'select icd_id, disease_name from icd';
+		var sql = 'select icd_id, disease_name, description from icd';
 		connection.query(sql, [staff_id], function (err, result) {
 			if (err) {
 				console.log('[SELECT ERROR] - ', err.message);
@@ -203,7 +203,7 @@ function getIcdInfo(req, res, next){
 	const staff_id = xss(req.session.staff_id);
 	database.setUpDatabase(function (connection) {
 		connection.connect(); 
-		var sql = 'select icd_id, disease_name from icd';
+		var sql = 'select icd_id, disease_name, description from icd';
 		connection.query(sql, [staff_id], function (err, result) {
 			if (err) {
 				console.log('[SELECT ERROR] - ', err.message);

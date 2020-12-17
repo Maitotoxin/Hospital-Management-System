@@ -71,7 +71,6 @@
               <th>State</th>
               <th>Zip Code </th>
               <th>Phone Number</th>
-              <th>Maximum Patient</th>
             </tr>
           </thead>
           <tfoot>
@@ -83,7 +82,6 @@
               <th>State</th>
               <th>Zip Code </th>
               <th>Phone Number</th>
-              <th>Maximum Patient</th>
             </tr>
           </tfoot>
           <tbody>
@@ -97,7 +95,6 @@
               <td>{{$value.state}}</td>
               <td>{{$value.zipcode}}</td>
               <td>{{$value.phone}}</td>
-              <td>{{$value.maximum_patients}}</td>
              
             </tr>
             {{/each}}
