@@ -660,6 +660,33 @@ values
 ('Otosclerosis', 'Otosclerosis (H80)');
 
 
+insert into treatment (treatment_name,description, price)
+values ('Appendectomy','Appendicitis is the acute inflammation of the appendix because of infection.',135);
 
+insert into treatment (treatment_name,description, price)
+values ('Breast biopsy','The surgeon removes a small sample of tissue or cells. The sample is looked at under a microscope',130);
 
+insert into treatment (treatment_name,description, price)
+values ('Cholecystectomy','A cholecystectomy is surgery to remove the gallbladder. The gallbladder is a pear-shaped sac near the right lobe of the liver. The gallbladder holds bile. ',142);
+
+insert into treatment (treatment_name,description, price)
+values ('Coronary artery bypass','This surgery is commonly called bypass surgery. It is done if you have chest pain (angina) and coronary artery disease. ',140);
+
+insert into treatment (treatment_name,description, price)
+values ('Free skin graft',' Skin grafts are often done because of burns, injury, or surgery to remove diseased skin.',179);
+
+insert into treatment (treatment_name,description, price)
+values ('Hysterectomy','A hysterectomy is surgery to remove a woman uterus. This may be done through an incision in the abdomen, through small incisions and a laparoscope, or vaginally. ',138);
+
+insert into treatment (treatment_name,description, price)
+values ('Hysteroscopy','Hysteroscopy is a procedure used to help diagnose and treat many uterine disorders',168);
+
+insert into treatment (treatment_name,description, price)
+values ('Mastectomy','A mastectomy is removing all or part of the breast. Mastectomies are usually done to treat breast cancer.',135);
+
+insert into treatment (treatment_name,description, price)
+values ('Prostatectomy','A prostatectomy is removing all or part of the prostate gland. The prostate is the sex gland in men that surrounds the neck of the bladder and urethra. ',158);
+
+insert into treatment (treatment_name,description, price)
+values ('Tonsillectomy','A tonsillectomy is removing of one or both tonsils. Your tonsils are at the back of the mouth. They help fight infections.',188);
 
