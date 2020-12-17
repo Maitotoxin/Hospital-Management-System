@@ -85,7 +85,7 @@ const adminLogin = require('./routes/admin/login');
 const adminRegister = require('./routes/admin/register');
 const adminLogout = require('./routes/admin/adminLogout');
 const adminDashboard = require('./routes/admin/dashboard');
-const test = require('./routes/admin/test');
+const test = require('./routes/admin/hospitalAnalysis');
 
 
 //app.use('',error)
