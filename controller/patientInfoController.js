@@ -18,6 +18,57 @@ exports.getPatientTestInfoMakeAppointment = getPatientTestInfoMakeAppointment;
 exports.getPatientLabInfoIncludingTest = getPatientLabInfoIncludingTest;
 exports.getInvoiceInfo = getInvoiceInfo;
 exports.getUnpaidInvoiceInfo = getUnpaidInvoiceInfo;
+exports.getPatientMedicalRecordInfo=getPatientMedicalRecordInfo;
+
+function getPatientMedicalRecordInfo(req, res, next){
+	console.log("enter getPatientMedicalRecordInfo");
+	console.log(req.cookies["patient_no"]);
+	const patient_id = xss(req.session.patient_id);
+	database.setUpDatabase(function (connection) {
+		var sql = 'select * from patient where patient_id = ?';
+        connection.query(sql, [patient_id], function (err, result) {
+            if (err) {
+                console.log('[SELECT ERROR] - ', err.message);
+                res.send("SQL query error");
+                return;
+			}
+			patient_no = result[0].patient_no;
+		var sql = 'select a.last_update, a.treatment_id, b.treatment_name, a.times from patient_treatment a inner join treatment b on a.treatment_id = b.treatment_id where a.patient_no=?'
+		connection.query(sql, [patient_no], function (err, result) {
+			if (err) {
+				console.log('[SELECT ERROR] - ', err.message);
+				res.send("SQL query error");
+				return;
+			}
+			patientTreatmentRecordInfo = result;
+			sql = 'select a.last_update, a.medicine_id, b.medicine_name, a.amount from patient_medicine a inner join medicine b on a.medicine_id = b.medicine_id where a.patient_no=?'
+			connection.query(sql, [patient_no], function (err, result) {
+				if (err) {
+					console.log('[SELECT ERROR] - ', err.message);
+					res.send("SQL query error");
+					return;
+				}
+				patientMedicineRecordInfo = result;
+				sql = 'select a.last_update, a.icd_id, b.disease_name from patient_icd a inner join icd b on a.icd_id=b.icd_id where a.patient_no=?'
+				connection.query(sql, [patient_no], function (err, result) {
+					if (err) {
+						console.log('[SELECT ERROR] - ', err.message);
+						res.send("SQL query error");
+						return;
+					}
+					patientIcdRecordInfo = result;
+					res.render('patient/medicalRecord', {
+						patientTreatmentRecordInfo: patientTreatmentRecordInfo,
+						patientMedicineRecordInfo: patientMedicineRecordInfo,
+						patientIcdRecordInfo: patientIcdRecordInfo
+					});
+				})
+			})
+		})
+	})
+  })
+	
+}
 
 function getInvoiceInfo(req, res, next){
 	const patient_id = xss(req.session.patient_id);

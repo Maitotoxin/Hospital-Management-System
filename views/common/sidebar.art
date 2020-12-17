@@ -167,9 +167,8 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Option:</h6>
             <a class="collapse-item" href="invoiceDisplay">Invoice History</a>
-            <a class="collapse-item" href="autoPayDisplay">Treatment History</a>
-            <a class="collapse-item" href="autoPayDisplay">Appointment History</a>
-          </div>
+            <a class="collapse-item" href="medicalRecord">Treatment History</a>
+            </div>
         </div>
       </li>
 
