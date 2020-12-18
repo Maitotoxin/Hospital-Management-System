@@ -9,8 +9,8 @@
   <!-- Custom scripts for all pages-->
   <script src="/js/sb-admin-2.min.js"></script>
  <script>
- var testInfo = <%- testInfo %>;
-  console.log(testInfo);
+ var arr = <%- arr %>;
+  console.log(arr);
  </script>
   <!-- Page level plugins -->
   <script src="/vendor/chart.js/Chart.min.js"></script>
@@ -55,28 +55,26 @@
           <thead>
             <tr>
               <th></th>
-              <th>ICD ID</th>
-              <th>Disease Name</th>
-              <th>Description</th>
+              <th>Hospital ID</th>
+              <th>Hospital Name</th>
             </tr>
           </thead>
          
           <tbody>
-            {{each icdInfo}}
+            {{each hospitalInfo}}
             <tr>
               <td>
-                <input type="radio" id="icd_id" name="icd_id" value={{$value.icd_id}}>
+                <input type="radio" id="hospital_id" name="hospital_id" value={{$value.hospital_id}}>
               </td>
-              <td>{{$value.icd_id}}</td>
-              <td>{{$value.disease_name}}</td>
-              <td>{{$value.description}}</td>
+              <td>{{$value.hospital_id}}</td>
+              <td>{{$value.hospital_name}}</td>
               
             </tr>
             {{/each}}
           </tbody>
         </table>
             <input type="submit" href="error" class="btn btn-primary btn-user btn-block"
-                                    value="Submit Disease Selection">
+                                    value="Submit Hospital Selection">
         </form>
             <!-- Earnings (Monthly) Card Example -->
 
@@ -84,11 +82,11 @@
 
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Hospital Ward Status</h6>
                 </div>
                 <div class="card-body">
-                  <div class="chart-bar">
-                    <canvas id="testarea"></canvas>
+                  <div class="chart-pie">
+                    <canvas id="wardPie"></canvas>
                   </div>
                   <hr>
                 
@@ -136,7 +134,7 @@
       </div>
     </div>
   </div>
-  <script src="../../js/demo/hospitalIcdAnalysis.js"></script>
+  <script src="../../js/demo/wardRateAnalysis.js"></script>
 
 
 </body>

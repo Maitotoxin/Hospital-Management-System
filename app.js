@@ -10,7 +10,7 @@ var oracledb = require('oracledb');
 //use body-parser handle all get/post rquest
 app.use(bodyparser.urlencoded({extended: false}));
 var cookieParser = require('cookie-parser');
-app.use(cookieParser());
+app.use(cookieParser()); 
 
 app.use(session({
     secret: 'Dymatize Accelerate Wallet',
@@ -85,7 +85,10 @@ const adminLogin = require('./routes/admin/login');
 const adminRegister = require('./routes/admin/register');
 const adminLogout = require('./routes/admin/adminLogout');
 const adminDashboard = require('./routes/admin/dashboard');
-const test = require('./routes/admin/hospitalAnalysis');
+const adminHospitalIcdAnalysis = require('./routes/admin/hospitalIcdAnalysis');
+const adminHospitalMedicineAnalysis = require('./routes/admin/hospitalMedicineAnalysis');
+const adminHospitalTreatmentAnalysis = require('./routes/admin/hospitalTreatmentAnalysis');
+const adminWardRateAnalysis = require('./routes/admin/wardRateAnalysis');
 
 
 //app.use('',error)
@@ -143,7 +146,10 @@ app.use('/admin/login', adminLogin);
 app.use('/admin/register', adminRegister);
 app.use('/admin/dashboard', adminDashboard);
 app.use('/admin/logout', adminLogout);
-app.use('/admin/hospitalAnalysis', test);
+app.use('/admin/hospitalIcdAnalysis', adminHospitalIcdAnalysis);
+app.use('/admin/hospitalMedicineAnalysis', adminHospitalMedicineAnalysis);
+app.use('/admin/hospitalTreatmentAnalysis', adminHospitalTreatmentAnalysis);
+app.use('/admin/wardRateAnalysis', adminWardRateAnalysis);
 /*
 ///////////////////////////
 /*

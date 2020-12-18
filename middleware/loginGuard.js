@@ -5,13 +5,14 @@ const guard = (req, res, next) => {
     //     next();
     // }
     const url = req.url;
-    const didUserLogin = req.session.userid;
+    const didPatientLogin = req.session.patient_id;
+    const didStaffLogin = req.session.staff_id;
     const didAdminLogin = req.session.adminid;
     if(url == '/error') {
         next();
         return;
     }
-    if(!didUserLogin && !didAdminLogin) {
+    if(!didPatientLogin && !didStaffLogin) {
         if(url != 'patient/login' && url != 'patient/register' ) {
             res.redirect('/error');
         } else{

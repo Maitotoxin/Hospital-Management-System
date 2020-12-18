@@ -4,6 +4,7 @@ const xss = require('xss');
 
 exports.getPatientInfo = getPatientInfo;
 exports.getStaffInfo = getStaffInfo;
+exports.getAdminInfo = getAdminInfo; 
 
 function getPatientInfo(req, res, next) {
 	const patient_id = xss(req.session.patient_id);
@@ -57,6 +58,33 @@ function getStaffInfo(req, res, next) {
 			//console.log(userInfo);
 			res.render('staff/dashboard', {
 				staffInfo: staffInfo
+			});
+		});
+	}); 
+}
+
+function getAdminInfo(req, res, next) {
+	const adminid = xss(req.session.adminid);
+	database.setUpDatabase(function (connection) {
+		connection.connect();
+		var sql = 'select adminid from admin where adminid = ?';
+		connection.query(sql, [adminid], function (err, result) {
+			if (err) {
+				console.log('[SELECT ERROR] - ', err.message);
+				res.send('SQL query error');
+				return;
+			}
+			if (result.length == 0) {
+				console.log('no such admin');
+				res.render('error', 
+					'no such admin'
+				);
+				return;
+			}
+			adminInfo = result[0];
+			//console.log(userInfo);
+			res.render('admin/dashboard', {
+				adminInfo: adminInfo
 			});
 		});
 	}); 

@@ -66,8 +66,8 @@ for(var i in hos){
 
 
 // Area Chart Example
-var ctx = document.getElementById("icdBar");
-var icdBar = new Chart(ctx, {
+var ctx = document.getElementById("treatmentBar");
+var treatmentBar = new Chart(ctx, {
   type: 'bar',
   data: {
     labels: hos,

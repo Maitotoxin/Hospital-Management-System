@@ -29,61 +29,47 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseData" aria-expanded="true"
           aria-controls="collapseData">
           <i class="fas fa-fw fa-home"></i>
-          <span>Data Analysis</span>
+          <span>Medical Data Analysis</span>
         </a>
         <div id="collapseData" class="collapse" aria-labelledby="headingData" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="hospitalAnalysis">Hospital Room Rate </a>
-            <a class="collapse-item" href="medicineInfoDisplay">See Medicine </a>
-            <a class="collapse-item" href="icdInfoDisplay">See Disease Name </a>
-            <a class="collapse-item" href="testInfoDisplay">See Test </a>
-            <a class="collapse-item" href="labInfoDisplay">See Lab </a>
+            <a class="collapse-item" href="hospitalIcdAnalysis">Hospital vs ICD </a>
+            <a class="collapse-item" href="hospitalTreatmentAnalysis">Hospital vs Treatment </a>
+            <a class="collapse-item" href="hospitalMedicineAnalysis">Hospital vs Medicine </a>
         </div>
       </li>
 
-     
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Patient Manangement
-      </div>
-
-
-      <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePolicy" aria-expanded="true"
-          aria-controls="collapsePolicy">
-          <i class="fas fa-fw fa-file-invoice-dollar"></i>
-          <span>Manage Appointment</span>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseData1" aria-expanded="true"
+          aria-controls="collapseData1">
+          <i class="fas fa-fw fa-home"></i>
+          <span>Ward Data Analysis</span>
         </a>
-        <div id="collapsePolicy" class="collapse" aria-labelledby="headingPolicy" data-parent="#accordionSidebar">
+        <div id="collapseData1" class="collapse" aria-labelledby="headingData1" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="manageAppointment">Accept/Deny Appointment</a>
-            <a class="collapse-item" href="curePatient">Begin Diagnosis</a>
-          </div>
+            <a class="collapse-item" href="wardRateAnalysis">Hospital Ward Data </a>
+            <a class="collapse-item" href="hospitalTreatmentAnalysis">Hospital vs Treatment </a>
+            <a class="collapse-item" href="hospitalMedicineAnalysis">Hospital vs Medicine </a>
         </div>
       </li>
 
-
-      <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInsurance" aria-expanded="true"
-          aria-controls="collapseInsurance">
-          <i class="fas fa-fw fa-file-invoice-dollar"></i>
-          <span>Ward Assignment</span>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseData2" aria-expanded="true"
+          aria-controls="collapseData2">
+          <i class="fas fa-fw fa-home"></i>
+          <span>Expense Data Analysis</span>
         </a>
-        <div id="collapseInsurance" class="collapse" aria-labelledby="headingInsurance" data-parent="#accordionSidebar">
+        <div id="collapseData2" class="collapse" aria-labelledby="headingData2" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Option:</h6>
-            <a class="collapse-item" href="patientWardInChoosePatient">Patient In</a>
-            <a class="collapse-item" href="patientWardOutChoosePatient">Patient Out</a>
-          </div>
+            <a class="collapse-item" href="hospitalExpenseAnalysis">Hospital vs Expense </a>
+            <a class="collapse-item" href="icdExpenseAnalysis">ICD vs Expense </a>
         </div>
       </li>
+
+      
 
       
 

@@ -5,7 +5,6 @@ const xss = require('xss');
 
 exports.createAdmin = createAdmin;
 exports.loginAdmin = loginAdmin;
-exports.getAdmins = getAdmins;
 exports.logoutAdmin = logoutAdmin;
 function createAdmin(req, res, next) {
     console.log('enter function createAdmin');
@@ -104,29 +103,6 @@ function loginAdmin(req, res, next) {
             });
         })
     })
-}
-
-function getAdmins(req, res, next) {
-    database.setUpDatabase(function(connection) {
-        connection.connect();
-        var sql = 'select adminid from admin';
-        connection.query(sql, [], function(err, result) {
-            if(err) {
-                console.log('[SELECT ERROR] - ', err.message);
-                res.send('SQL query error');
-                return;
-            }
-            console.log(result);
-            if(result.length == 0) {
-                console.log('no admin currently');
-                res.send('no such admin currently');
-                return;
-            }
-            res.render('admin/dashboard', {
-                users: result
-            });
-        });
-    });
 }
 
 function logoutAdmin(req, res, next) {
