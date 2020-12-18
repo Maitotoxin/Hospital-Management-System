@@ -6,8 +6,9 @@ exports.medicineAnalysis = medicineAnalysis;
 exports.treatmentAnalysis=treatmentAnalysis;
 exports.wardRateAnalysis =wardRateAnalysis;
 exports.hospitalExpenseAnalysis = hospitalExpenseAnalysis;
+exports.icdExpenseAnalysis = icdExpenseAnalysis;
 
-function hospitalExpenseAnalysis(req, res, next){
+function icdExpenseAnalysis(req, res, next){
     var sql ='select disease_name, avg(price) total_expense from doctor_appointment_icd group by disease_name';
     console.log("enter test");
     developer.getConnected(sql, [medicine_id], function (result) {

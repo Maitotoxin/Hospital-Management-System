@@ -4,7 +4,7 @@
 <head>
     {{include '../common/header.art'}}
 
-    <title>HMS-Admin-Login</title>
+    <title>HIMS-Admin-Login</title>
 
     <script>
         function loginUser() {

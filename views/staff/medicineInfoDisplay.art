@@ -4,7 +4,7 @@
 <head>
 
   {{include '../common/header.art'}}
-  <title>HMS {{staff_id}} Medicine Info Display</title>
+  <title>HIMS {{staff_id}} Medicine Info Display</title>
     <meta name="author" content="">
     <script src="/js/cookie.js"></script>
     

@@ -89,7 +89,8 @@ const adminHospitalIcdAnalysis = require('./routes/admin/hospitalIcdAnalysis');
 const adminHospitalMedicineAnalysis = require('./routes/admin/hospitalMedicineAnalysis');
 const adminHospitalTreatmentAnalysis = require('./routes/admin/hospitalTreatmentAnalysis');
 const adminWardRateAnalysis = require('./routes/admin/wardRateAnalysis');
-
+const adminHospitalExpenseAnalysis = require('./routes/admin/hospitalExpenseAnalysis');
+const adminIcdExpenseAnalysis = require('./routes/admin/icdExpenseAnalysis');
 
 //app.use('',error)
 app.use('/patient/login', patientLogin);
@@ -150,6 +151,10 @@ app.use('/admin/hospitalIcdAnalysis', adminHospitalIcdAnalysis);
 app.use('/admin/hospitalMedicineAnalysis', adminHospitalMedicineAnalysis);
 app.use('/admin/hospitalTreatmentAnalysis', adminHospitalTreatmentAnalysis);
 app.use('/admin/wardRateAnalysis', adminWardRateAnalysis);
+app.use('/admin/icdExpenseAnalysis', adminIcdExpenseAnalysis);
+app.use('/admin/hospitalExpenseAnalysis', adminHospitalExpenseAnalysis);
+
+
 /*
 ///////////////////////////
 /*

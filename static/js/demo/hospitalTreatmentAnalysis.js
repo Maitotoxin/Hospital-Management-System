@@ -57,9 +57,7 @@ for(var i in hos){
     console.log(j);
     if(hos[i]==testInfo[j][0]){
       icd.push(testInfo[j][1]);
-    }
-    else{
-      icd.push(0);
+      break;
     }
   }
 }

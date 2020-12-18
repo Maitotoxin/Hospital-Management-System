@@ -4,7 +4,7 @@
 <head>
 
   {{include '../common/header.art'}}
-  <title>HMS {{staff_id}} Cure Patient</title>
+  <title>HIMS {{staff_id}} Cure Patient</title>
 
   <!-- Custom scripts for all pages-->
   <script src="/js/sb-admin-2.min.js"></script>

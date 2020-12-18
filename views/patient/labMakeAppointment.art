@@ -4,7 +4,7 @@
 <head>
 
   {{include '../common/header.art'}}
-  <title>HMS {{patient_id}} Lab Appointment</title>
+  <title>HIMS {{patient_id}} Lab Appointment</title>
 
   <!-- Custom scripts for all pages-->
   <script src="/js/sb-admin-2.min.js"></script>

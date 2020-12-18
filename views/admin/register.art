@@ -6,7 +6,7 @@
     <!-- Custom scripts for all pages-->
     <script src="/js/sb-admin-2.min.js"></script>
 
-    <title>HMS-Admin-Register</title>
+    <title>HIMS-Admin-Register</title>
     <meta name="author" content="">
     <script>
         function registerAdmin() {

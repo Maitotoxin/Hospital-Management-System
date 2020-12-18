@@ -3,7 +3,7 @@
 
 <head>
   {{include '../common/header.art'}}
-  <title>HMS {{patient_id}}Hospital Info Display</title>
+  <title>HIMS {{patient_id}}Hospital Info Display</title>
 
   <!-- Custom scripts for all pages-->
   <script src="/js/sb-admin-2.min.js"></script>
